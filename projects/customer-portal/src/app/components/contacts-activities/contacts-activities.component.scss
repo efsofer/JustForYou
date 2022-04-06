@@ -1,21 +1,30 @@
-.ui-table-tbody td:nth-child(5) { max-width: 270px; }
-.ui-table-tbody td:nth-child(8) { max-width: 220px; }
+.ui-table-tbody td:nth-child(5) {
+    max-width: 270px;
+}
+
+.ui-table-tbody td:nth-child(8) {
+    max-width: 220px;
+}
 
 :host {
     display: block;
+
     .header-wrapper {
         border-bottom: 1px solid #DBDBDB;
         padding-bottom: 24px;
         margin-bottom: 25px;
+
         h3 {
             font-size: 25px;
             line-height: 30px;
             font-weight: 400;
             margin: 0;
+
             span {
-                font-weight: 600; 
+                font-weight: 600;
             }
         }
+
         .actions-container {
             display: flex;
             column-gap: 15px;
@@ -29,6 +38,7 @@
                 background-color: #F2F5F8 !important;
             }
         }
+
         .ui-inputtext {
             margin-left: 0 !important;
         }
@@ -46,5 +56,3 @@
         }
     }
 }
-
-
