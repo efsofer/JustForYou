@@ -1,0 +1,53 @@
+<div class="header-wrapper flex justify-between align-center">
+    <h2><span>{{ tableData.length }}</span>אנשי קשר</h2>
+    <button class="btn primary">הסר נבחרים</button>
+</div>
+
+<div class="table-wrapper">
+    <p-table [columns]="cols" [value]="tableData" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,15,20,30]">
+        <ng-template pTemplate="header"  let-columns>
+            <tr>
+                <th style='width: 25px; padding: 0 0 10px 0 ;text-align: right;'>
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                  <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]='col.field'>
+                      {{col.header}}
+                      <p-sortIcon *ngIf='col.header.length > 0' [field]="col.field"></p-sortIcon>
+                  </th>
+              </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData" style="height:34px">
+              <td style='width: 25px; padding: 0 0 10px 0 ;text-align: right;'>
+                  <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+              </td>
+              <td>
+                  <button class="display-button-as-link">{{rowData.name}}</button>
+              </td>
+              <td>{{rowData.id}}</td>
+              <td>{{rowData.type}}</td>
+              <td>{{rowData.department}}</td>
+              <td>{{rowData.role}}</td>
+              <td>{{rowData.startDate}}</td>
+              <td>{{rowData.birthDate}}</td>
+              <td>{{rowData.city}}</td>
+              <td>
+                  <button (click)='display=true'>
+                      <i class="icon remove"></i>
+                  </button>
+            </td>
+          </tr>
+          </ng-template>
+    </p-table>  
+
+</div>
+<!-- modals -->
+<p-dialog [style]="{width: '767px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]="display" header='הסרת איש קשר' [styleClass]='""'>
+    <app-resending-dialog [message]='"האם ברצונך להסיר את האיש קשר הזה?"'></app-resending-dialog>
+    <p-footer>
+    <div class="">
+        <button class="btn secondary" (click)="display=false">ביטול</button>
+        <button class="btn primary">אישור</button>
+    </div>
+    </p-footer>
+</p-dialog>

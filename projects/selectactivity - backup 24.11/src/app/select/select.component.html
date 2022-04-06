@@ -1,0 +1,109 @@
+<div class="container">
+    <p *ngIf="package.Guide" [innerHTML]="package.Guide"></p>
+    <ng-template [ngIf]="pageReady" [ngIfElse]="pageLoading">
+    <div *ngFor="let group of package.Groups" class="cat-wrapper">
+        <h2 class="color-primary">{{group.GroupName}}</h2>
+        <div class="gifts-grid">
+            <div *ngFor="let activity of group.TeamBuilds" class="gift-wrapper" #wrapper>
+                <ng-template [ngIf]="!wrapper.classList.contains('expanded')" [ngIfElse]="expandedPackage">
+                    <div class="gift-item" (click)="expandPackage($event, activity)"
+                        [style.background-image]="'url(' + (activity.image | encodeSpaces) + ')'">
+                        <div class="item-footer">
+                            <span>{{activity.name}}</span>
+                            <button class="btn">פרטים<i class="fa fa-chevron-left"></i></button>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template #expandedPackage>
+                    <div class="overlay" (click)="closePackage($event)">
+                        <div class="package-brief">
+                            <span class="close-btn" (click)="collapse($event)">&times;</span>
+                            <div class="package-image" [style.background-image]="'url(' + (activity.image | encodeSpaces) + ')'">
+                                <!-- <img src="{{activity.image | encodeSpaces}}"> -->
+                                <div class="grad-bg"></div>
+                                <h2>{{activity.name}}</h2>
+                            </div>
+                            <div class="package-body">
+                                <div class="package-info" [innerHTML]="activity.Htmldescription"></div>
+                                <div class="package-activities">
+                                    <div class="activities-wrapper">
+                                        <div *ngFor="let item of activity.Items; let i = index"
+                                            class="gift-item" [class.active]="expandedItem == i"
+                                            [style.background-image]="'url(' + (item.image1 | encodeSpaces) + ')'"
+                                            (click)="expandedItem = i">
+                                            <div *ngIf="item.Images && item.Images.length" class="supp-logo"><img src="{{item.Images[0].image | encodeSpaces}}"></div>
+                                            <div class="item-footer"
+                                                [innerHTML]="(item.SpecialDescription && item.SpecialDescription != item.Name) ? item.SpecialDescription : 
+                                                item.Name.split('-')[0] + (item.LName ? ' ב' + item.LName : '')">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngFor="let item of activity.Items; let i = index"
+                                        class="activity-desc" [hidden]="expandedItem != i">
+                                            <div *ngIf="item.KosherType && item.KosherType.trim().length"><h4>כשרות:</h4><p>{{item.KosherType}}</p></div>
+                                            <h4>תיאור הפעילות:</h4>
+                                            <div *ngIf="!item.SpecialDescriptionLong" [innerHTML]="item.ItemSuppNotes | safeHtml"></div>
+                                            <div *ngIf="item.SpecialDescriptionLong" [innerHTML]="item.SpecialDescriptionLong | safeHtml"></div>
+                                            <ng-template [ngIf]="item.SupplierId">
+                                                <div class="supplier-contact">
+                                                    <h4>לתיאום ובירורים עם בית העסק:</h4>
+                                                    <p><i class="fas fa-phone"></i>{{item.SuppPhone}}<br>
+                                                        <i class="fas fa-map-marker-alt"></i>
+                                                        <span *ngIf="item.CityInSite">{{item.AddressInSite}}, {{item.CityInSite}}</span>
+                                                        <span *ngIf="!item.CityInSite">{{item.AddressInSite}}</span></p>
+                                                </div>
+                                                <div *ngIf="item.SuppDescription && item.SuppDescription.trim().length" class="supplier-about">
+                                                    <h4>אודות בית העסק:</h4>
+                                                    <div [innerHTML]="item.SuppDescription"></div>
+                                                </div>
+                                            </ng-template>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="package-footer">
+                                <ng-template [ngIf]="!chosen" [ngIfElse]="partyFrm">
+                                    <button class="btn icon-right" (click)="openParty()"><i class="fas fa-gift"></i>
+                                        לחצו להזמנת החבילה</button>
+                                </ng-template>
+                                <ng-template #partyFrm>
+                                    <form #partyForm="ngForm" (ngSubmit)="doChoice(activity)">
+                                        <!-- <strong>מגניב!</strong> -->
+                                        <div class="form-participants" *ngIf="!employee.Participants"><label for="party">כמה אנשים תהיו?</label>
+                                            <input type="number" style="max-width: 7.5rem;" maxlength="4" class="form-control" id="party" name="party" required [(ngModel)]="participants">
+                                            <p class="form-caption" *ngIf="package.Id == 59 || package.Id == 60">אם אתם מעוניינים לצאת לגיבוש עם יחידות נוספות, יש להזין במספר המשתתפים את הכמות הכוללת מכל היחידות. כמו כן, יש לציין בהערות את כל היחידות ומספרי היחידות המשתתפות בפעילות, כולל היחידה שלכם.<br>שימו לב שרק יחידה אחת מתוך הקבוצה מבצעת הזמנה עבור כולן, הזמנות נוספות לא תאושרנה.</p>
+                                        </div>
+                                        <div class="form-participants" *ngIf="employee.Participants">לפי הנתונים שלנו קבוצתך מונה <strong>{{employee.Participants}}</strong> אנשים.</div>
+                                        <div class="form-phone" *ngIf="!employee.Phone"><label for="phone">טלפון ליצירת קשר:</label>
+                                            <input type="text" class="form-control" id="phone" name="phone" required [(ngModel)]="phone"></div>
+                                        <div class="form-email" *ngIf="!employee.Email"><label for="email">כתובת מייל:</label>
+                                            <input type="text" class="form-control" id="email" name="email" [required]="package.WorksWithApprover === 1" [(ngModel)]="email"></div>
+                                        <div class="form-duedate"><label for="dueDate">תאריך מועדף ליציאה:</label>
+                                            <input type="date" style="max-width: 170px;" class="form-control" id="dueDate" name="dueDate" [(ngModel)]="gibushDate"></div>
+                                        <div class="form-notes"><label for="notes" style="vertical-align: top;">הערות:</label>
+                                            <textarea rows="5" cols="30" class="form-control" [(ngModel)]="notes" name="notes" id="notes"></textarea></div>
+                                        <div class="d-flex jc-between keep-sm actions" *ngIf="!isLoading">
+                                            <button type="button" class="btn btn-back" (click)="chosen = false">ביטול</button>
+                                            <div style="position: relative"><button type="submit" class="btn" [disabled]="!partyForm.form.valid">המשך<i class="fas fa-arrow-left"></i></button>
+                                            <span *ngIf="!partyForm.form.valid" class="btn-caption">יש למלא את כל השדות באופן תקין כדי להמשיך</span>
+                                            <span *ngIf="partyForm.form.valid && !isLoading && isError" class="btn-caption err-desc">אירעה שגיאה, אנא פנו לתמיכה</span></div>
+                                        </div>
+                                        <div *ngIf="isLoading" class="loader"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+                                    </form>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+    <div class="cat-wrapper"><h2 class="color-primary">עשה זאת בעצמך!</h2>
+        <p class="instructions">ימי הגיבוש שלנו אמנם הורכבו ותוכננו בקפידה, אך אין כמו להרכיב בעצמך את היום המושלם לצוות שלך.<br>
+        ב<a href="https://www.justforu.co.il/PriceList/?id=0wYzm8cEK15JzzPDMfimgA2" target="_blank">מחירון הגיבושים המיוחד שלנו</a> תמצאו מגוון עצום של שוברי תרבות ופנאי שיאפשרו לכם להגשים את היום החלומי שלכם.<br>
+        לרשותכם <strong>500 ש"ח למשתתף</strong> - ניתן גם לבחור שוברים בתוספת תשלום. <strong>שימו לב:</strong> המחיר הוא לשובר, וישנם שוברים רבים המיועדים ליותר מאדם אחד. גיבוש מהנה!</p>
+    </div>
+</ng-template>
+<ng-template #pageLoading>
+    <div class="loader"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+</ng-template>
+</div>

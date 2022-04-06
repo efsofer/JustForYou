@@ -1,0 +1,9 @@
+<app-main-header (triggerClick)='toggleMenu($event)'></app-main-header>
+<div class="main-wrapper" [ngClass]='{"open": menuState }'>
+  <app-side-menu [ngClass]='{"open": menuState }' [menuState]='menuState'></app-side-menu>
+  <section>
+    <!-- <app-breadcrumbs *ngIf='componentName !== "home-component"'></app-breadcrumbs> -->
+    <router-outlet (activate)='onActivate($event.constructor.name)'></router-outlet>
+  </section>
+</div>
+<app-footer></app-footer>

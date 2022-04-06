@@ -1,0 +1,142 @@
+<app-container>
+    <h2 class="page-title">הגדרות אנשי קשר משוייכים לפעילות</h2>
+    <form class='radio-button-section'>
+        <div class="inputs-row">
+            <div class="input-wrapper">
+                <p-radioButton name="group" value="val1"
+                               label="תן למערכת לבחור אוטומטית כל אנשי הקשר שלי (או כל אנשי שלי הקשר מסוג מסוים)" 
+                               [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
+                </p-radioButton>
+                <p>לקטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק. לפרומי בלוף קינץ תתיח לרעח קטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק לפרומי בלוף קינץ תתיח לרעח לפרומי בלוף קינץ תתיח </p>
+                <div class="flex" *ngIf='selectedValue === "val1"'>
+                    <div class="input-wrapper multiselect" style="max-width: 305px;">
+                        <label for="contactTypes">סוג אנשי קשר</label>
+                        <p-multiSelect  [filter]='false' [options]="contactTypes" [(ngModel)]="selectedContactTypes" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-multiSelect>
+                    </div>
+                    <div class="input-wrapper multiselect">
+                        <label for="departments">מחלקה</label>
+                        <p-multiSelect [options]="departments" [(ngModel)]="selectedDepartment" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-multiSelect>
+                    </div>
+                </div>
+            </div>
+            <div class="input-wrapper">
+                <p-radioButton name="group" value="val2"
+                               label="תן לי לבחור את אנשי הקשר שאני רוצה לשלוח להם את השוברים" 
+                               [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
+                </p-radioButton>
+                <p>לקטוס וואל אאוגו וסטיבולום סוליסי ח לרעח קטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק לפרומי בלוף קינץ תתיח לרעח לפרומי בלוף קינץ תתיח </p>
+            </div>
+        </div>
+    </form>
+</app-container>
+
+<app-container *ngIf='selectedValue === "val2"'>
+    <div class="header-wrapper flex justify-between align-center">
+        <h2 class='page-title'>בחירת אנשי קשר</h2>
+        <div class="actions-container">
+            <button class="btn secondary ml" (click)='display2=true'><i class="icon excel"></i>ייבוא מאקסל</button>
+            <button class="btn secondary" (click)='display=true'><i class="icon add-person"></i>איש קשר חדש</button>
+        </div>
+    </div>
+    <div class="search-wrapper">
+        <app-container [paddingValues]='"22px 29px 0 29px"'>
+            <form class="search-container">
+                <div class="inputs-row flex justify-between">
+                    <div class="input-wrapper">
+                        <label for="name">שם מלא</label>
+                        <p-inputNumber [(ngModel)]="name" [ngModelOptions]="{standalone: true}"></p-inputNumber>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="contactTypes">סוג איש קשר</label>
+                        <p-multiSelect  [filter]='false' [options]="contactTypes" [(ngModel)]="selectedContactTypes" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-multiSelect>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="departments">מחלקה</label>
+                        <p-dropdown [options]="departments" [(ngModel)]="selectedDepartment" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-dropdown>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="roles">תפקיד</label>
+                        <p-dropdown [options]="roles" [(ngModel)]="selectedRole" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-dropdown>
+                    </div>
+                </div>
+                <div class="inputs-row flex justify-between align-center">
+                    <div class="flex">
+                        <div class="flex">
+                            <div class="input-wrapper width-auto">
+                                <label for="birthdayFrom">יום הולדת - מ</label>
+                                <p-calendar [(ngModel)]="birthdayFrom" [ngModelOptions]="{standalone: true}" [showIcon]="true" placeholder="____/__/__" [appendTo]='"body"'></p-calendar>
+                            </div>
+                            <div class="input-wrapper  width-auto">
+                                <label for="birthdayTo">עד</label>
+                                <p-calendar [(ngModel)]="birthdayTo" [ngModelOptions]="{standalone: true}" [showIcon]="true" placeholder="____/__/__" ></p-calendar>
+                            </div>
+                        </div>
+                        <div class="flex">
+                            <div class="input-wrapper width-auto">
+                                <label for="startJobDateFrom">כניסה לחברה - מ</label>
+                                <p-calendar [(ngModel)]="startJobDateFrom" [ngModelOptions]="{standalone: true}" [showIcon]="true" placeholder="____/__/__" ></p-calendar>
+                            </div>
+                            <div class="input-wrapper  width-auto">
+                                <label for="startJobDateTo">עד</label>
+                                <p-calendar [(ngModel)]="startJobDateTo" [ngModelOptions]="{standalone: true}" [showIcon]="true" placeholder="____/__/__"  ></p-calendar>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn primary">חיפוש</button>
+                </div>
+            </form>
+        </app-container>
+    </div>
+
+    <!-- results -->
+    <ng-container *ngFor='let result of results; let i = index'>
+        <div class="result-item" [ngClass]='{"selected": result.isSelected}'>
+            <div class="result-details">
+                <button class='display-button-as-link' (click)='display3=true'>{{result.quantity}} אנשי קשר</button>
+                <div class="result-contacts" >
+                    <div class="contact-types">
+                        <span *ngFor='let item of result.contactTypes'>{{item}}</span>
+                    </div>
+                    <div class='event'>
+                        <span>{{result.event}} </span>
+                        <span>מ- {{result.dateFrom}}</span>
+                        <span>עד {{result.dateTo}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="button-wrapper">
+                <button class='btn secondary' (click)='selectContacts(i)' *ngIf='!result.isSelected'><i class='icon trand-add'></i>הוספה לפעילות</button>
+                <button class='btn secondary transparent' (click)='removeContacts(i)' *ngIf='result.isSelected'><i class='icon trand-remove'></i>הסר מהפעילות</button>
+            </div>
+        </div>
+    </ng-container>
+</app-container>
+
+
+
+<!-- modals -->
+<p-dialog [style]="{width: '769px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]="display" header='הוספת איש קשר' [styleClass]='""'>
+    <app-new-contact-dialog></app-new-contact-dialog>
+    <p-footer>
+    <div class="">
+        <button class="btn secondary" (click)="display=false">ביטול</button>
+        <button class="btn primary">שמירה</button>
+    </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [style]="{width: '1225px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]="display2" header='טעינה מתוך קובץ' [styleClass]='""'>
+    <app-load-from-file-dialog></app-load-from-file-dialog>
+    <p-footer>
+    <div class="">
+        <button class="btn secondary" (click)="display2=false">ביטול</button>
+        <button class="btn primary">שמירה</button>
+    </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [style]="{width: '1225px'}"  [modal]="true" position='top' [draggable]='false' [(visible)]="display3" header='תוצאות אנשי קשר' [styleClass]='""'>
+    <app-contact-results-dialog></app-contact-results-dialog>
+</p-dialog>
+
+

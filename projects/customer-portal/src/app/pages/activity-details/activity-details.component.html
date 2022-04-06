@@ -1,0 +1,21 @@
+<div class='flex justify-between align-center'>
+    <h1 class='page-title'>פרטי פעילות</h1>
+    <!-- <button class='btn secondary' (click)='createActivity()'><i class='icon edit'></i>עריכת פעילות</button> -->
+    <!-- <button class='btn secondary' (click)="window.open('https://www.just4u.co.il//SelectGiftNew?id=Id6kuiW6eMOzZDM659V5nw2')">
+        
+        <i class='icon edit'></i>צפייה בפעילות</button> -->
+    <button class='btn secondary' (click)="test()">ששש</button>
+</div>
+<!-- Coupon main card -->
+<app-card-item [type]='9' [data]='activityById?.returnobj[0]' [availableCustomersCount]="availableCustomersCount">
+</app-card-item>
+
+
+
+<!-- <div>{{activityById.returnobj[0] | json}}</div> -->
+
+<app-container *ngIf="custsById?.returnobj[0].Custs.length > 0">
+    <app-contacts-activities [data]="custsById?.returnobj[0].Custs" [reason]="activity.sendReason"
+        [availableCustomersCount]="availableCustomersCount">
+    </app-contacts-activities>
+</app-container>

@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="d-flex" style="padding-bottom: 2rem;">
+        <div class="col-3-5">
+            <h2 *ngIf="benefit.title" class="color-primary">{{benefit.title}}</h2>
+            <div class="notes" [innerHTML]="benefit.notes"></div>
+            <ng-template [ngIf]="!extVoucher || isLoading" [ngIfElse]="showDelivery">
+                <div class="change-content">
+                    <h5>שימו לב! לאחר הלחיצה על הכפתור, הקוד שלכם {{vcVoucher}} ימומש במלואו ולא
+                        ניתן יהיה עוד להשתמש בו. במקומו תקבלו קוד חדש עבור ההטבה: <strong>{{benefit.title}}</strong>
+                        בלבד.</h5>
+                    <button *ngIf="!isLoading" type="button" class="btn btn-large" (click)="changeCoupon()">אישור וקבלת
+                        קוד</button>
+                    <div *ngIf="isLoading" class="loader">
+                        <div class="lds-ring">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-back btn-large" [disabled]="isLoading"
+                    (click)="goBack()">חזור</button>
+            </ng-template>
+            <ng-template #showDelivery>
+                <h5>הקוד שלך: {{extVoucher}}<br>תוקף: {{validDate}}<br>יש לממש את הקוד בבית העסק בהתאם להוראות המימוש המופיעות בדף השובר באתר.
+                </h5>
+                <form [formGroup]="sendForm" (ngSubmit)="sendSMS()">
+                    <p class="change-send">שליחת הקוד ב-SMS לנייד: <input type="tel" required formControlName="phone"
+                            class="form-control" placeholder="טלפון (מספרים בלבד)"><button [disabled]="!sendForm.valid || sent"
+                            type="submit" class="btn">שלח</button><span *ngIf="sent" class="color-primary"><br>ההודעה נשלחה, עוד רגע הקוד אצלך :)</span></p>
+                </form>
+            </ng-template>
+        </div>
+        <div class="col-2-5 b-image">
+            <div *ngIf="benefit.image"><a *ngIf="benefit.link" href="{{benefit.link}}">
+                    <img style="width: 100%; max-width: 720px;" src="{{benefit.image}}" alt="לצפייה באתר">
+                </a>
+                <img *ngIf="!benefit.link" style="width: 100%; max-width: 720px;" src="{{benefit.image}}"
+                    alt="{{benefit.name}}"></div>
+        </div>
+    </div>
+</div>

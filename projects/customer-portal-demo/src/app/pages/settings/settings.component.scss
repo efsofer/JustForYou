@@ -1,0 +1,94 @@
+:host {
+    display: block;
+    .header-wrapper {
+        border-bottom: 1px solid #DBDBDB;
+        padding-bottom: 24px;
+        margin-bottom: 25px;
+        h3 {
+            font-size: 25px;
+            line-height: 30px;
+            font-weight: 400;
+            margin: 0;
+            span {
+                font-weight: 600; 
+            }
+        }
+        .actions-container {
+            display: flex;
+            column-gap: 15px;
+        }
+    }
+
+    .input-wrapper {
+        min-width: 305px;
+    }
+
+    .current-logo-wrapper {
+        border: 1px solid #DBDBDB;
+        padding: 10px 15px;
+        height: 108px;
+        width: 150px;
+        img {
+            height: 100%;
+            width:  100%;
+            object-fit: contain;
+        }
+    }
+    ::ng-deep {
+        .p-rtl .p-tabview .p-tabview-nav li {
+            width: 18%;
+        }
+        .p-tabview .p-tabview-nav .p-state-default a {
+                padding: .5em 1em;
+                margin: 0 auto;
+                width: 100%;
+                text-align: center;
+        }
+
+        .p-fileupload-row {
+            & > div {
+                &:nth-of-type(1) {
+                    border: 1px solid #000;
+                }
+            }
+        }
+
+        .p-fileupload-choose {
+            border: 1px solid #873D4C;
+            border-radius: 5px;
+        }
+
+        .p-button-text {
+            font-size: 18px;
+            line-height: 22px;
+            color: #873D4C;
+            font-weight: 500;
+            padding: 7px 30px;
+        }
+
+        .p-button-icon-left {
+            display: none;
+        }
+
+        .p-datatable {
+            .p-datatable-thead {
+                &>tr {
+                    &>th {
+                        &.creditNumber {
+                            width: 190px;
+                        }
+                        &.expired {
+                            width: 100px;
+                        }
+                        &.contactType {
+                            width: 150px;
+                        }
+                        &.identify {
+                            width: 150px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

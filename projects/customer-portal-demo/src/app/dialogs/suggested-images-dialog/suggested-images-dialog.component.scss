@@ -1,0 +1,46 @@
+:host {
+    margin-top: 25px;
+    display: block;
+    .search-wrapper {
+        background-color: #F2F5F8;
+        padding: 22px 29px 0px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.29);
+        border-radius: 10px;
+        margin-bottom: 25px;
+        .primary {
+            margin-right: auto;
+        }
+        .input-wrapper {
+            margin-left: 15px;
+        }
+    }
+
+    .images-list {
+        max-height: 580px;
+        overflow: auto;
+        padding-left: 15px;
+        .image-item {
+            height: 354px;
+            width: 100%;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 9px solid transparent;
+            transition: all 0.1s linear;
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+
+            &.selected {
+                border: 9px solid #D5C272;
+                img {
+                    border-radius: 0; 
+                }
+            }
+        }
+    }
+}

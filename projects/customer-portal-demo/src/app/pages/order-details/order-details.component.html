@@ -1,0 +1,30 @@
+<h1 class='page-title'>פרטי הזמנה</h1>
+<!-- Order main card -->
+<app-card-item [type]='8' [data]='mockOrder'></app-card-item>
+
+<app-container>
+    <div class="header-wrapper flex justify-between align-center">
+        <div class="dl-wrapper title">
+            <div>
+                <dl>
+                    <dt>{{2}}</dt>
+                    <dd>שוברים</dd>
+                </dl>
+            </div>
+            <div>
+                <dl>
+                    <dt>{{55}}</dt>
+                    <dd>יחידות</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="contact-wrapper">
+            <div class="items-wrapper">
+                <ng-container *ngFor='let coupon of mockCoupons'>
+                    <app-card-item [type]='3' [data]='coupon'></app-card-item>
+                </ng-container>
+                <app-paginator></app-paginator>
+            </div>
+    </div>
+</app-container>

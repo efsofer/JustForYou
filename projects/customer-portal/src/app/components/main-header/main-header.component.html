@@ -1,0 +1,41 @@
+<div class='main-header-container'>
+    <div class="site-branding">
+        <button class='menu-btn' (click)='openMenu()'></button>
+        <a routerLink="/" title="עבור לעמוד הבית">
+            <img src="./assets/images/logo.svg" alt="">
+        </a>
+        <p>פורטל לקוחות עסקיים</p>
+    </div>
+    <div class="personal-section">
+        <!-- <div class="financial-balance">
+            <button (click)='display=true'>
+                <p class='title'>יתרה כספית</p>
+                <p class='cash-number'>7,000 ₪</p>
+            </button>
+        </div>
+        <div class="separator"></div> -->
+        <div class="account-details">
+            <div class="icon-wrapper">
+                <img src="./assets/icons/user-circle.svg" alt="">
+            </div>
+            <div class="details-wrapper">
+                <!-- <p class="name">ישראל ישראלי</p> -->
+                <button class='logout-btn' (click)="logout()">התנתק</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- modal -->
+ <div  style='position: absolute'>
+    <p-dialog [style]="{width: '623px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]="display" header='טען כסף לחשבון' [styleClass]='""'>
+        <app-load-cash-dialog></app-load-cash-dialog>
+        <p-footer>
+        <div class="">
+            <button class="btn secondary" (click)="display=false">ביטול</button>
+            <button class="btn primary">שמירה</button>
+        </div>
+        </p-footer>
+    </p-dialog>
+</div>

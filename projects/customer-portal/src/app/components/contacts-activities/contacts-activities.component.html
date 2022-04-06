@@ -1,0 +1,220 @@
+<div class="header-wrapper flex justify-between align-center">
+    <h3><span *ngIf="data">{{custsById.length}} </span>עובדים</h3>
+    <div class="actions-container">
+        <button class="btn secondary" (click)="exportExcel()"><i class="icon excel"></i>ייצוא לאקסל</button>
+        <button class="btn secondary" (click)='display=true'><i class="icon send"></i>שליחה חוזרת לנבחרים</button>
+    </div>
+</div>
+<div class="search-wrapper">
+    <app-container [paddingValues]='"22px 29px 0 29px"'>
+        <form class="search-container">
+            <div class="inputs-row flex justify-between fluid-row">
+                <div class="input-wrapper">
+                    <label for="name">שם</label>
+                    <input type="text" pInputText [(ngModel)]="name" [ngModelOptions]="{standalone: true}" />
+                </div>
+                <div class="input-wrapper">
+                    <label for="phone">טלפון</label>
+                    <input class='ui-inputtext' type="tel" id="phone" name="phone" [(ngModel)]="phone"
+                        [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="input-wrapper">
+                    <label for="email">מייל</label>
+                    <input class='ui-inputtext' type="email" id="email" [(ngModel)]="email"
+                        [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="input-wrapper">
+                    <label for="tz">ת.ז/מספר עובד</label>
+                    <input class='ui-inputtext' type="text" id="tz" [(ngModel)]="tz"
+                        [ngModelOptions]="{standalone: true}">
+                </div>
+            </div>
+            <div class="inputs-row flex justify-between align-center">
+                <div class="flex">
+                    <div class="input-wrapper" style="margin-left: 15px">
+                        <label for="code">קוד שובר</label>
+                        <input class='ui-inputtext' type="text" id="code" [(ngModel)]="code"
+                            [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div class="input-wrapper width-auto">
+                        <label for="dateFrom">מתאריך לידה</label>
+                        <p-calendar [(ngModel)]="dateFrom" [ngModelOptions]="{standalone: true}" [showIcon]="true"
+                            placeholder="____/__/__" dateFormat="dd.mm.yy"></p-calendar>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="dateTo">עד</label>
+                        <p-calendar [(ngModel)]="dateTo" [ngModelOptions]="{standalone: true}" [showIcon]="true"
+                            placeholder="____/__/__" dateFormat="dd.mm.yy"></p-calendar>
+                    </div>
+                </div>
+                <button class="btn primary" (click)="search()">חיפוש</button>
+
+                <!--custsById?.returnobj[0].Custs.length    count of customers-->
+                <!-- (mouseleave)='op.hide()' -->
+                <button class="btn secondary" (click)="addNewEmpployee()"
+                    [pTooltip]="(availableCustomersCount != undefined && availableCustomersCount < 1) ?   'לא ניתן להוסיף לקוח נוסף' : null"
+                    tooltipPosition="bottom"
+                    [disabled]="availableCustomersCount != undefined && availableCustomersCount < 1">הוספת
+                    עובדים</button>
+
+
+            </div>
+        </form>
+    </app-container>
+</div>
+<div class="table-wrapper">
+    <p-table *ngIf="!isLoading" [columns]="cols" [value]="data" [paginator]="true" [rows]="data.length"
+        [rowsPerPageOptions]="[25,50,100]" [(selection)]="selectedCusts" dataKey="Custid">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th style='width: 25px; padding: 0 0 10px 0 ;text-align: right;'>
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]='col.field'>
+                    {{col.header}}
+                    <p-sortIcon *ngIf="col.header.length && col.header != 'removeBtn'" [field]="col.field"></p-sortIcon>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+                </td>
+                <td>{{rowData.TZ}}</td>
+                <td>
+                    <button class="display-button-as-link" (click)='editedCust = rowData; display2 = true;'><i
+                            class='icon edit'></i> {{rowData.Name}}</button>
+                </td>
+                <td>{{rowData.Phone || ''}}</td>
+                <td>{{rowData.Email || ''}}</td>
+                <td>{{(rowData.OrigSendDate | date:'dd/MM/yy') || ''}}</td>
+                <!-- <td>{{rowData.MenagerEmail || ''}}</td> -->
+                <td>{{getStatus(rowData)}}
+                    <!-- <span *ngIf='rowData.OrgChoosedDate === 1'>שובר נבחר</span>
+                    <span *ngIf="!rowData.OrgChoosedDate && rowData.OrigSendDate && new Date(rowData.OrigSendDate) < new Date()">נשלח</span>
+                    <span *ngIf="!rowData.OrgChoosedDate && (!rowData.OrigSendDate || new Date(rowData.OrigSendDate) > new Date())">פעיל</span> -->
+                    <!-- <button *ngIf='rowData.statusDetails.status === 3' class="display-button-as-link"
+                        pTooltip="{{rowData.statusDetails?.couponName}}" tooltipPosition="bottom">שובר נבחר</button> -->
+                </td>
+                <td>{{rowData.itemName || ''}}</td>
+                <td>{{rowData.VoucherId || ''}}</td>
+                <!-- <td>{{(rowData.OrgChoosedDate | date:'shortDate') || ''}}</td> -->
+                <td>
+                    <!-- <button (click)='display3 = true' [disabled]='!rowData.removeBtn'>
+                        <i *ngIf='rowData.removeBtn' class="icon remove"></i>
+                        <i *ngIf='!rowData.removeBtn' class="icon remove-disabled"></i>
+                    </button> -->
+                    <button>
+                        <i *ngIf="canRemove" class="icon remove" (click)='removeCust(rowData.Custid)'></i>
+                        <i *ngIf="!canRemove" class="icon remove-disabled"></i>
+                    </button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <div *ngIf="isLoading" class="loader">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+
+<!-- modals -->
+<p-dialog [style]="{width: '767px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false'
+    [(visible)]='display' header='שליחה חוזרת לנבחרים' [styleClass]='""'>
+    <app-resending-dialog [message]='"האם לשלוח את השובר ל-" + selectedCusts.length + " נבחרים?"'>
+    </app-resending-dialog>
+    <p-footer>
+        <div *ngIf="!miniLoading">
+            <button class="btn secondary" (click)="display=false">ביטול</button>
+            <button class="btn primary" (click)="Resend()">שלח שוב</button>
+        </div>
+        <div *ngIf="miniLoading" class="loader">
+            <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [style]="{width: '767px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false'
+    [(visible)]='display3' header='הסרת איש קשר' [styleClass]='""'>
+    <app-resending-dialog [message]='"האם ברצונך להסיר את האיש קשר הזה?"'></app-resending-dialog>
+    <p-footer>
+        <div class="">
+            <button class="btn secondary" (click)="display3 = false">ביטול</button>
+            <button class="btn primary">אישור</button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [style]="{width: '767px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false'
+    [(visible)]="displayComplete" [header]='completeTitle' [styleClass]='""'>
+    <app-resending-dialog [message]='"בוצע בהצלחה!"' [success]='true'></app-resending-dialog>
+    <p-footer>
+        <div class="">
+            <button class="btn primary" (click)="displayComplete=false">אישור</button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [style]="{width: '769px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false'
+    [(visible)]='display2' header='עדכון פרטי עובד/ת' [styleClass]='""'>
+    <app-new-contact-dialog [cust]='editedCust' #editCustDlg></app-new-contact-dialog>
+    <p-footer>
+        <div *ngIf="!miniLoading">
+            <button class="btn secondary" (click)="display2=false">ביטול</button>
+            <button class="btn primary" (click)="updateCust()">שמירה</button>
+            <button *ngIf="editedCust && getStatus(editedCust) != 'פעיל'" class="btn primary"
+                (click)="updateCust(true)">שמירה ושליחה חוזרת</button>
+        </div>
+        <div *ngIf="miniLoading" class="loader">
+            <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </p-footer>
+</p-dialog>
+
+
+<table id="excel-table" *ngIf="excelExport" style="display: none;">
+    <tr>
+        <th>ת.ז/מספר עובד</th>
+        <th>שם עובד/ת</th>
+        <th>טלפון</th>
+        <th>מייל</th>
+        <th>תאריך שליחה מקורי</th>
+        <th>תאריך בחירת מתנה</th>
+        <th>תאריך שליחה אחרון</th>
+        <th>מייל מנהל</th>
+        <th>סטטוס</th>
+        <th>פריט נבחר</th>
+        <th>קוד שובר</th>
+    </tr>
+    <tr *ngFor="let cust of custsById">
+
+        <td>{{cust.TZ}}</td>
+        <td>{{cust.Name}}</td>
+        <td>{{cust.Phone}}</td>
+        <td>{{cust.Email}}</td>
+        <td>{{cust.OrigSendDate}}</td>
+        <td>{{filterDate(cust.OrgChoosedDate)}}</td>
+        <td>{{cust.LastSendDate}}</td>
+        <td>{{cust.MenagerEmail}}</td>
+        <td>{{getStatus(cust)}}</td>
+        <td>{{cust.TeamBuildName || cust.itemName}}<span *ngIf="cust.LoadSum">&nbsp;בשווי {{cust.LoadSum |
+                number:'1.0-0'}}
+                ש"ח</span></td>
+        <td>{{cust.VoucherId}}</td>
+    </tr>
+</table>

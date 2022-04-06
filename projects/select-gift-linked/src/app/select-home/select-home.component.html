@@ -1,0 +1,26 @@
+<div class="container">
+    <p class="instructions" [innerHTML]="mainOrder.instructions | safeHtml"></p>
+    <div class="orders-grid" [class.ie11]="isIE" *ngIf="!isLoading">
+        <div *ngFor="let order of linkedOrders; let i = index" class="order-wrapper">
+            <div class="order-banner" [class.unclickable]="locked" [class.expanded]="expanded == i"
+                [class.faded]="expanded != -1 && expanded != i" (click)="expand(i)"
+                [style.background-image]="'url(' + (order.info.headerbackpicture | encodeSpaces) + ')'">
+                <div class="order-footer">
+                    <span *ngIf="order.title">{{order.title}}</span>
+                    <span *ngIf="!order.title">{{order.info.header}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="order-container" *ngIf="!isLoading && expanded != -1">
+        <app-select [orderIndex]="expanded" #orderDisplay></app-select>
+    </div>
+    <div *ngIf="isLoading" class="loader">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>

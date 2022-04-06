@@ -1,0 +1,825 @@
+{
+    "flowers": {
+        "id": 61227,
+        "tabtitle": "זר שיבולים לבן",
+        "header": {
+            "background": "https://www.justforu.co.il/Pictures/rigushim-bg-1.jpg",
+            "title": "ריגושים עד הבית",
+            "content": "<p><br>בחרו את הדרך לרגש:<br>סלסלות ומגשי פרי מהודרים, מארזי שוקולד של מקס ברנר, יינות איכותיים, פיצוחים ומוצרי בריאות, סבונים ריחניים ומפנקים, ועוד ועוד - והכל עד לדלת ביתכם.<br></p><style>.banner p {max-width: 700px;}</style>",
+            "image": ""
+        },
+        "name": "זר שיבולים",
+        "PromoID": 14665,
+        "isVC": 1,
+        "combined": null,
+        "isDelivery": 0,
+        "mail": 1,
+        "greeting": 1,
+        "title": "זר שיבולים לבן",
+        "image": "https://www.justforu.co.il/Pictures/1627logo4.jpg",
+        "link": "https://www.justforu.co.il/coupon/1627",
+        "notes": "<h5>אזור חלוקה: תל אביב עד חדרה.<br>למשלוחים במועד ספציפי אנא צרו קשר עם משק דביר: 09-7967765</h5><p><a href=\"https://www.justforu.co.il/coupon/1627\" target=\"_blank\">לחצו לפירוט ומידע נוסף</a></p>"
+    },
+    "atlantic": {
+        "id": 60656,
+        "name": "אטלנטיק 2 חלוקי מגבת",
+        "PromoID": 14646,
+        "isVC": 1,
+        "combined": null,
+        "isDelivery": 0,
+        "mail": 1,
+        "greeting": 0,
+        "title": "אטלנטיק - 2 חלוקי מגבת מפנקים",
+        "image": "https://www.justforu.co.il/Pictures/1630logo2.png",
+        "link": "https://www.justforu.co.il/coupon/1630",
+        "notes": "<h5>המידות הזמינות במלאי הן L ו-XL בלבד.<br>כולל משלוח בין נתניה לאשדוד, ועד מודיעין במזרח. משלוחים באזורים אחרים בעלות של 20 ש\"ח, לתשלום התקשרו 03-5322313, שלוחה 1.</h5><a href=\"https://www.justforu.co.il/coupon/1430/1630\" target=\"_blank\">לפירוט תכולה ומידע נוסף</a>"
+    },
+    "shookbook": {
+        "name": "shookbook",
+        "PromoID": 14619,
+        "isVC": 1,
+        "combined": null,
+        "isDelivery": 0,
+        "title": "מארז גבינות ולחם - משק בארי",
+        "image": "https://www.justforu.co.il/Pictures/1623logo2.jpg",
+        "link": "https://www.justforu.co.il/coupon/1623",
+        "notes": "<h5>הזינו את הכתובת וקבלו את המועדים האפשריים למשלוח לאזורכם. לאחר שתבחרו במועד הרצוי, תוכלו ללחוץ \"בצע הזמנה\".</h5><p>המשלוח מתבצע באמצעות <a href=\"https://www.shookbook.co.il/\" target=\"_blank\">שוקבוק</a>.<br><a href=\"https://www.justforu.co.il/coupon/1430/1623\" target=\"_blank\">לחצו כאן לפירוט תכולת המארז ומידע נוסף</a></p>"
+    },
+    "test": {
+        "id": 1,
+        "name": "test",
+        "PromoID": 13722,
+        "isVC": 1,
+        "combined": null,
+        "isDelivery": 0,
+        "greeting": 1,
+        "options": [
+            {
+                "label": "בקבוק 1",
+                "type": "dropdown",
+                "opts": [
+                    "אופציה 1",
+                    "אופציה 2"
+                ]
+            },
+            {
+                "label": "בקבוק 2",
+                "type": "dropdown",
+                "opts": [
+                    "אופציה 1",
+                    "אופציה 2"
+                ]
+            },
+            {
+                "label": "בקבוקוני",
+                "type": "radio",
+                "opts": [
+                    "אופציה 1",
+                    "אופציה 2",
+                    "אופציה הכי טובה"
+                ]
+            }
+        ],
+        "title": "סט בשמים לגבר - Roshas Set E.D.T",
+        "image": "https://www.justforu.co.il/Pictures/S-I_60537_1612_%D7%91%D7%95%D7%A9%D7%9D%20%D7%A8%D7%95%D7%A9%D7%A1.jpg",
+        "link": "https://www.justforu.co.il/coupon/1430/1612",
+        "notes": "<h5>לבירורים בנוגע למשלוח יש לפנות לבית העסק.</h5>לפרטים נוספים: <a href=\"https://www.justforu.co.il/coupon/1430/1612\" target=\"_blank\">https://www.justforu.co.il/coupon/1430/1612</a>"
+    },
+    "candles": {
+        "name": "נרות חגיגה",
+        "PromoID": 8155,
+        "isVC": 1,
+        "combined": null,
+        "isDelivery": 1,
+        "deliveryNum": 0,
+        "title": "מארז נרות LED אווירה",
+        "image": "https://www.justforu.co.il/Pictures/16112.jpg",
+        "link": "https://www.justforu.co.il/coupon/1611",
+        "notes": "<h5>כולל משלוח בכל הארץ.</h5><a href=\"https://www.justforu.co.il/coupon/1611\" target=\"_blank\">לפירוט ומידע נוסף</a>"
+    },
+    "perfume_men": {
+        "id": 60537,
+        "name": "בושם אישה Roberto Cavalli Paradiso",
+        "PromoID": 13722,
+        "isVC": 1,
+        "combined": null,
+        "isDelivery": 0,
+        "greeting": 1,
+        "title": "בושם לאישה - Roberto Cavalli Paradiso",
+        "image": "https://www.justforu.co.il/Pictures/S-I_60537_1612_%D7%91%D7%95%D7%A9%D7%9D%20%D7%A8%D7%95%D7%91%D7%A8%D7%98%D7%95%20%D7%A7%D7%95%D7%91%D7%9C%D7%99.jpg",
+        "link": "https://www.justforu.co.il/coupon/1430/1612",
+        "notes": "<h5>לבירורים בנוגע למשלוח יש לפנות לבית העסק.</h5>לפרטים נוספים: <a href=\"https://www.justforu.co.il/coupon/1430/1612\" target=\"_blank\">https://www.justforu.co.il/coupon/1430/1612</a>"
+    },
+    "perfume_women": {
+        "id": 60537,
+        "name": "בושם גבר Roshas Set E.D.T",
+        "PromoID": 13722,
+        "isVC": 1,
+        "combined": null,
+        "isDelivery": 0,
+        "greeting": 1,
+        "title": "סט בשמים לגבר - Roshas Set E.D.T",
+        "image": "https://www.justforu.co.il/Pictures/S-I_60537_1612_%D7%91%D7%95%D7%A9%D7%9D%20%D7%A8%D7%95%D7%A9%D7%A1.jpg",
+        "link": "https://www.justforu.co.il/coupon/1430/1612",
+        "notes": "<h5>לבירורים בנוגע למשלוח יש לפנות לבית העסק.</h5>לפרטים נוספים: <a href=\"https://www.justforu.co.il/coupon/1430/1612\" target=\"_blank\">https://www.justforu.co.il/coupon/1430/1612</a>"
+    },
+    "Momandme_Rigushim": {
+        "id": 61944,
+        "name": "פאזל Mom & Me",
+        "PromoID": 13722,
+        "isVC": 1,
+        "combined": null,
+        "isDelivery": 0,
+        "mail": 1,
+        "greeting": 1,
+        "title": "פאזל עד הבית - Mom & Me",
+        "image": "https://www.just4u.co.il/Pictures/S-I_61944_1835_54%20%D7%97%D7%9C%D7%A7%D7%99%D7%9D%20%D7%A2%D7%95%D7%9C%D7%9D%20%D7%94%D7%A7%D7%A8%D7%97.jpg",
+        "link": "https://www.justforu.co.il/coupon/1430/1835",
+        "notes": "<h5>*כולל משלוח עד הבית.</h5><br>לפרטים נוספים: <a href=\"https://www.justforu.co.il/coupon/1430/1835\" target=\"_blank\">https://www.justforu.co.il/coupon/1430/1835</a>",
+        "options": [
+            {
+                "label": "בחירת פאזל",
+                "type": "dropdown",
+                "opts": [
+                    {
+                        "text": "פאזל 54 חלקים של חב' JANOD  עולם הקרח",
+                        "image": "https://www.just4u.co.il/Pictures/S-I_61944_1835_54%20%D7%97%D7%9C%D7%A7%D7%99%D7%9D%20%D7%A2%D7%95%D7%9C%D7%9D%20%D7%94%D7%A7%D7%A8%D7%97.jpg"
+                    },
+                    {
+                        "text": "פאזל 100 חלקים של חב' JANOD האוקיינוס האטלנטי",
+                        "image": "https://www.just4u.co.il/Pictures/S-I_61944_1835_100%20%D7%97%D7%9C%D7%A7%D7%99%D7%9D%20%D7%90%D7%95%D7%A7%D7%99%D7%99%D7%A0%D7%95%D7%A1.jpg"
+                    },
+                    {
+                        "text": "פאזל 100 חלקים של חב' JANOD ג'ונגל",
+                        "image": "https://www.just4u.co.il/Pictures/S-I_61944_1835_100%20%D7%97%D7%9C%D7%A7%D7%99%D7%9F%20%D7%92%D7%95%D7%A0%D7%92%D7%9C.jpg"
+                    },
+                    {
+                        "text": "פאזל 54 חלקים של חב' JANOD משפחת הדובים",
+                        "image": "https://www.just4u.co.il/Pictures/S-I_61944_1835_54%20%D7%97%D7%9C%D7%A7%D7%99%D7%9D%20%D7%93%D7%95%D7%91%D7%99%D7%9D.jpg"
+                    },
+                    {
+                        "text": "פאזל 54 חלקים של חב' JANOD שמורת החיות",
+                        "image": "https://www.just4u.co.il/Pictures/S-I_61944_1835_54%20%D7%97%D7%9C%D7%A7%D7%99%D7%9D%20%D7%A9%D7%9E%D7%95%D7%A8%D7%AA%20%D7%94%D7%97%D7%99%D7%95%D7%AA.jpg"
+                    },
+                    {
+                        "text": "פאזל פנורמי 36 חלקים של חב' JANOD 4 ג'ונגל",
+                        "image": "https://www.just4u.co.il/Pictures/S-I_61944_1835_%D7%A4%D7%A0%D7%95%D7%A8%D7%9E%D7%99%2036%20%D7%97%D7%9C%D7%A7%D7%99%D7%9D%20%D7%92%D7%95%D7%A0%D7%92%D7%9C.jpg"
+                    },
+                    {
+                        "text": "פאזל פנורמי 36 חלקים של חב' JANOD 4 עונות השנה",
+                        "image": "https://www.just4u.co.il/Pictures/S-I_61944_1835_%D7%A4%D7%A0%D7%95%D7%A8%D7%9E%D7%99%2036%20%D7%97%D7%9C%D7%A7%D7%99%D7%9D%20%D7%A2%D7%95%D7%A0%D7%95%D7%AA%20%D7%94%D7%A9%D7%A0%D7%94.jpg"
+                    }
+                ]
+            }
+        ]
+    },
+    "michaeli": {
+        "id": 60523,
+        "name": "פירות וירקות סל גדול",
+        "PromoID": 14852,
+        "isVC": 1,
+        "combined": null,
+        "isDelivery": 0,
+        "mail": 1,
+        "title": "פירות וירקות מהחקלאי - משק מיכאלי",
+        "image": "https://www.justforu.co.il/Pictures/1601%D7%99%D7%A8%D7%A7%D7%95%D7%AA%20%D7%90%D7%95%D7%A8%D7%92%D7%A0%D7%99%D7%99%D7%9D%20%D7%9E%D7%95%D7%A7%D7%98%D7%9F.jpg",
+        "link": "https://www.justforu.co.il/coupon/1634",
+        "notes": "<h5>משלוח מנתניה עד באר שבע, לבירורים יש לפנות למשק מיכאלי.</h5>תכולת המארז ופרטים נוספים: <a href=\"https://www.justforu.co.il/coupon/1634\" target=\"_blank\">https://www.justforu.co.il/coupon/1634</a>"
+    },
+    "aboudi1":
+    {
+        "id": 61286,
+        "name": "עבודי פירות ויוגורט",
+        "PromoID": 13722,
+        "isVC": 1,
+        "combined": null,
+        "isDelivery": 0,
+        "pickUp": 1,
+        "deliveryNotes": "המשלוח בתוספת 30 ש\"ח שייגבו על ידי הספק. משלוחים לערים הבאות בלבד: תל אביב, חולון, ראשל\"צ, בת ים, הוד השרון, רעננה, כפר סבא, פתח תקווה, הרצליה, רמת השרון, רמת גן, יהוד, אור יהודה, רחובות, קרית אונו, גבעתיים, נתניה.",
+        "allowedCities": ["תל אביב","חולון", "ראשון לציון", "בת ים", "הוד השרון", "רעננה", "כפר סבא", "פתח תקווה", "הרצליה", "רמת השרון", "רמת גן", "יהוד", "אור יהודה", "רחובות", "קרית אונו", "גבעתיים", "נתניה", "קריית אונו", "פתח תקוה", "תל אביב יפו", "תל אביב - יפו"],
+        "mail": 1,
+        "greeting": 1,
+        "title": "עבודי - מארז פירות ופרוזן יוגורט",
+        "image": "https://www.justforu.co.il/Pictures/S-I_61286_1631_%D7%90%20%D7%A7%D7%95%D7%9C%D7%96.JPG",
+        "link": "https://www.justforu.co.il/coupon/1430/1631",
+        "notes": "<h5>אפשרות לאיסוף עצמי (דרך המוביל, כפר סבא), או משלוח בעלות של 30 ש\"ח שייגבו על ידי עבודי - מותנה ברכישת שני שוברים. המשלוח לערי השרון והמרכז בלבד.</h5><a href=\"https://www.justforu.co.il/coupon/1430/1631\" target=\"_blank\">לפירוט תכולת המארז ומידע נוסף</a>"
+    },
+    "aboudi2": {
+        "id": 61286,
+        "name": "עבודי קינוחים",
+        "PromoID": 13722,
+        "isVC": 1,
+        "combined": null,
+        "isDelivery": 0,
+        "pickUp": 1,
+        "deliveryNotes": "המשלוח בתוספת 30 ש\"ח שייגבו על ידי הספק. משלוחים לערים הבאות בלבד: תל אביב, חולון, ראשל\"צ, בת ים, הוד השרון, רעננה, כפר סבא, פתח תקווה, הרצליה, רמת השרון, רמת גן, יהוד, אור יהודה, רחובות, קרית אונו, גבעתיים, נתניה.",
+        "allowedCities": ["תל אביב","חולון", "ראשון לציון", "בת ים", "הוד השרון", "רעננה", "כפר סבא", "פתח תקווה", "הרצליה", "רמת השרון", "רמת גן", "יהוד", "אור יהודה", "רחובות", "קרית אונו", "גבעתיים", "נתניה", "קריית אונו", "פתח תקוה", "תל אביב יפו", "תל אביב - יפו"],
+        "mail": 1,
+        "greeting": 1,
+        "title": "עבודי - מארז קינוחים ושוקולד",
+        "image": "https://www.justforu.co.il/Pictures/S-I_61286_1631_%D7%A7%D7%95%D7%9C%D7%96%20%D7%91.JPG",
+        "link": "https://www.justforu.co.il/coupon/1430/1631",
+        "notes": "<h5>אפשרות לאיסוף עצמי (דרך המוביל, כפר סבא), או משלוח בעלות של 30 ש\"ח שייגבו על ידי עבודי - מותנה ברכישת שני שוברים. המשלוח לערי השרון והמרכז בלבד.</h5><a href=\"https://www.justforu.co.il/coupon/1430/1631\" target=\"_blank\">לפירוט תכולת המארז ומידע נוסף</a>"
+    },
+    "atlantic_robes_sizes": {
+        "options": [{
+            "label": "מידת חלוק 1:",
+            "type": "dropdown",
+            "opts": [{
+                "text": "חלוק מידה L",
+                "image": ""
+                },
+                {
+                    "text": "חלוק מידה XL",
+                    "image": ""
+                }]},
+            {
+                "label": "מידת חלוק 2",
+                "type": "dropdown",
+                "opts": [{
+                    "text": "חלוק L",
+                    "image": ""
+                    },
+                    {
+                        "text": "חלוק XL",
+                        "image": ""
+                    }]
+            }
+    ]
+    },
+    "beachkit": {
+        "tabtitle": "ערכת חוף מפנקת עד הבית",
+        "header": {
+            "background": "https://www.justforu.co.il/pictures/barbados-beach.jpg",
+            "title": "ערכת חוף מפנקת עד הבית",
+            "content": "<p class=\"hide-sm\">ערכת חוף מפנקת שמגיעה אליכם עד הבית. ערכת החוף כוללת:<br><span class=\"features\">• שמשיה – קוטר 1.10 מטר <br>•  מגבת חוף עגולה קוטר 1.50 מטר   <br></span></p><p class=\"show-sm\">ערכת חוף מפנקת שמגיע אליכם לפתח הבית.</p><p class=\"show-sm\">,ערכת חוף מפנקת הכוללת:שמשיה – קוטר 1.10 מטר + מגבת חוף עגולה קוטר 1.50 מטר</p>",
+            "image": ""
+        },
+        "name": "ערכת חוף מפנקת",
+        "PromoID": 1645,
+        "isVC": 0,
+        "combined": null,
+        "isDelivery": 1,
+        "deliveryCompany": "cargo",
+        "deliveryNum": 1359,
+        "dProductDescription": "ערכת חוף שמשיה ומגבת",
+        "title": "ערכת חוף מפנקת ",
+        "image": "https://www.justforu.co.il/Pictures/16452.jpg",
+        "link": "",
+        "notes": "<h5>מועד אספקה: 3-5 ימי עסקים.</h5><a href=\"https://www.justforu.co.il/coupon/1430/1645\" target=\"_blank\">לפירוט המארז ומידע נוסף</a>"
+    },
+    "GivatHen": {
+        "tabtitle": "זר חרציות צבעוני ענק עד הבית",
+        "header": {
+            "background": "https://www.justforu.co.il/Pictures/rigushim-bg-1.jpg",
+            "title": "ריגושים עד הבית",
+            "content": "<p><br>בחרו את הדרך לרגש:<br>סלסלות ומגשי פרי מהודרים, מארזי שוקולד של מקס ברנר, יינות איכותיים, פיצוחים ומוצרי בריאות, סבונים ריחניים ומפנקים, ועוד ועוד - והכל עד לדלת ביתכם.<br></p><style>.banner p {max-width: 700px;}</style>",
+            "image": ""
+        },
+        "id": 63523,
+        "name": "זר חרציות צלופן - גבעת חן",
+        "PromoID": 15777,
+        "isVC": 1,
+        "combined": null,
+        "isDelivery": 0,
+        "mail": 1,
+        "greeting": 1,
+        "title": "זר חרציות ענק - עד הבית",
+        "image": "https://www.just4u.co.il/Pictures/S-I_63523_1911_11.jpg",
+        "link": "https://www.justforu.co.il/coupon/1911",
+        "notes": "<h5>כולל משלוח לאזורים: השרון, גוש דן והשפלה. אספקה תוך 3 ימי עסקים.</h5><a href=\"https://www.just4u.co.il/coupon/1911\" target=\"_blank\">לדף השובר באתר</a>."
+    },
+    "GivatHen_Premium": {
+        "tabtitle": "זר חרציות צבעוני ענק עד הבית",
+        "header": {
+            "background": "https://www.justforu.co.il/Pictures/rigushim-bg-1.jpg",
+            "title": "ריגושים עד הבית",
+            "content": "<p><br>בחרו את הדרך לרגש:<br>סלסלות ומגשי פרי מהודרים, מארזי שוקולד של מקס ברנר, יינות איכותיים, פיצוחים ומוצרי בריאות, סבונים ריחניים ומפנקים, ועוד ועוד - והכל עד לדלת ביתכם.<br></p><style>.banner p {max-width: 700px;}</style>",
+            "image": ""
+        },
+        "id": 63523,
+        "name": "זר חרציות בסל קש - גבעת חן",
+        "PromoID": 15789,
+        "isVC": 1,
+        "combined": null,
+        "isDelivery": 0,
+        "mail": 1,
+        "greeting": 1,
+        "title": "זר חרציות ענק - עד הבית",
+        "image": "https://www.just4u.co.il/Pictures/191311.jpg",
+        "link": "https://www.justforu.co.il/coupon/1913",
+        "notes": "<h5>כולל משלוח לאזורים: השרון, גוש דן והשפלה. אספקה תוך 3 ימי עסקים.</h5><a href=\"https://www.just4u.co.il/coupon/1913\" target=\"_blank\">לדף השובר באתר</a>."
+    },
+    "FalafelBaribua": {
+        "tabtitle": "פלאפל בריבוע - ארוחה משפחתית עד הבית",
+        "header": {
+            "background": "https://www.just4u.co.il/Pictures/hummus-bg.jpg",
+            "title": "פלאפל בריבוע - ארוחה משפחתית עד הבית",
+            "content": "<p>פלאפל, חומוס, וכל מה שישראלים אוהבים.<br>טרי, איכותי, וטעים!</p><style>.banner img {max-width: 250px;}</style>",
+            "image": "https://www.just4u.co.il/Pictures/SuppLogo_63519_falafel_logo.png"
+        },
+        "id": 63782,
+        "name": "ארוחה משפחתית - פלאפל בריבוע",
+        "PromoID": 15887,
+        "isVC": 1,
+        "isDelivery": 0,
+        "mail": 1,
+        "pickUp": 1,
+        "deliveryNotes": "נא לציין בהערות את מועד האספקה המבוקש",
+        "combined": null,
+        "title": "פלאפל בריבוע - ארוחה משפחתית עד הבית",
+        "image": "https://www.just4u.co.il/Pictures/1908Falafel_199_post_1080x1080.jpg",
+        "link": "https://www.justforu.co.il/coupon/2004",
+        "notes": "<h5>איסוף עצמי או משלוח בתוספת תשלום (<a target=\"_blank\" href=\"https://www.falafelbaribua.co.il/branches/\">*לרשימת הסניפים</a>).</h5><p><a href=\"https://www.justforu.co.il/coupon/2004\" target=\"_blank\">לפירוט תכולה ומידע נוסף</a></p>",
+        "options": [{
+            "label": "מנה:",
+            "type": "dropdown",
+            "opts": [{
+                "text": "פיקניק משפחתי קטן (25 כדורי פלאפל)",
+                "image": "https://www.just4u.co.il/Pictures/S-I_63519_1908_falafel%20baribua_takeaway_box_post3.jpg"
+            },
+            {
+                "text": "מארז משפחתי",
+                "image": "https://www.just4u.co.il/Pictures/S-I_63519_1908_Falafel_199_post_1080x1080.jpg"
+            }]
+        }]
+    },
+    "FalafelBaribuaDolce": {
+        "tabtitle": "פלאפל בריבוע - ארוחה משפחתית עד הבית",
+        "header": {
+            "background": "https://www.just4u.co.il/Pictures/hummus-bg.jpg",
+            "title": "פלאפל בריבוע - ארוחה משפחתית עד הבית",
+            "content": "<p>פלאפל, חומוס, וכל מה שישראלים אוהבים.<br>טרי, איכותי, וטעים!</p><style>.banner img {max-width: 250px;}</style>",
+            "image": "https://www.just4u.co.il/Pictures/SuppLogo_63519_falafel_logo.png"
+        },
+        "id": 63782,
+        "name": "ארוחה משפחתית - פלאפל בריבוע",
+        "PromoID": 15766,
+        "isVC": 1,
+        "isDelivery": 0,
+        "mail": 1,
+        "pickUp": 1,
+        "deliveryNotes": "נא לציין בהערות את מועד האספקה המבוקש",
+        "combined": null,
+        "title": "פלאפל בריבוע - ארוחה משפחתית עד הבית",
+        "image": "https://www.just4u.co.il/Pictures/1908Falafel_199_post_1080x1080.jpg",
+        "link": "https://www.justforu.co.il/coupon/1915",
+        "notes": "<h5>כולל משלוח (<a target=\"_blank\" href=\"https://www.falafelbaribua.co.il/branches/\">*לרשימת הסניפים</a>).</h5><p><a href=\"https://www.justforu.co.il/coupon/1915\" target=\"_blank\">לפירוט תכולה ומידע נוסף</a></p>",
+        "options": [{
+            "label": "מנה:",
+            "type": "dropdown",
+            "opts": [{
+                "text": "15 כדורי פלאפל",
+                "image": "https://www.just4u.co.il/Pictures/S-I_63519_1728_NIM_5058.jpg"
+            },
+            {
+                "text": "2 מלבי טבעוני",
+                "image": "https://www.just4u.co.il/Pictures/S-I_63519_1728_NIM_5097.jpg"
+            }]
+        }]
+    },
+    "FalafelBaribuaHvr": {
+        "tabtitle": "פלאפל בריבוע - פיקניק משפחתי עד הבית",
+        "header": {
+            "background": "https://www.just4u.co.il/Pictures/hummus-bg.jpg",
+            "title": "פלאפל בריבוע - פיקניק משפחתי עד הבית",
+            "content": "<p>פלאפל, חומוס, וכל מה שישראלים אוהבים.<br>טרי, איכותי, וטעים!</p><style>.banner img {max-width: 250px;}</style>",
+            "image": "https://www.just4u.co.il/Pictures/SuppLogo_63519_falafel_logo.png"
+        },
+        "id": 63782,
+        "name": "פיקניק משפחתי קטן + 15 כדורי פלאפל כולל משלוח",
+        "PromoID": 15794,
+        "isVC": 1,
+        "isDelivery": 0,
+        "mail": 1,
+        "pickUp": 1,
+        "deliveryNotes": "נא לציין בהערות את מועד האספקה המבוקש",
+        "combined": null,
+        "title": "פלאפל בריבוע - פיקניק משפחתי עד הבית",
+        "image": "https://www.just4u.co.il/Pictures/1908NIM_5058.jpg",
+        "link": "https://www.just4u.co.il/coupon/1908",
+        "notes": "<h5>כולל משלוח (<a target=\"_blank\" href=\"https://www.falafelbaribua.co.il/branches/\">*לרשימת הסניפים</a>).</h5><p><a href=\"https://www.just4u.co.il/coupon/1908\" target=\"_blank\">לפירוט תכולה ומידע נוסף</a></p>"
+    },
+    "PitmasterChuck": {
+        "tabtitle": "פיטמאסטר אונטריב - עד הבית",
+        "header": {
+            "background": "https://www.justforu.co.il/Pictures/pitmaster_bg.jpg",
+            "title": "פיטמאסטר אונטריב - עד הבית",
+            "content": "<p>זו לא חגיגה בלי הפיטמאסטר!<br>אז מהו הפיטמאסטר? מומחה לשימוש במעשנה, גריל, או כל מתקן המשלב אש חיה להכנת מזון.<br>החלטנו להמשיך לספק לכם את הבשר שלנו ב-TA ובמשלוחים<br>ולא לבטל את שגרת החיים לחובבי הבשר!</p><style>.banner p {max-width: 700px;}</style>",
+            "image": "https://www.just4u.co.il/Pictures/SuppLogo_63402_%D7%9C%D7%95%D7%92%D7%95%20%D7%A4%D7%99%D7%98%20%D7%9E%D7%90%D7%A1%D7%98%D7%A8.jpg"
+        },
+        "id": 63402,
+        "name": "פיטמאסטר אונטריב",
+        "PromoID": 15745,
+        "isVC": 1,
+        "combined": null,
+        "isDelivery": 0,
+        "mail": 1,
+        "title": "פיטמאסטר אונטריב - עד הבית",
+        "image": "https://www.just4u.co.il/Pictures/1894%D7%97%D7%96%D7%94%20%D7%90%D7%95%D7%95%D7%96.jpg",
+        "link": "https://www.justforu.co.il/coupon/1894",
+        "notes": "<h5>כולל משלוח מנתניה עד ראשל\"צ, הזמנות יתקבלו עד יום ד' בשעה 18:00 ויסופקו בימי חמישי.</h5><a href=\"https://www.just4u.co.il/coupon/1894\" target=\"_blank\">לפירוט החבילה ומידע נוסף</a>."
+    },
+    "EveningGourmet": {
+        "tabtitle": "גורמה ערב - עד הבית",
+        "header": {
+            "background": "https://www.justforu.co.il/Pictures/gourmet-bg.jpg",
+            "title": "גורמה ערב - עד הבית",
+            "content": "<p>מסעדות הגורמה והשף המובילות בארץ מגיעות אליכם הביתה!<br>אתם מוזמנים ליהנות מארוחת ערב זוגית עשירה ומשובחת, אצלכם בבית.</p><style>.banner p {max-width: 700px;}</style>",
+            "image": ""
+        },
+        "name": "גורמה ערב",
+        "PromoID": 15745,
+        "isVC": 1,
+        "combined": [
+            {
+                "id": 63402,
+                "name": "פיטמאסטר גורמה ערב",
+                "PromoID": 15745,
+                "isVC": 1,
+                "combined": null,
+                "isDelivery": 0,
+                "mail": 1,
+                "title": "גורמה ערב בפיטמאסטר",
+                "image": "https://www.just4u.co.il/Pictures/S-I_63402_1159_%D7%A8%D7%95%D7%A1%D7%98%20%D7%90%D7%A0%D7%98%D7%A8%D7%99%D7%A7%D7%95%D7%98.jpg",
+                "link": "https://www.justforu.co.il/coupon/1159",
+                "notes": "<h5>כולל משלוח מנתניה עד ראשל\"צ, הזמנות יתקבלו עד יום ד' בשעה 18:00 ויסופקו בימי חמישי.</h5><a href=\"https://www.just4u.co.il/coupon/1159\" target=\"_blank\">לפירוט החבילה ומידע נוסף</a> (לחצו על הבאנר של פיטמאסטר)."
+            }
+        ],
+        "extras": []
+    },
+    "GourmetPremium": {
+        "tabtitle": "גורמה פרימיום - עד הבית",
+        "header": {
+            "background": "https://www.justforu.co.il/Pictures/gourmet-bg.jpg",
+            "title": "גורמה פרימיום - עד הבית",
+            "content": "<p>מסעדות הגורמה והשף המובילות בארץ מגיעות אליכם הביתה!<br>אתם מוזמנים ליהנות מארוחת ערב זוגית עשירה ומשובחת, אצלכם בבית.</p><style>.banner p {max-width: 700px;}</style>",
+            "image": ""
+        },
+        "name": "גורמה פרימיום",
+        "PromoID": 9873,
+        "isVC": 1,
+        "combined": [
+            {
+                "id": 63402,
+                "name": "פיטמאסטר גורמה פרימיום מסעדות שף",
+                "PromoID": 9873,
+                "isVC": 1,
+                "combined": null,
+                "isDelivery": 0,
+                "mail": 1,
+                "title": "גורמה פרימיום בפיטמאסטר",
+                "image": "https://www.just4u.co.il/Pictures/S-I_63402_1158_%D7%90%D7%A1%D7%90%D7%93%D7%95.jpg",
+                "link": "https://www.justforu.co.il/coupon/1158",
+                "notes": "<h5>כולל משלוח מנתניה עד ראשל\"צ, הזמנות יתקבלו עד יום ד' בשעה 18:00 ויסופקו בימי חמישי.</h5><a href=\"https://www.just4u.co.il/coupon/1158\" target=\"_blank\">לפירוט החבילה ומידע נוסף</a> (לחצו על הבאנר של פיטמאסטר)."
+            }
+        ],
+        "extras": []
+    },
+    "CoupleFeast": {
+        "tabtitle": "סעודה זוגית - עד הבית",
+        "header": {
+            "background": "https://www.justforu.co.il/Pictures/gourmet-bg.jpg",
+            "title": "סעודה זוגית - עד הבית",
+            "content": "<p>מסעדות הגורמה והשף המובילות בארץ מגיעות אליכם הביתה!<br>אתם מוזמנים ליהנות מארוחת ערב זוגית עשירה ומשובחת, אצלכם בבית.</p><style>.banner p {max-width: 700px;}</style>",
+            "image": ""
+        },
+        "name": "סעודה זוגית",
+        "PromoID": 12408,
+        "isVC": 1,
+        "combined": [
+            {
+                "id": 63402,
+                "name": "פיטמאסטר סעודה זוגית",
+                "PromoID": 12408,
+                "isVC": 1,
+                "combined": null,
+                "isDelivery": 0,
+                "mail": 1,
+                "title": "סעודה זוגית בפיטמאסטר",
+                "image": "https://www.just4u.co.il/Pictures/S-I_63402_1271_%D7%A4%D7%A8%D7%92%D7%99%D7%95%D7%AA.jpg",
+                "link": "https://www.justforu.co.il/coupon/1271",
+                "notes": "<h5>כולל משלוח מנתניה עד ראשל\"צ, הזמנות יתקבלו עד יום ד' בשעה 18:00 ויסופקו בימי חמישי.</h5><a href=\"https://www.just4u.co.il/coupon/1271\" target=\"_blank\">לפירוט החבילה ומידע נוסף</a> (לחצו על הבאנר של פיטמאסטר)."
+            }
+        ],
+        "extras": []
+    },
+    "BayernMarket_Rigushim": {
+        "tabtitle": "ביירן מרקט - נקניקיות עד הבית",
+        "header": {
+            "background": "https://www.justforu.co.il/Pictures/bayern-bg.jpg",
+            "title": "ביירן מרקט - נקניקיות עד הבית",
+            "content": "<p>ביירן מרקט מביאה את בוואריה אליכם הביתה<br>עם אוכל גרמני-אוסטרי אותנטי וייחודי</p>",
+            "image": "https://www.just4u.co.il/Pictures/SuppLogo_63400_%D7%9C%D7%95%D7%92%D7%95%20%D7%91%D7%99%D7%99%D7%A8%D7%9F.png"
+        },
+        "id": 63400,
+        "name": "ביירן מרקט נקניקיות - ריגושים",
+        "PromoID": 15706,
+        "isVC": 1,
+        "isDelivery": 0,
+        "mail": 1,
+        "greeting": 1,
+        "combined": null,
+        "title": "ביירן מרקט - נקניקיות עד הבית",
+        "image": "https://www.just4u.co.il/Pictures/188522.jpg",
+        "link": "https://www.justforu.co.il/coupon/1885",
+        "notes": "<h5>כולל משלוח מנתניה עד ראשל\"צ.<br>אזורים אחרים בתוספת 30 ש\"ח ישירות לספק.</h5><p><a href=\"https://www.justforu.co.il/coupon/1885\" target=\"_blank\">לפירוט תכולה, זמנים ואזורי משלוח</a></p>",
+        "extras": []
+    },
+    "BayernMarket_Duet": {
+        "tabtitle": "ביירן מרקט - נקניקיות עד הבית",
+        "header": {
+            "background": "https://www.justforu.co.il/Pictures/bayern-bg.jpg",
+            "title": "ביירן מרקט - נקניקיות עד הבית",
+            "content": "<p>ביירן מרקט מביאה את בוואריה אליכם הביתה<br>עם אוכל גרמני-אוסטרי אותנטי וייחודי</p>",
+            "image": "https://www.just4u.co.il/Pictures/SuppLogo_63400_%D7%9C%D7%95%D7%92%D7%95%20%D7%91%D7%99%D7%99%D7%A8%D7%9F.png"
+        },
+        "id": 63400,
+        "name": "ביירן מרקט נקניקיות - דואט",
+        "PromoID": 15711,
+        "isVC": 1,
+        "isDelivery": 0,
+        "mail": 1,
+        "greeting": 1,
+        "combined": null,
+        "title": "ביירן מרקט - נקניקיות לרעבים עד הבית",
+        "image": "https://www.just4u.co.il/Pictures/188722.jpg",
+        "link": "https://www.justforu.co.il/coupon/1887",
+        "notes": "<h5>כולל משלוח מנתניה עד ראשל\"צ.<br>אזורים אחרים בתוספת 30 ש\"ח ישירות לספק.</h5><p><a href=\"https://www.justforu.co.il/coupon/1887\" target=\"_blank\">לפירוט תכולה, זמנים ואזורי משלוח</a></p>",
+        "options": [{
+            "label": "בחירת מארז:",
+            "type": "dropdown",
+            "opts": [{
+                "text": "נקניקיות לרעבים",
+                "image": ""
+            },
+            {
+                "text": "נקניקיות ונקניקים",
+                "image": ""
+            }]
+        }],
+        "extras": []
+    },
+    "Capuchina_IceCream": {
+        "tabtitle": "ריגושים עד הבית",
+        "header": {
+            "background": "https://www.justforu.co.il/Pictures/rigushim-bg-1.jpg",
+            "title": "ריגושים עד הבית",
+            "content": "<p><br>בחרו את הדרך לרגש:<br>סלסלות ומגשי פרי מהודרים, מארזי שוקולד של מקס ברנר, יינות איכותיים, פיצוחים ומוצרי בריאות, סבונים ריחניים ומפנקים, ועוד ועוד - והכל עד לדלת ביתכם.<br></p><style>.banner p {max-width: 700px;}</style>",
+            "image": ""
+        },
+        "id": 63585,
+        "name": "קפוצ'ינה גלידות וארטיקים",
+        "PromoID": 15748,
+        "isVC": 1,
+        "isDelivery": 0,
+        "mail": 1,
+        "pickUp": 1,
+        "greeting": 1,
+        "combined": null,
+        "title": "גלידות וארטיקים עד הבית - קפוצ'ינה",
+        "image": "https://www.just4u.co.il/Pictures/S-I_63508_1898_%D7%9E%D7%90%D7%A8%D7%96%20%D7%90%D7%A8%D7%98%D7%99%D7%A7%D7%99%D7%9D%20%D7%95%D7%A9%D7%9C%D7%92%D7%95%D7%A0%D7%99%D7%9D.JPG",
+        "link": "https://www.justforu.co.il/coupon/1898",
+        "notes": "<h5>המשלוח בתוספת תשלום ישירות לספק.</h5><p><a href=\"https://www.justforu.co.il/coupon/1898\" target=\"_blank\">לפירוט תכולה ומידע נוסף</a></p>",
+        "options": [{
+            "label": "מארז:",
+            "type": "dropdown",
+            "opts": [{
+                "text": "מארז ארטיקים ושלגונים",
+                "image": "https://www.just4u.co.il/Pictures/S-I_63508_1898_%D7%9E%D7%90%D7%A8%D7%96%20%D7%90%D7%A8%D7%98%D7%99%D7%A7%D7%99%D7%9D%20%D7%95%D7%A9%D7%9C%D7%92%D7%95%D7%A0%D7%99%D7%9D.JPG"
+            },
+            {
+                "text": "מארז ארטיקים מושחת",
+                "image": "https://www.just4u.co.il/Pictures/S-I_63511_1898_222.jpg"
+            }]
+        }]
+    },
+    "fromDuetPremium": {
+        "id": 62594,
+        "name": "My Goodies מארזי שוקולד לבן",
+        "PromoID": 15451,
+        "isVC": 1,
+        "combined": null,
+        "isDelivery": 0,
+        "pickUp": 1,
+        "mail": 1,
+        "greeting": 1,
+        "title": "מארז שוקולד לבן - My Goodies",
+        "image": "https://www.justforu.co.il/Pictures/1751%D7%9E%D7%A7%D7%98%201164.jpg",
+        "link": "https://www.justforu.co.il/coupon/1751",
+        "notes": "<h5>*המחיר כולל משלוח בין גבולות ההפצה.<br>**הפצת המארזים בגבולות ההפצה תוך 72 שעות מרגע העברת ההזמנה.<br>***גבולות גזרה למשלוח מארזים:<br> דרום-גדרה / צפון- חדרה / מערב- קו החוף בין גדרה לחדרה / מזרח- כביש 6<br>****ניתן לאסוף מארזים ממרכז האריזה ברחוב הרב אשר פינטו 19, פ\"ת או ממשרדי החברה בתיאום מראש.</h5><br>לפרטים נוספים: <a href=\"https://www.justforu.co.il/coupon/1751\" target=\"_blank\">https://www.justforu.co.il/coupon/1751</a>",
+        "options": [{
+            "label": "בחירת מארז",
+            "type": "dropdown",
+            "opts": [{
+                "text": "מארז גלקסי לבן",
+                "image": "https://www.justforu.co.il/Pictures/S-I_62594_1751_%D7%9E%D7%A7%D7%98%201164.jpg"
+                },
+                {
+                    "text": "מארז אוריאן לבן",
+                    "image": "https://www.justforu.co.il/Pictures/S-I_62594_1751_%D7%9E%D7%A7%D7%98%201173.jpg"
+                }]
+        }]
+    },
+    "pinukim": {
+        "tabtitle": "פינוקים",
+        "header": {
+            "background": "https://www.justforu.co.il/Pictures/tart-2002829__480.jpg",
+            "title": "פינוקים",
+            "content": "<p><br>בחרו את הדרך לרגש ממגוון פינוקים מפנקים.<br></p><style>.banner p {max-width: 700px;}</style>",
+            "image": ""
+        },
+        "name": "פינוקים דיגיטלי",
+        "PromoID": 14552,
+        "isVC": 1,
+        "combined": [
+            {
+                "id": 62594,
+                "name": "My Goodies מארז נגה לבן",
+                "PromoID": 14552,
+                "isVC": 1,
+                "combined": null,
+                "isDelivery": 0,
+                "pickUp": 1,
+                "mail": 1,
+                "greeting": 1,
+                "title": "פינוק שוקולד - My Goodies",
+                "image": "https://www.justforu.co.il/Pictures/1762logo.jpg",
+                "link": "https://www.justforu.co.il/coupon/1762",
+                "notes": "<h5>*המחיר כולל משלוח בין גבולות ההפצה.<br>**הפצת המארזים בגבולות ההפצה תוך 72 שעות מרגע העברת ההזמנה.<br>***גבולות גזרה למשלוח מארזים:<br> דרום-גדרה / צפון- חדרה / מערב- קו החוף בין גדרה לחדרה / מזרח- כביש 6<br>****ניתן לאסוף מארזים ממרכז האריזה ברחוב הרב אשר פינטו 19, פ\"ת או ממשרדי החברה בתיאום מראש.</h5><br>לפרטים נוספים: <a href=\"https://www.justforu.co.il/coupon/1762\" target=\"_blank\">https://www.justforu.co.il/coupon/1762</a>"
+            }
+        ],
+        "extras": [],
+        "isDelivery": 0,
+        "title": "",
+        "image": "",
+        "link": ""
+    },
+    "OneLove": {
+        "id": 63289,
+        "name": "One Love - דונאטס ודברים מתוקים עד הבית",
+        "PromoID": 13722,
+        "isVC": 1,
+        "mail": 1,
+        "greeting": 1,
+        "isDelivery": 0,
+        "title": "דונאטס ודברים מתוקים עד הבית - One Love",
+        "image": "https://www.just4u.co.il/Pictures/1860one-love-donuts-collage.jpg",
+        "link": "https://www.just4u.co.il/coupon/1860",
+        "notes": "<h5>כולל משלוח באזור החלוקה בין אשדוד להרצליה. <span style=\"color:red;\">חובה לציין תאריך אספקה למארזים, אספקה בימי א' ו-ג' בלבד!</span><br>ניתן להזמין למחרת עד השעה 19:00. למשלוחים באותו יום יש לבדוק זמינות מול הספק בטלפון: 053-4513951.<br>ניתן לבחור שלט יום הולדת שמח ולצרף ברכה.</h5>לדף המוצר באתר: <a href=\"https://www.just4u.co.il/coupon/1860\" target=\"_blank\">https://www.just4u.co.il/coupon/1860</a>",
+        "options": [{
+            "label": "בחירת מארז:",
+            "type": "dropdown",
+            "opts": [{
+                "text": "Sweet Birthday",
+                "image": "https://www.just4u.co.il/Pictures/S-I_63289_1860_PHOTO-2020-09-29-09-47-17%20(1).jpg"
+            },
+            {
+                "text": "דונאטס קטנים",
+                "image": "https://www.just4u.co.il/Pictures/S-I_63289_1860_MyCollages%20(1).jpg"
+            }]
+        },
+        {
+            "label": "תאריך אספקה מבוקש:",
+            "type": "text"
+        }]
+    },
+    "MyGoodies": {
+        "tabtitle": "My Goodies - מארזי שוקולד עד הבית",
+        "header": {
+            "background": "https://www.justforu.co.il/Pictures/chocolate-bg.jpg",
+            "title": "My Goodies - מארזי שוקולד עד הבית",
+            "content": "<p><br>בחרו את הדרך לרגש. מגוון מארזי שוקולד מפנקים מבית My Goodies<br></p>",
+            "image": "https://www.just4u.co.il/Pictures/SuppLogo_62594_mygoodieslogo.jpg"
+        },
+        "id": 62594,
+        "name": "My Goodies מארזי שוקולד",
+        "PromoID": 15782,
+        "isVC": 1,
+        "combined": null,
+        "isDelivery": 0,
+        "pickUp": 1,
+        "mail": 1,
+        "greeting": 1,
+        "title": "My Goodies - מארזי שוקולד עד הבית",
+        "image": "https://www.just4u.co.il/Pictures/%D7%9E%D7%A7%D7%98%201148.jpg",
+        "link": "https://www.justforu.co.il/coupon/1749",
+        "notes": "<h5>*המחיר כולל משלוח בין גבולות ההפצה.<br>**הפצת המארזים בגבולות ההפצה תוך 72 שעות מרגע העברת ההזמנה.<br>***גבולות גזרה למשלוח מארזים:<br> דרום-גדרה / צפון- חדרה / מערב- קו החוף בין גדרה לחדרה / מזרח- כביש 6<br>****ניתן לאסוף מארזים ממרכז האריזה ברחוב הרב אשר פינטו 19, פ\"ת או ממשרדי החברה בתיאום מראש.</h5><br>לפרטים נוספים: <a href=\"https://www.justforu.co.il/coupon/1749\" target=\"_blank\">https://www.justforu.co.il/coupon/1749</a>",
+        "options": [{
+            "label": "בחירת מארז:",
+            "type": "dropdown",
+            "opts": [
+            {
+                "text": "מארז ונוס זהב",
+                "image": "https://www.just4u.co.il/Pictures/S-I_62594_1749_%D7%9E%D7%A7%D7%98%201158.jpg"
+            }]
+        }]
+    },
+    "MyGoodiesDuet": {
+        "tabtitle": "My Goodies מארזי שוקולד בסטייל-דיגיטלי",
+        "header": {
+            "background": "https://www.justforu.co.il/Pictures/1178duet.jpg",
+            "title": "מארזי שוקולד בסטייל My Goodies",
+            "content": "<p><br>בחרו את הדרך לרגש. מגוון מארזי שוקולד מפנקים מבית My Goodies<br></p>",
+            "image": ""
+        },
+        "name": "My Goodies מארזי שוקולד בסטייל",
+        "PromoID": 15439,
+        "isVC": 1,
+        "combined": [
+            {
+                "id": 62594,
+                "name": "My Goodies מארזי שוקולד בסטייל",
+                "PromoID": 15439,
+                "isVC": 1,
+                "combined": null,
+                "isDelivery": 0,
+                "pickUp": 1,
+                "mail": 1,
+                "greeting": 1,
+                "title": "מארז שוקולד בסטייל - My Goodies",
+                "image": "https://www.justforu.co.il/Pictures/S-I_62594_1750_%D7%9E%D7%A7%D7%98%201149.jpg",
+                "link": "https://www.justforu.co.il/coupon/1750",
+                "notes": "<h5>*המחיר כולל משלוח בין גבולות ההפצה.<br>**הפצת המארזים בגבולות ההפצה תוך 72 שעות מרגע העברת ההזמנה.<br>***גבולות גזרה למשלוח מארזים:<br> דרום-גדרה / צפון- חדרה / מערב- קו החוף בין גדרה לחדרה / מזרח- כביש 6<br>****ניתן לאסוף מארזים ממרכז האריזה ברחוב הרב אשר פינטו 19, פ\"ת או ממשרדי החברה בתיאום מראש.</h5><br>לפרטים נוספים: <a href=\"https://www.justforu.co.il/coupon/1750\" target=\"_blank\">https://www.justforu.co.il/coupon/1750</a>",
+                "options": [{
+                    "label": "בחירת מארז",
+                    "type": "dropdown",
+                    "opts": [{
+                        "text": "מארז גלקסי שחור",
+                        "image": "https://www.justforu.co.il/Pictures/S-I_62594_1750_%D7%9E%D7%A7%D7%98%201149.jpg"
+                    },
+                        {
+                            "text": "מארז סופרנובה",
+                            "image": "https://www.justforu.co.il/Pictures/S-I_62594_1750_%D7%9E%D7%A7%D7%98%201168.jpg"
+                        }]
+                }]
+            }
+        ],
+        "extras": [],
+        "isDelivery": 0,
+        "title": "",
+        "image": "",
+        "link": ""
+    },
+    "jellyqueen": {
+        "tabtitle": "ריגושים עד הבית",
+        "header": {
+            "background": "https://www.justforu.co.il/Pictures/rigushim-bg-1.jpg",
+            "title": "ריגושים עד הבית",
+            "content": "<p><br>בחרו את הדרך לרגש:<br>סלסלות ומגשי פרי מהודרים, מארזי שוקולד של מקס ברנר, יינות איכותיים, פיצוחים ומוצרי בריאות, סבונים ריחניים ומפנקים, ועוד ועוד - והכל עד לדלת ביתכם.<br></p><style>.banner p {max-width: 700px;}</style>",
+            "image": ""
+        },
+        "name": "מלכת הג'לי",
+        "PromoID": 14968,
+        "isVC": 1,
+        "combined": [
+            {
+                "id": 61561,
+                "name": "cookie time",
+                "PromoID": 14968,
+                "isVC": 1,
+                "combined": null,
+                "isDelivery": 0,
+                "mail": 1,
+                "greeting": 1,
+                "title": "מלכת הג'לי - Cookie Time מארז עוגיות מפנק",
+                "image": "https://www.justforu.co.il/Pictures/S-I_61561_1653_3.jpg",
+                "link": "https://www.justforu.co.il/coupon/1430/1653",
+                "notes": "<p><a href=\"https://www.justforu.co.il/coupon/1430/1653\" target=\"_blank\">לפירוט תכולת המארז ומידע נוסף</a></p>"
+            },
+            {
+                "id": 61561,
+                "name": "יש לי גלידה הכי טובה",
+                "PromoID": 14968,
+                "isVC": 1,
+                "combined": null,
+                "isDelivery": 0,
+                "mail": 1,
+                "greeting": 1,
+                "title": "מלכת הג'לי - מארז \"יש לי גלידה הכי טובה\"",
+                "image": "https://www.justforu.co.il/Pictures/S-I_61561_1653_2.jpg",
+                "link": "https://www.justforu.co.il/coupon/1430/1653",
+                "notes": "<p><a href=\"https://www.justforu.co.il/coupon/1430/1653\" target=\"_blank\">לפירוט תכולת המארז ומידע נוסף</a></p>"
+            },
+            {
+                "id": 61561,
+                "name": "מלכת הג'לי בממלכת השוקולד",
+                "PromoID": 14968,
+                "isVC": 1,
+                "combined": null,
+                "isDelivery": 0,
+                "mail": 1,
+                "greeting": 1,
+                "title": "מלכת הג'לי בממלכת השוקולד",
+                "image": "https://www.justforu.co.il/Pictures/S-I_61561_1653_1.jpg",
+                "link": "https://www.justforu.co.il/coupon/1430/1653",
+                "notes": "<p><a href=\"https://www.justforu.co.il/coupon/1430/1653\" target=\"_blank\">לפירוט תכולת המארז ומידע נוסף</a></p>"
+            }
+        ],
+        "isDelivery": 0,
+        "title": "מלכת הג'לי",
+        "image": "https://www.justforu.co.il/Pictures/1653logo.jpg",
+        "link": "https://www.justforu.co.il/coupon/1430/1653",
+        "notes": "<p><a href=\"https://www.justforu.co.il/coupon/1430/1653\" target=\"_blank\">לפירוט תכולת המארז ומידע נוסף</a></p>"
+    }
+}

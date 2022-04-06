@@ -1,0 +1,101 @@
+<app-container [paddingValues]='"24px 33px 10px 33px"'>
+    <h2 class="page-title">הגדרות בחירת מוצרים</h2>
+    <form class='radio-button-section'>
+        <div class="inputs-row">
+            <div class="input-wrapper">
+                <p-radioButton name="group" value="val1" (onClick)='select(selectedValue)'
+                               label="תן לי לבחור שובר מתנה קבוע"
+                               [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
+                </p-radioButton>
+                <p>לקטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק. לפרומי בלוף קינץ תתיח לרעח קטוס וואל אאוגו וף קינץ תתיח לרעח לפרומי בלוף קינץ תתיח </p>
+            </div>
+            <div class="input-wrapper">
+                <p-radioButton name="group" value="val2" (onClick)='select(selectedValue)'
+                               label="תן לאנשי הקשר לבחור שובר כלשהו מ-Just4u בהתבסס על מחיר הגבלה" 
+                               [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
+                </p-radioButton>
+                <p>לקטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק. לפרומי בלוף קינץ תתיח לרעח קטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק לפרומי בלוף קינץ תתיח לרעח לפרומי בלוף קינץ תתיח </p>
+                <div class='max-amount' *ngIf='selectedValue === "val2"'>
+                    <label for="amountLimit">מחיר הגבלה:</label>
+                    <p-inputNumber [(ngModel)]="amountLimit" [ngModelOptions]="{standalone: true}"></p-inputNumber><span style='margin-right: 5px'>₪</span>
+                </div>
+            </div>
+        </div>
+    </form>
+</app-container>
+
+<app-container *ngIf='selectedValue === "val1"'>
+    <h2 class="page-title">בחירת מוצרים</h2>
+    <div class="search-wrapper">
+        <app-container [paddingValues]='"22px 29px 0 29px"'>
+            <form class="search-container">
+                <div class="inputs-row flex justify-between fluid-row">
+                    <div class="input-wrapper">
+                        <label for="">ביטוי לחיפוש</label>
+                        <input type="text" pInputText [(ngModel)]="query" [ngModelOptions]="{standalone: true}"/>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="">קטגוריה</label>
+                        <p-dropdown [options]="options" [(ngModel)]="selectedOption" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-dropdown>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="">איזור</label>
+                        <p-dropdown [options]="options" [(ngModel)]="selectedOption" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-dropdown>
+                    </div>
+                    <div class="input-wrapper double-inputs">
+                        <div class="input-wrapper width-auto ml">
+                            <label for="">מחיר מ-</label>
+                            <p-inputNumber [(ngModel)]="fromPrice" [ngModelOptions]="{standalone: true}"  [style]="{width: '116px'}"></p-inputNumber>
+                        </div>
+                        <div class="input-wrapper width-auto">
+                            <label for="">עד</label>
+                            <p-inputNumber [(ngModel)]="toPrice" [ngModelOptions]="{standalone: true}" [style]="{width: '116px'}"></p-inputNumber>
+                        </div>
+                    </div>
+                </div>
+                <div class="inputs-row flex justify-end align-center">
+                    <button class="btn primary">חיפוש</button>
+                </div>
+            </form>
+        </app-container>
+    </div>
+</app-container>
+
+<div class="p-rtl" dir="rtl">
+    <p-tabView>
+        <p-tabPanel header="השוברים של just4u" [selected]="true">
+            <p class='panel-paragraph'>נולום ארווס סאפיאן - פוסיליס קוויס, אקווזמן לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק. קונדימנטום קורוס בליקרה, נונסטי קלובר בריקנה סטום, לפריקך תצטריק לרטי.</p>
+            <div class="trands">
+                <div class="items-wrapper">
+                    <ng-container *ngFor='let coupon of mockTrandCoupons; let i = index'>
+                        <div class="trand-wrapper" [ngClass]='{"selected": coupon.isSelected}'>
+                            <app-card-item [type]='2' [data]='coupon' (click)='display=true'></app-card-item>
+                            <button class='btn secondary' (click)='selectTrand(i)' *ngIf='!coupon.isSelected'><i class='icon trand-add'></i>הוספה לפעילות</button>
+                            <button class='btn secondary transparent' (click)='removeTrand(i)' *ngIf='coupon.isSelected'><i class='icon trand-remove'></i>הסר מהפעילות</button>
+                        </div>
+                    </ng-container>
+                </div>
+                <app-paginator></app-paginator>
+            </div>
+        </p-tabPanel>
+        <p-tabPanel header="השוברים שלי" >
+            <div class="items-wrapper select-coupons">
+                <ng-container *ngFor='let coupon of mockCoupons; let i = index'>
+                    <div class="selectable-coupon-container" [ngClass]='{"selected": coupon.isSelected}'>
+                        <app-card-item [type]='10' [data]='coupon'></app-card-item>
+                        <div class="button-wrapper">
+                            <button class='btn secondary' (click)='selectCoupon(i)' *ngIf='!coupon.isSelected'><i class='icon trand-add'></i>הוספה לפעילות</button>
+                            <button class='btn secondary transparent' (click)='removeCoupon(i)' *ngIf='coupon.isSelected'><i class='icon trand-remove'></i>הסר מהפעילות</button>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <app-paginator></app-paginator>
+        </p-tabPanel>
+    </p-tabView>
+</div>
+
+<!-- modals -->
+<p-dialog [style]="{width: '767px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]="display" header='פרטי שובר' [styleClass]='""'>
+   <app-coupon-details-dialog></app-coupon-details-dialog>
+</p-dialog>

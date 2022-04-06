@@ -1,0 +1,28 @@
+:host {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    background-color: #D2DBE3;
+    padding: 1px 26px 1px 45px;
+    // position: relative;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    .just4u {
+        font-size: 15px;
+        line-height: 18px;
+        font-weight: 500;
+        color: #3B3B3B
+        p {
+            margin: 0;
+        }
+    }
+    .profile {
+        display: flex;
+        align-items: center;
+    }
+    @media (max-width: 1539px)  {
+        z-index: 999;
+    }
+}

@@ -1,0 +1,18 @@
+:host {
+    display: block;
+    max-width: 672px;
+    padding: 35px 0 25px 0;
+    .input-wrapper {
+        min-width: 311px;
+    }
+    ::ng-deep {
+        .ui-calendar {
+            width: 311px;
+            max-width: 311px;
+        }
+        // .ui-datepicker {
+        //     left: unset !important;
+        //     transform: translate(0%, 0%) !important;
+        // }
+    }
+}

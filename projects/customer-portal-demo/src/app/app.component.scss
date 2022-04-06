@@ -1,0 +1,126 @@
+:host {
+    height: auto;
+    display: block;
+    position: relative;
+    .main-wrapper {
+        display: flex;
+        max-width: 1485px;
+        margin: 0 auto;
+        padding-top: 15px;
+        padding-bottom: 50px;
+    }
+
+    app-side-menu {
+        flex: 0 1 100%;
+        overflow: hidden;
+        min-width: 50px; // 35
+        max-width: 45px;
+        transition: all 0.3s ease-in-out;
+        height: calc(100vh - 115px);
+        &.open {
+            max-width: 200px; 
+        }
+        @media (max-width: 1539px)  {
+            position: fixed;
+            top: 50px;
+            z-index: 99;
+            height: 100%;
+            padding-top: 35px;
+            &.open {
+                background-color: #fff;
+            }
+        }
+    }
+
+    section {
+        flex: 0 1 100%;
+        overflow: hidden;
+        //height: calc(100vh - 100px);
+        height: auto;
+        overflow: auto;
+        padding: 0 10px;
+        margin-right: 20px;
+        padding-bottom: 25px;
+
+        min-height: calc(100vh - 115px);
+        @media (max-width: 1539px)  {
+            flex: 0 1 95%;
+            margin-right: auto;
+        }
+    }
+
+    // GENERAL class when menu is open
+    @media (min-width: 1540px)  {
+        .main-wrapper.open {
+            ::ng-deep {
+                app-home {
+                    .dl-wrapper.doughnut {
+                        column-gap: 34px;
+                    } 
+                    app-card-item {
+                        // max-height: 273px !important;
+                        // max-width: 357px !important;
+                        // width: 20.9vw !important;
+                        width: 21.2vw !important;
+                        height: 15vw !important;
+                    }
+                    .trands {
+                        .items-wrapper {
+                            // grid-template-columns: repeat(3, 315px);
+                        }
+                        .trand {
+                            // width: 315px;
+                            // height: 233px;
+                            // transition: width 0.3s ease-in-out;   
+                        }
+                    }
+                }
+                app-activity-create-select-products {
+                    app-card-item {
+                        width: 21.2vw !important;
+                        height: 15vw !important;
+                    }
+                }
+                .input-wrapper {
+                    width: 260px;
+                    &.width-auto {
+                        width: auto;
+                    }
+                }
+                
+                // .p-overlaypanel.menu-item-hover {
+                //     display: none !important;
+                //     opacity: 0 !important;
+                // }
+                .no-file-selected {
+                    transform: translate(-120%, -50%);
+                }
+            }
+        }
+    }
+}
+
+.modal-overlay {
+    position: absolute;
+    background-color: rgba(0,0,0,0.7);
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    .modal {
+        background-color: #fff;
+        width: 1220px;
+        justify-content: center;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    ::ng-deep {
+        .p-datatable-scrollable-header-box {
+            padding-right: 0 !important;
+        }
+    }
+}

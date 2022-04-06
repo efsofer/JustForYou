@@ -1,0 +1,13 @@
+<div class="container">
+    <h2 class="color-primary">בחר הטבה</h2>
+    <div *ngIf="benefits" class="gifts-grid" [class.ie11]="isIE">
+        <div *ngFor="let benefit of benefits" class="gift-wrapper" #wrapper>
+            <div class="gift-item" (click)="pick(benefit)" [style.background-image]="'url(' + benefit.image + ')'">
+                <div class="item-footer jc-between">
+                    <span>{{benefit.title}}</span>
+                    <button class="btn">בחירה<i class="fa fa-chevron-left"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

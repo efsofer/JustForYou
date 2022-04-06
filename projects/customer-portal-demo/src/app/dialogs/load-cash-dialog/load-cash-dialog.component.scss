@@ -1,0 +1,22 @@
+:host {
+    .expiration {
+        border: 1px solid #DBDBDB;
+        width: 123px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        direction: ltr;
+        input {
+            border: 0;
+            font-size: 18px;
+            line-height: 22px;
+            color: rgba(0, 0, 0, 0.58);
+            width: 32px;
+            padding: 7px 0;
+        }
+        span {
+            margin: 0 5px;
+        }
+    }
+}

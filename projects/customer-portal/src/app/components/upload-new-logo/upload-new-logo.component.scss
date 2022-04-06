@@ -1,0 +1,59 @@
+:host {
+    display: block;
+    .input-wrapper {
+        min-width: 305px;
+        button {
+            width: 130px;
+        }
+    }
+
+    .current-logo-wrapper {
+        border: 1px solid #DBDBDB;
+        padding: 10px 15px;
+        height: 108px;
+        width: 150px;
+        img {
+            height: 100%;
+            width:  100%;
+            object-fit: contain;
+        }
+    }
+
+    ::ng-deep {
+        .ui-rtl .ui-tabview .ui-tabview-nav li {
+            width: 18%;
+        }
+        .ui-tabview .ui-tabview-nav .ui-state-default a {
+                padding: .5em 1em;
+                margin: 0 auto;
+                width: 100%;
+                text-align: center;
+        }
+
+        .ui-fileupload-row {
+            & > div {
+                &:nth-of-type(1) {
+                    border: 1px solid #000;
+                }
+            }
+        }
+
+        .ui-fileupload-choose {
+            border: 1px solid #873D4C;
+            border-radius: 5px;
+        }
+
+        .ui-button-text {
+            font-size: 18px;
+            line-height: 22px;
+            color: #873D4C;
+            font-weight: 500;
+            padding: 7px 30px;
+        }
+
+        .ui-button-icon-left {
+            display: none;
+        }
+
+    }
+}

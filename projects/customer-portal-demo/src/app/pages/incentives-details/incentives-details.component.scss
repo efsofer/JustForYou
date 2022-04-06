@@ -1,0 +1,44 @@
+:host {
+    display: block;
+    .header-wrapper {
+        // border-bottom: 1px solid #DBDBDB;
+        // padding-bottom: 24px;
+        // margin-bottom: 25px;
+        h3 {
+            font-size: 25px;
+            line-height: 30px;
+            font-weight: 400;
+            margin: 0;
+            span {
+                font-weight: 600; 
+            }
+        }
+    } 
+    h4 {
+        font-size: 25px;
+        line-height: 30px;
+        font-weight: 400;
+        margin: 0;
+        margin-bottom: 15px;
+        span {
+            font-weight: 600; 
+        }
+    }
+
+    .info {
+        p {
+            font-size: 18px;
+            line-height: 23px;
+            margin: 10px 0 0 0;
+            span {
+                font-weight: 700;
+            }
+        }
+    }
+
+    .contact-wrapper {
+        border-top: 1px solid #DBDBDB;
+        padding-top: 24px;
+        margin-top: 25px;
+    }
+}

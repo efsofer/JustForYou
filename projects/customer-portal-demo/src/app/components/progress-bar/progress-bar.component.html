@@ -1,0 +1,15 @@
+<div class="tabs-container">
+    <div class="line-bar"></div>
+    <ul class="circle-nav" id='ul-nav'>
+        <li class='nav-item' *ngFor="let step of steps; let i = index"  
+            [ngClass]="{'active': step.isActive, 'done': step.isDone}"
+            step = i
+        >
+            <span class="link-tag" href="#" data-toggle="tab">{{step.title}}</span>
+            <!-- <a class="link-tag" href="#" data-toggle="tab">{{step.title}}</a> -->
+        </li>
+    </ul>
+</div>
+
+
+  

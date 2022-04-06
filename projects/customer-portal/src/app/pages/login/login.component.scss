@@ -1,0 +1,37 @@
+:host {
+    h1 {
+        font-weight: 300; 
+        span {
+           font-weight: 400; 
+        }
+    }
+    h2 {
+        font-weight: 600;
+        font-size: 1.3rem;
+    }
+    .center-form button {
+        display: block;
+        margin: auto;
+    }
+    .banner-wrapper {
+        //height: 345px;
+        height: auto;
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 25px;
+        a {
+            display: block;
+            height: 100%;
+        }
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 10px;
+
+            max-height: 100%;
+            height: auto;
+        }
+    }
+}

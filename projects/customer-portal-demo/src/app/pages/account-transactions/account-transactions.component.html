@@ -1,0 +1,55 @@
+<h1 class='page-title'>תנועות בחשבון</h1>
+
+<app-container>
+    <div class="flex justify-between align-center header-wrapper">
+        <h2>יתרה כספית: <span>7000 ₪</span></h2>
+        <button class="btn secondary" (click)='display=true'><i class="icon cash"></i>טען כסף לחשבון</button>
+    </div>
+    <div class="table-wrapper">
+        <p-table [columns]="cols" [value]="tableDate" [paginator]="true" [rows]="14" [rowsPerPageOptions]="[5,10,15,20,30]">
+            <ng-template pTemplate="header"  let-columns>
+                <tr>
+                      <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]='col.field'>
+                          {{col.header}}
+                          <p-sortIcon [field]="col.field" *ngIf='col.header.length > 0'></p-sortIcon>
+                      </th>
+                  </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                  <td>{{rowData.amount}}<span> ₪</span></td>
+                  <td>{{rowData.date}}</td>
+                  <td class='transaction-row'>
+                        <span *ngIf='rowData.transaction.text'>{{rowData.transaction.text}}</span>
+                        <span *ngIf='rowData.transaction.linkText'>
+                            <button class="display-button-as-link" (click)='goTo("order")'>
+                                הזמנה {{rowData.transaction.linkText}}
+                            </button>
+                        </span>
+                  </td>
+                  <td>{{rowData.payment}}</td>
+                  <td>
+                    <button class="display-button-as-link">
+                        <i class="icon download"></i>
+                        הורדת קבלה
+                    </button>
+                </td>
+              </tr>
+              </ng-template>
+        </p-table>  
+    </div>
+</app-container>
+
+
+<!-- modal -->
+<div  style='position: absolute'>
+    <p-dialog [style]="{width: '623px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]="display" header='טען כסף לחשבון' [styleClass]='""'>
+        <app-load-cash-dialog></app-load-cash-dialog>
+        <p-footer>
+        <div class="">
+            <button class="btn secondary" (click)="display=false">ביטול</button>
+            <button class="btn primary">שמירה</button>
+        </div>
+        </p-footer>
+    </p-dialog>
+</div>

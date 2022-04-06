@@ -1,0 +1,118 @@
+<div class="container">
+    <div class="cat-wrapper"><h2 class="color-primary">עשה זאת בעצמך!</h2>
+    <p class="instructions">ימי הגיבוש שלנו אמנם הורכבו ותוכננו בקפידה, אך אין כמו להרכיב בעצמך את היום המושלם לצוות שלך.<br>
+    ב<a href="https://www.just4u.co.il/PriceList/?id=0wYzm8cEK15JzzPDMfimgA2" target="_blank">מחירון הגיבושים המיוחד שלנו</a> תמצאו מגוון עצום של שוברי תרבות ופנאי שיאפשרו לכם להגשים את היום החלומי שלכם.<br>
+    לרשותכם <strong>500 ש"ח למשתתף</strong> - ניתן גם לבחור שוברים בתוספת תשלום. <strong>שימו לב:</strong> המחיר הוא לשובר, וישנם שוברים רבים המיועדים ליותר מאדם אחד. גיבוש מהנה!</p></div>
+    <div *ngFor="let category of items" class="cat-wrapper">
+        <h2 class="color-primary">{{category.area}}</h2>
+        <div class="gifts-grid">
+            <div *ngFor="let item of category.items" class="gift-wrapper" #wrapper>
+                <ng-template [ngIf]="item.combined_items" [ngIfElse]="regularItem">
+                <ng-template [ngIf]="!wrapper.classList.contains('expanded')" [ngIfElse]="expandedPackage">
+                    <div class="gift-item" (click)="expandPackage($event, item)"
+                        [style.background-image]="'url(https://www.just4u.co.il/pictures/' + (item.image | encodeSpaces) + ')'">
+                        <div class="item-footer">
+                            <span>{{item.name}}</span>
+                            <button class="btn">פרטים<i class="fa fa-chevron-left"></i></button>
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template #expandedPackage>
+                    <div class="overlay" (click)="closePackage($event)">
+                        <div class="package-brief">
+                            <span class="close-btn" (click)="collapse($event)">&times;</span>
+                            <div class="package-image">
+                                <img src="https://www.just4u.co.il/pictures/{{item.image | encodeSpaces}}">
+                                <div class="grad-bg"></div>
+                                <h2>{{item.name}}</h2>
+                            </div>
+                            <ng-template [ngIf]="ready" [ngIfElse]="loader">
+                            <div class="package-body">
+                                <div class="package-info" [innerHTML]="item.description"></div>
+                                <div class="package-activities">
+                                    <div class="activities-wrapper">
+                                        <div *ngFor="let activity of item.combined_items; let i = index"
+                                            class="gift-item" [class.active]="expandedActivity == i"
+                                            [style.background-image]="'url(' + (activity.picture | encodeSpaces) + ')'"
+                                            (click)="expandedActivity = i">
+                                            <div class="supp-logo"><img src="{{activity.supplierLogo | encodeSpaces}}"></div>
+                                            <div class="item-footer"
+                                                [innerHTML]="activity.name.split('-')[0] + ' ב' + activity.supplierName">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngFor="let activity of item.combined_items; let i = index"
+                                        class="activity-desc" [hidden]="expandedActivity != i">
+                                        <h4>תיאור הפעילות:</h4>
+                                        <div [innerHTML]="activity.description"></div>
+                                        <h4>לתיאום ובירורים עם בית העסק:</h4>
+                                        <p><i class="fas fa-phone"></i>{{activity.supplierPhone}}<br>
+                                            <i class="fas fa-map-marker-alt"></i>{{activity.supplierAddress}}</p>
+                                        <h4>אודות בית העסק:</h4>
+                                        <div [innerHTML]="activity.aboutSupplier"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="package-footer">
+                                <ng-template [ngIf]="!chosen" [ngIfElse]="partyFrm">
+                                    <button class="btn icon-right" (click)="openParty()"><i class="fas fa-gift"></i>
+                                        אני רוצה את היום הכיף הזה!</button>
+                                </ng-template>
+                                <ng-template #partyFrm>
+                                    <form #partyForm="ngForm" (ngSubmit)="doChoice(item)">
+                                        <label for="party">מגניב! כמה אנשים תהיו?</label>
+                                        <input type="number" maxlength="3" class="form-control" id="party" name="party" required [(ngModel)]="participants" #name="ngModel">
+                                        <button type="submit" class="btn" [disabled]="!partyForm.form.valid">המשך<i class="fas fa-arrow-left"></i></button>
+                                    </form>
+                                </ng-template>
+                            </div></ng-template>
+                            <ng-template #loader>
+                                <div class="loader"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </ng-template>
+                </ng-template>
+                <ng-template #regularItem>
+                    <ng-template [ngIf]="!wrapper.classList.contains('expanded')" [ngIfElse]="expanded">
+                        <div class="gift-item" (click)="expand($event)" [style.background-image]="'url(' + (item.images[0].image | encodeSpaces) + ')'">
+                            <div class="item-footer">
+                                <span>{{item.supplierName}}</span>
+                                <button class="btn">פרטים<i class="fa fa-chevron-left"></i></button>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <ng-template #expanded>
+                        <div class="item-brief">
+                            <span class="close-btn" (click)="collapse($event)">&times;</span>
+                            <div class="brief-body" [style.height]="height + 'px'">
+                                <div class="brief-info">
+                                    <ng-template [ngIf]="item.images.length > 1" [ngIfElse]="singleImage">
+                                        <div class="carousel">
+                                            <div class="slider">
+                                                <div *ngFor="let imageObj of item.images"><img src="{{imageObj.image | encodeSpaces}}"></div>
+                                            </div>
+                                            <div class="carousel-nav">
+                                                <a class="prev"><i class="fa fa-chevron-right"></i></a>
+                                                <a class="next"><i class="fa fa-chevron-left"></i></a>
+                                            </div>
+                                        </div>
+                                    </ng-template><ng-template #singleImage>
+                                        <div class="brief-img"><img src="{{item.images[0].image | encodeSpaces}}"></div>
+                                    </ng-template>
+                                    <h4>תיאור הפעילות:</h4>
+                                    <div class="brief-desc" [innerHTML]="item.description" style="margin-bottom:1rem;"></div>
+                                    <h4>אודות {{item.supplierName}}:</h4>
+                                    <div class="brief-desc" [innerHTML]="item.aboutSupplier"></div>
+                                </div>
+                            </div>
+                            <div class="brief-footer">
+                                <button class="btn" (click)="doChoice(item)">אישור בחירה<i class="fas fa-gift"></i></button>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

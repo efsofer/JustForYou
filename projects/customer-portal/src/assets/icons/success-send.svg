@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="78.707" height="79.673" viewBox="0 0 78.707 79.673">
+  <g id="Group_18201" data-name="Group 18201" transform="translate(-1247.521 -307.608)">
+    <path id="iconmonstr-paper-plane-1" d="M0,0,14.715,53.956,34.652,36.2,15.517,16.008,41.166,33.732l17.7-4.3ZM41.5,37.617,36.788,58.861,28.8,47.994Z" transform="matrix(0.899, -0.438, 0.438, 0.899, 1247.521, 333.411)" fill="#7990a6"/>
+    <g id="Group_18200" data-name="Group 18200" transform="translate(1295.309 357.201)">
+      <ellipse id="Ellipse_162" data-name="Ellipse 162" cx="13.678" cy="11.09" rx="13.678" ry="11.09" transform="translate(1.192 5.428)" fill="#7990a6"/>
+      <path id="check-circle" d="M38.08,23.04A15.04,15.04,0,1,1,23.04,8,15.04,15.04,0,0,1,38.08,23.04ZM21.3,31,32.459,19.845a.97.97,0,0,0,0-1.372L31.087,17.1a.97.97,0,0,0-1.372,0l-9.1,9.1-4.249-4.249a.97.97,0,0,0-1.372,0l-1.372,1.372a.97.97,0,0,0,0,1.372L19.928,31A.97.97,0,0,0,21.3,31Z" transform="translate(-8 -8)" fill="#d2dbe3"/>
+    </g>
+  </g>
+</svg>

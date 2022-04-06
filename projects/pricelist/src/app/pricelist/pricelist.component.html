@@ -1,0 +1,31 @@
+<header><img src="https://www.just4u.co.il/assets/images/j4u_logo.png"></header>
+<div class="container" *ngIf="priceList">
+    <h1>{{priceList.Info[0].Title}}</h1>
+    <div class="items-grid">
+        <a *ngFor="let item of priceList.Items" href="/coupon/{{item.id}}" target="_blank">
+            <div class="item-block">
+                <div class="item-img">
+                    <img src="{{item.image}}" alt="{{item.title}}">
+                </div>
+                <div class="item-info">
+                    <h4>{{item.title}}</h4>
+                    <div class="item-desc" #desc>
+                        <div class="desc-content" [innerHTML]="item.Description1"></div>
+                        <button *ngIf="desc.classList.contains('show-more')" (click)="expandItem($event, desc)">קרא עוד</button>
+                    </div>
+                    <div *ngIf="!item.IsGiftCard" class="item-price">{{item.Price | currency:'ILS':'symbol':'1.0-0'}}</div>
+                    <div *ngIf="item.IsGiftCard" class="item-price">{{item.Price}}% הנחה</div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="notes">{{priceList.Info[0].Notes}}</div>
+</div>
+<div *ngIf="!done" class="loader">
+    <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>

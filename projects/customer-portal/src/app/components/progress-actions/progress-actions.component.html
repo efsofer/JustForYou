@@ -1,0 +1,17 @@
+<div class="main-wrapper">
+    <div class="info">
+        <ng-container *ngFor='let item of data;'>
+            <ng-container *ngIf='item.type === 1'>
+                <p>נבחרו <span>{{item.quantity}}</span> אנשי קשר</p>
+            </ng-container>
+            <ng-container *ngIf='item.type === 2'>
+                <p>נבחרו <span>{{item.quantity}}</span> שוברים במלאי</p>
+            </ng-container>
+        </ng-container>
+    </div>
+    <div class="actions">
+        <button class='btn skip' *ngIf='showBtn' (click)='skipBtn()'>דלג</button>
+        <button class='btn back' *ngIf='currentIndex > 0' (click)='backBtn()'>חזור</button>
+        <button class='btn next' (click)='nextBtn()' [disabled]='isDisabled'>הבא</button>   
+    </div>
+</div>

@@ -1,0 +1,127 @@
+<div class="container">
+    <div class="d-flex" style="padding-bottom: 2rem;">
+        <div class="col-3-5">
+            <ng-template [ngIf]="!deliveryNum" [ngIfElse]="showDelivery">
+                <h2 class="color-primary">פרטים למשלוח</h2>
+                <div class="notes" [innerHTML]="benefit.notes"></div>
+                <form [formGroup]="deliveryForm" (ngSubmit)="getDeliveryWindows()">
+                    <div class="form-section">
+                        <div><input type="text" required formControlName="recipient" class="form-control"
+                                placeholder="שם מלא של המקבל">
+                            <span class="error-desc"
+                                *ngIf="recipient.invalid && (recipient.dirty || recipient.touched)">שדה חובה</span>
+                        </div>
+                        <div><input type="text" required formControlName="phone" class="form-control"
+                                placeholder="טלפון (מספרים בלבד)">
+                            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                                <span class="error-desc" *ngIf="phone.errors.required">שדה חובה</span>
+                                <span class="error-desc" *ngIf="phone.errors.pattern">יש להזין 9 או 10 ספרות
+                                    בלבד</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-section">
+                        <div>
+                            <input type="text" required formControlName="city" class="form-control" placeholder="עיר"
+                                [matAutocomplete]="autoCity">
+                            <mat-autocomplete #autoCity="matAutocomplete">
+                                <mat-option *ngFor="let b_city of filteredCities | async" [value]="b_city">
+                                    {{b_city}}
+                                </mat-option>
+                            </mat-autocomplete>
+                            <span class="error-desc" *ngIf="city.invalid && (city.dirty || city.touched)">שדה
+                                חובה</span>
+                        </div>
+                        <div><input type="text" required formControlName="street" class="form-control"
+                                placeholder="רחוב" [matAutocomplete]="autoStr">
+                            <mat-autocomplete #autoStr="matAutocomplete">
+                                <mat-option *ngFor="let b_street of filteredStreets | async" [value]="b_street">
+                                    {{b_street}}
+                                </mat-option>
+                            </mat-autocomplete>
+                            <span class="error-desc" *ngIf="street.invalid && (street.dirty || street.touched)">שדה
+                                חובה</span>
+                        </div>
+                    </div>
+                    <div class="form-section form-addrs-nums">
+                        <div class="ml-m">
+                            <input type="text" required formControlName="streetnum" class="form-control"
+                                placeholder="מספר בית">
+                            <span class="error-desc"
+                                *ngIf="streetnum.invalid && (streetnum.dirty || streetnum.touched)">שדה חובה</span>
+                        </div>
+                        <div>
+                            <input type="text" formControlName="floor" class="form-control" placeholder="קומה">
+                        </div>
+                        <div class="ml-m">
+                            <input type="text" formControlName="apartment" class="form-control" placeholder="דירה">
+                        </div>
+                        <div>
+                            <input type="text" formControlName="entryCode" class="form-control" placeholder="קוד כניסה">
+                        </div>
+                    </div>
+                    <div class="d-flex jc-between keep-sm" style="max-width: 33rem;">
+                        <button type="button" class="btn btn-back btn-large" [disabled]="isLoading"
+                            (click)="goBack()">חזור</button>
+                        <button *ngIf="!isLoading" class="btn btn-large" type="submit"
+                            [disabled]="!deliveryForm.valid">קבל זמני משלוח לכתובת<i
+                                class="fas fa-arrow-left"></i></button>
+                        <div *ngIf="isLoading" class="loader">
+                            <div class="lds-ring">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <ng-template [ngIf]="optionsReady">
+                    <h5>מועדים אפשריים למשלוח:</h5>
+                    <form [formGroup]="pickWindow" (ngSubmit)="submitDelivery()">
+                        <div *ngIf="optionsReady" class="form-section" style="margin-bottom: 1rem">
+                            <mat-radio-group aria-label="בחר מועד למשלוח" formControlName="deliveryWindow" required>
+                                <mat-radio-button *ngFor="let window of availableWindows; let i = index" [value]="i">
+                                    {{window.dateLbl}}, {{window.hours}}</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <button *ngIf="!isLoading" class="btn btn-large" type="submit"
+                            [disabled]="!pickWindow.valid || !deliveryForm.valid">בצע הזמנה<i
+                                class="fas fa-arrow-left"></i></button>
+                        <div *ngIf="isLoading" class="loader">
+                            <div class="lds-ring">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </form>
+                </ng-template>
+                <div *ngIf="!optionsReady && isError">
+                    <h5>מצטערים, נראה שכתובתכם מחוץ לאזור התפוצה.<br>אנא בדקו שהקלדתם נכון את העיר, ובמידת הצורך פנו
+                        לשירות הלקוחות שלנו בטלפון 03-5322313.<br>תודה</h5>
+                </div>
+                <div *ngIf="optionsReady && isError">
+                    <h5>אירעה שגיאה, אנא פנו לשירות הלקוחות שלנו בטלפון 03-5322313.<br>תודה</h5>
+                </div>
+            </ng-template>
+            <ng-template #showDelivery>
+                <div style="text-align: center;">
+                    <h2 class="color-primary">הזמנתך התקבלה!</h2>
+                    <h5>מספר הזמנה: {{deliveryNum}}</h5>
+                    <h5>לבירורים בנוגע למשלוח אנו פנו לשוקבוק בטלפון: 1-700-555-704.<br>
+                        תודה!</h5>
+                </div>
+            </ng-template>
+        </div>
+        <div class="col-2-5 b-image">
+            <h2 *ngIf="benefit.title" class="color-primary">{{benefit.title}}</h2>
+            <div *ngIf="benefit.image"><a *ngIf="benefit.link" href="{{benefit.link}}">
+                    <img style="width: 100%; max-width: 720px;" src="{{benefit.image}}" alt="לצפייה באתר">
+                </a>
+                <img *ngIf="!benefit.link" style="width: 100%; max-width: 720px;" src="{{benefit.image}}"
+                    alt="{{benefit.name}}"></div>
+        </div>
+    </div>
+</div>

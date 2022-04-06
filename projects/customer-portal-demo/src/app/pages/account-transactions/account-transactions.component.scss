@@ -1,0 +1,27 @@
+:host {
+    .header-wrapper {
+        margin-bottom: 20px;
+    }
+    h2 {
+        font-size: 25px;
+        line-height: 30px;
+        font-weight: 400;
+        margin: 0;
+        span {
+            font-weight: 600; 
+        }
+    }
+    ::ng-deep {
+        .transaction-row {
+            span {
+                margin-left: 5px;
+                .display-button-as-link {
+                    font-size: 18px;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}

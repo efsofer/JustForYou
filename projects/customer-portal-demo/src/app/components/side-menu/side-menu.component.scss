@@ -1,0 +1,40 @@
+:host {
+    display: block;
+    padding-top: 17px;
+    position: sticky;
+    top: 70px;
+    a {
+        text-decoration: none;
+        padding-right: 5px;
+    } 
+    nav {
+        display: flex;
+        flex-direction: column;
+        @media (max-width: 1539px)  {
+            margin-left: 25px;
+            &.open {
+                
+            }
+        }
+    }
+    .nav-item {
+        display: flex;
+        align-items: center;
+        color: #768290;
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 500;
+        min-width: 180px;
+        margin-bottom: 35px;
+        span {
+            margin-right: 14px;
+        }
+    }
+
+    .selected {
+        span {
+            color: #873D4C;
+            font-weight: 600;
+        }
+    }
+}

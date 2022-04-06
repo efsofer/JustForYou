@@ -1,0 +1,105 @@
+<div *ngIf="order.greeting" class="instructions" [innerHTML]="order.greeting | safeHtml"></div>
+<div *ngIf="!order.greeting" class="instructions" [innerHTML]="order.info.greeting | safeHtml"></div>
+<ng-template ngFor let-addonItem [ngForOf]="addonItems">
+    <div class="addon d-flex">
+        <div class="image-wrapper">
+            <img src="https://www.just4u.co.il/pictures/{{addonItem.image | encodeSpaces}}">
+        </div>
+        <div class="content-wrapper">
+            <h4 class="color-primary">{{addonItem.name}}<span *ngIf="addonItem.IsGiftCard"> בשווי {{addonItem.LoadSum | number:'2.0-0'}}
+                ש"ח</span></h4>
+            <div class="item-desc" [innerHTML]="addonItem.description"></div>
+            <a class="btn site-link" href="{{addonItem.link}}" target="_blank">לדף המוצר באתר<i class="fa fa-chevron-left"></i></a>
+            <h4 *ngIf="addonItem.VCVoucherid" style="margin-top: -1.5rem;">הקוד שלך: {{addonItem.VCVoucherid}}</h4>
+        </div>
+    </div>
+    <div class="and-marker"><h3>וגם:</h3></div>
+</ng-template>
+<ng-template [ngIf]="!order.autoChoose && !inDelivery">
+    <h4 *ngIf="addonItems.length" class="selectgift-heading">מתנה לבחירתך מתוך המגוון הבא:</h4>
+    <div class="gifts-grid" [class.ie11]="isIE" #grid>
+        <div *ngFor="let item of items" class="gift-wrapper" #wrapper>
+            <ng-template [ngIf]="!wrapper.classList.contains('expanded')" [ngIfElse]="expanded">
+                <div class="gift-item" (click)="expand($event)"
+                    [style.background-image]="'url(https://www.just4u.co.il/pictures/' + (item.image | encodeSpaces) + ')'">
+                    <div class="item-footer jc-between">
+                        <span>{{item.name}}<span *ngIf="item.IsGiftCard"> בשווי {{item.LoadSum | number:'2.0-0'}}
+                                ש"ח</span></span>
+                        <button class="btn">בחירה<i class="fa fa-chevron-left"></i></button>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template #expanded>
+                <div class="item-brief">
+                    <span class="close-btn" (click)="collapse($event)">&times;</span>
+                    <div class="brief-body" [style.height]="height + 'px'">
+                        <div class="brief-info">
+                            <img src="https://www.just4u.co.il/pictures/{{item.image | encodeSpaces}}">
+                            <h4>{{item.name}}<span *ngIf="item.IsGiftCard"> בשווי {{item.LoadSum | number:'2.0-0'}}
+                                    ש"ח</span></h4>
+                            <div class="brief-desc" [innerHTML]="item.description"></div>
+                        </div>
+                    </div>
+                    <div class="brief-footer">
+                        <a class="btn" href="{{item.link}}" target="_blank">מקומות מכבדים<i
+                                class="fa fa-chevron-left"></i></a>
+                        <button class="btn" (click)="doPotentialChoice(item)">
+                            אישור בחירה<i class="fas fa-gift"></i>
+                        </button>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</ng-template>
+<ng-template [ngIf]="order.autoChoose && !inDelivery">
+    <div class="addon d-flex auto-choose">
+        <div class="image-wrapper">
+            <img src="https://www.just4u.co.il/pictures/{{items[0].image | encodeSpaces}}">
+        </div>
+        <div class="content-wrapper">
+            <h4 class="color-primary">{{items[0].name}}<span *ngIf="items[0].IsGiftCard"> בשווי {{items[0].LoadSum | number:'2.0-0'}}
+                ש"ח</span></h4>
+            <div class="item-desc" [innerHTML]="items[0].description"></div>
+            <a class="btn site-link" href="{{items[0].link}}" target="_blank">לדף המוצר באתר<i class="fa fa-chevron-left"></i></a>
+        </div>
+    </div>
+    <div class="choice-btn"><button class="btn btn-large" (click)="doPotentialChoice(items[0])">אישור בחירה<i class="fas fa-gift"></i></button></div>
+</ng-template>
+<div *ngIf="inDelivery" class="d-flex delform-wrapper">
+    <div class="col-3-5"><app-delivery (actionEvent)="deliveryHandler($event)" #delForm></app-delivery></div>
+    <div class="del-item-brief col-2-5">
+        <div class="del-brief-body">
+            <div class="del-brief-info">
+                <img src="https://www.just4u.co.il/pictures/{{potentialChoice.image | encodeSpaces}}">
+                <h4>{{potentialChoice.name}}<span *ngIf="potentialChoice.IsGiftCard"> בשווי {{potentialChoice.LoadSum | number:'2.0-0'}}
+                        ש"ח</span></h4>
+                <div class="del-brief-desc" [innerHTML]="potentialChoice.description"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="modalDialog" class="overlay">
+    <div class="j4u-modal">
+        בחרתם:<br>
+        <span *ngFor="let addonItem of addonItems"><strong>{{addonItem.name}}<span *ngIf="addonItem.IsGiftCard"> בשווי
+            {{addonItem.LoadSum | number:'2.0-0'}} ש"ח</span></strong><br>וגם<br></span>
+        <strong>{{potentialChoice.name}}<span *ngIf="potentialChoice.IsGiftCard"> בשווי
+            {{potentialChoice.LoadSum | number:'2.0-0'}} ש"ח</span></strong><br>
+        <span class="modal-title">בטוחים?</span><br>
+        לא ניתן יהיה להחליף את הבחירה!
+        <div class="d-flex jc-between" style="margin-top:1rem;">
+            <button *ngIf="!isLoading" class="btn" (click)="doChoice(potentialChoice)">כן!</button>
+            <div *ngIf="isLoading" class="loader">
+                <div class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div><button class="btn" (click)="modalDialog = false" [disabled]="isLoading">לא, אני אסתכל עוד קצת</button>
+            </div>
+        </div>
+    </div>
+</div>

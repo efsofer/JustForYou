@@ -1,0 +1,133 @@
+<h1 class='page-title'>ניהול חשבון</h1>
+<!-- tabs -->
+<div class="p-rtl" dir="rtl">
+    <p-tabView>
+        <p-tabPanel header="מאפייני חברה" [selected]="true">
+            <div class="header-wrapper flex justify-between align-center">
+                <h3>מאפייני חברה</h3>
+            </div>
+            <div class="search-wrapper">
+                <form class="search-container">
+                    <div class="inputs-row flex justify-between align-center">
+                        <div class="input-wrapper">
+                            <label for="name">שם חברה</label>
+                            <input type="text" pInputText [(ngModel)]="name" [ngModelOptions]="{standalone: true}"/>
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="phone">טלפון</label>
+                            <input class='p-inputtext' type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="input-wrapper">
+
+                        </div>
+                    </div>
+                    <div class="inputs-row flex justify-between align-center">
+                        <div class="input-wrapper">
+                            <label for="address">כתובת</label>
+                            <input type="text" pInputText [(ngModel)]="address" [ngModelOptions]="{standalone: true}"/>
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="zip">מיקוד</label>
+                            <input class='p-inputtext' type="tel" id="zip" name="zip">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="selectedOption">יישוב</label>
+                            <p-dropdown [options]="options" [(ngModel)]="selectedOption" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-dropdown>
+                        </div>
+                    </div>
+                    <div class="inputs-row ">
+                        <label for="" style='font-size: 18px; line-height: 22px;margin-bottom: 3px;'>לוגו</label>
+                        <app-upload-new-logo></app-upload-new-logo>
+                    </div>
+                </form>
+            </div>
+        </p-tabPanel>
+        <p-tabPanel header="אמצעי תשלום" >
+            <div class="header-wrapper flex justify-between align-center">
+                <h3>אמצעי תשלום</h3>
+                <button class="btn secondary" (click)='display=true'>הוספת אמצעי תשלום <span class='plus-sign'>+</span></button>
+            </div> 
+            <div class="table-wrapper">
+                <p-table [columns]="cols" [value]="tableDate" [paginator]="true" [rows]="14" [rowsPerPageOptions]="[5,10,15,20,30]">
+                    <ng-template pTemplate="header"  let-columns>
+                        <tr>
+                              <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]='col.field'>
+                                  {{col.header}}
+                                  <p-sortIcon *ngIf='col.header.length' [field]="col.field"></p-sortIcon>
+                              </th>
+                          </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                        <tr [pSelectableRow]="rowData">
+                          <td>{{rowData.creditNumber}}</td>
+                          <td>{{rowData.expired}}</td>
+                          <td>
+                            <button class="display-button-as-link">
+                                <i class="icon trash"></i>
+                                הסרה
+                            </button>
+                        </td>
+                      </tr>
+                      </ng-template>
+                </p-table>  
+            </div>
+        </p-tabPanel>
+        <p-tabPanel header="סוג אנשי קשר" >
+            <div class="header-wrapper flex justify-between align-center">
+                <h3>סוג אנשי קשר</h3>
+                <button class="btn secondary" (click)='display2=true'><span class='plus-sign'>+</span>  הוספת סוג איש קשר </button>
+            </div> 
+            <div class="table-wrapper">
+                <p-table [columns]="cols2" [value]="tableDate2" [paginator]="true" [rows]="14" [rowsPerPageOptions]="[5,10,15,20,30]">
+                    <ng-template pTemplate="header"  let-columns>
+                        <tr>
+                              <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]='col.field'>
+                                  {{col.header}}
+                                  <p-sortIcon *ngIf='col.header.length' [field]="col.field"></p-sortIcon>
+                              </th>
+                          </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                        <tr [pSelectableRow]="rowData">
+                          <td>{{rowData.contactType}}</td>
+                          <td>{{rowData.identify}}</td>
+                          <td>
+                            <button class="display-button-as-link">
+                                <i class="icon trash"></i>
+                                הסרה
+                            </button>
+                        </td>
+                      </tr>
+                      </ng-template>
+                </p-table>  
+            </div>   
+        </p-tabPanel>
+        <p-tabPanel header="מאפייני התקשרות" >
+            
+        </p-tabPanel>
+        <p-tabPanel header="תנאי הסכם" >
+            
+        </p-tabPanel>
+    </p-tabView>
+</div>
+
+<!-- modals -->
+<p-dialog [style]="{width: '626px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]="display" header='הוספת אמצעי תשלום' [styleClass]='""'>
+    <app-add-credit-card-dialog></app-add-credit-card-dialog>
+    <p-footer>
+    <div class="">
+        <button class="btn secondary" (click)="display=false">ביטול</button>
+        <button class="btn primary">אישור</button>
+    </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [style]="{width: '767px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]="display2" header='הוספת סוג איש קשר' [styleClass]='""'>
+    <app-add-contact-type-dialog></app-add-contact-type-dialog>
+    <p-footer>
+    <div class="">
+        <button class="btn secondary" (click)="display2=false">ביטול</button>
+        <button class="btn primary">אישור</button>
+    </div>
+    </p-footer>
+</p-dialog>

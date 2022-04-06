@@ -1,0 +1,36 @@
+<h1 class='page-title'>יצירת פעילות חדשה</h1>
+<app-progress-bar [steps]='steps'></app-progress-bar>
+<!-- הגדרות פעילות -->
+<ng-container *ngIf='currentIndex === 0'>
+    <app-container>
+      <app-activity-create-setting></app-activity-create-setting>
+    </app-container>
+</ng-container>
+<!-- בחירת מוצרים -->
+<ng-container *ngIf='currentIndex === 1'>
+   <app-activity-create-select-products></app-activity-create-select-products>
+</ng-container>
+<!-- בחירת אנשי קשר -->
+<ng-container *ngIf='currentIndex === 2'>
+   <app-activity-create-select-contacts></app-activity-create-select-contacts>
+</ng-container>
+<!-- הגדרות שליחה -->
+<ng-container *ngIf='currentIndex === 3'>
+   <app-container>
+     <app-activity-create-send-settings></app-activity-create-send-settings>
+   </app-container>
+</ng-container>
+<!-- אתר מייל וSMS -->
+<ng-container *ngIf='currentIndex === 4'>
+   <app-mail-sms></app-mail-sms>
+</ng-container>
+<!-- סיכום -->
+<ng-container *ngIf='currentIndex === 5'>
+   <app-activity-create-summery></app-activity-create-summery>
+</ng-container>
+<!-- סיום -->
+<ng-container *ngIf='currentIndex === 6'>
+   <app-final-step [message]='"פעילות נוצרה בהצלחה!"' [btnLabel]='"צפייה בפעילות"' [btnLink]="['/activities-management','1']"></app-final-step>
+</ng-container>
+
+<app-progress-actions *ngIf='currentIndex !== 6'></app-progress-actions>

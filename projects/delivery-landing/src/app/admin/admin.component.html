@@ -1,0 +1,91 @@
+<div class="container">
+    <ng-template [ngIf]="!isLoggedIn" [ngIfElse]="data">
+        <h2 class="color-primary" style="text-align: center;margin-top: 12rem;">כניסה למערכת</h2>
+        <form #vldForm="ngForm" (ngSubmit)="onVldSubmit()">
+            <input type="text" class="form-control form-login" name="vld" required [(ngModel)]="vldValue" #name="ngModel"
+                placeholder="שם משתמש" autocomplete="username">
+            <input type="password" class="form-control form-login" name="pass" required [(ngModel)]="vldPass" #name="ngModel"
+                placeholder="סיסמה" autocomplete="current-password">
+                <span *ngIf="isError" class="error-desc">שם משתמש או סיסמה לא נכונים<br></span>
+            <button type="submit" class="btn btn-large" [disabled]="!vldForm.form.valid">המשך<i
+                    class="fas fa-arrow-left"></i></button>
+        </form>
+        
+    </ng-template>
+    <ng-template #data>
+        <div class="d-flex jc-between" style="border-bottom: 1px solid #e0e0e0; padding: .5rem 0; margin-bottom: 1rem">
+            <h2 class="color-primary" style="margin: 0;">פירוט הזמנות</h2>
+            <form [formGroup]="filterForm" (ngSubmit)="getEntries()" style="margin-top: .5rem;"><strong>הזמנות מ: </strong>
+                <mat-radio-group (change)="dateFilter()" aria-label="בחר אפשרות" formControlName="autoDate">
+                    <mat-radio-button value="today">היום</mat-radio-button>
+                    <mat-radio-button value="week">בשבוע האחרון</mat-radio-button>
+                    <mat-radio-button value="month">החודש</mat-radio-button>
+                    <mat-radio-button value="range">מתאריך</mat-radio-button>
+                </mat-radio-group>
+                <input type="date" formControlName="fromDate" class="form-control form-small">
+                עד תאריך: <input type="date" formControlName="toDate" class="form-control form-small"> | 
+                הטבה: <select formControlName="package">
+                    <option value="" selected>הכל</option>
+                    <option *ngFor="let b of allowed" [value]="b">{{b}}</option>
+                </select> | 
+                קוד שובר: <input type="text" formControlName="code" class="form-control form-small">
+                <button class="btn btn-large" type="submit"
+                            [disabled]="isLoading" style="margin-right: .5rem">סינון</button>
+            </form>
+            <div><button class="btn btn-large" (click)="exportExcel()" *ngIf="entries" style="margin-top: .5rem;">יצוא
+                    לאקסל<i class="far fa-file-excel"></i></button></div>
+        </div>
+        <div *ngIf="isLoading" style="text-align: center; margin-top: 1rem;"><div class="loader"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div></div>
+        <p *ngIf="!isLoading && pristine" style="color:red"><strong>שימו לב! מוצגות הזמנות מהיום בלבד.</strong></p>
+        <table *ngIf="!isLoading" id="excel-table" border="1">
+            <tr>
+                <th>קוד הטבה</th>
+                <th *ngIf="!isPais">סוג הטבה</th>
+                <th>שם שולח</th>
+                <th>טלפון שולח</th>
+                <th>שם מקבל</th>
+                <th>טלפון מקבל</th>
+                <th *ngIf="!isPais">כתובת</th>
+                <th *ngIf="isPais">עיר</th>
+                <th *ngIf="isPais">רחוב</th>
+                <th *ngIf="isPais">מס' בית</th>
+                <th *ngIf="isPais">מס' דירה</th>
+                <th>הערות</th>
+                <th *ngIf="!isPais">ברכה</th>
+                <th>תאריך הזמנה</th>
+                <th>תאריך הזמנה</th>
+            </tr>
+            <ng-template [ngIf]="!isPais" [ngIfElse]="pais">
+                <tr *ngFor="let item of entries">
+                    <td>{{item.VCVoucherid}}</td>
+                    <td>{{item.Package}}</td>
+                    <td>{{item.SendName}}</td>
+                    <td>{{item.SendPhone}}</td>
+                    <td>{{item.ReceiveName}}</td>
+                    <td>{{item.ReceivePhone}}</td>
+                    <td>{{item.ReceiveAddress}}</td>
+                    <td>{{item.Notes}}</td>
+                    <td>{{item.Greeting}}</td>
+                    <td>{{item.viewDate}}</td>
+                    <td>{{item.InsertDate}}</td>
+                </tr>
+            </ng-template>
+            <ng-template #pais>
+                <tr *ngFor="let item of entries">
+                    <td>{{item.VCVoucherid}}</td>
+                    <td>{{item.SendName}}</td>
+                    <td>{{item.SendPhone}}</td>
+                    <td>{{item.ReceiveName}}</td>
+                    <td>{{item.ReceivePhone}}</td>
+                    <td>{{item.city}}</td>
+                    <td>{{item.street}}</td>
+                    <td>{{item.streetnum}}</td>
+                    <td>{{item.aptnum}}</td>
+                    <td>{{item.Notes}}</td>
+                    <td>{{item.viewDate}}</td>
+                    <td>{{item.InsertDate}}</td>
+                </tr>
+            </ng-template>
+        </table>
+    </ng-template>
+</div>

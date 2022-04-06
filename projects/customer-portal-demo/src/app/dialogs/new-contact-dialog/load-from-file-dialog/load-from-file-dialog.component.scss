@@ -1,0 +1,19 @@
+:host {
+    display: block;
+    padding-top: 22px;
+    .instructions {
+        margin-bottom: 20px;
+    }
+    p {
+       font-size: 18px;
+       line-height: 22px;
+       margin: 0;
+    }
+
+    .display-button-as-link {
+        text-decoration: underline;
+        font-size: 18px;
+        line-height: 22px;
+        color: #000;
+    }
+}

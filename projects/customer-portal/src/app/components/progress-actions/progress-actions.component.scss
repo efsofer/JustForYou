@@ -1,0 +1,60 @@
+:host {
+    display: block;
+    background-color: #000;
+    padding: 1px 26px 1px 45px;
+    // position: absolute;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    z-index: 99;
+    .main-wrapper {
+        max-width: 1485px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+    }
+    .info {
+        font-size: 20px;
+        line-height: 26px;
+        font-weight: 400;
+        color: #fff;
+        display: flex;
+        p {
+            margin: 0;
+            padding: 20px 15px;
+            &:first-of-type {
+                border-left: 1px solid rgba(255, 255, 255, 0.35);
+            }
+        }
+        span {
+            font-weight: 700; 
+        }
+    }
+    .actions {
+        display: flex;
+        align-items: center;
+        button {
+            font-size: 18px;
+            line-height: 23px;
+            font-weight: 500;
+            color: #fff;
+            min-width: 92px;
+            padding: 0 30px;
+            &.next {
+                width: 149px;
+                border: 3px solid #D5C272;
+                background-color: #873D4C;
+                border-radius: 5px;
+                margin-right: 25px;
+                &:disabled {
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+    @media (max-width: 1539px)  {
+        z-index: 9999;
+    }
+}

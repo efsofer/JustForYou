@@ -1,0 +1,47 @@
+<form class="search-container" [formGroup]="custForm">
+    <div class="inputs-row flex justify-between">
+        <div class="input-wrapper">
+            <label for="TZ">תעודת זהות/מספר עובד</label>
+            <input class='ui-inputtext' type="text" pInputText formControlName="TZ" />
+        </div>
+        <div class="input-wrapper">
+            <label for="custName">שם מלא</label>
+            <input class='ui-inputtext' type="text" pInputText formControlName="custName" required />
+            <span class="error-desc" *ngIf="custName.invalid && showErrors">שדה חובה</span>
+        </div>
+    </div>
+    <div class="inputs-row flex justify-between">
+        <div class="input-wrapper">
+            <label for="phone">טלפון נייד</label>
+            <input class='ui-inputtext' type="tel" formControlName="phone" id="phone" name="phone">
+            <span class="error-desc" *ngIf="phone.invalid && showErrors">יש להזין טלפון נייד תקין</span>
+        </div>
+        <div class="input-wrapper">
+            <label for="mail">מייל</label>
+            <input class='ui-inputtext' formControlName="mail" type="email" id="mail">
+            <span class="error-desc" *ngIf="mail.invalid && showErrors">יש להזין מייל תקין</span>
+        </div>
+    </div>
+    <div class="inputs-row flex justify-between">
+        <div class="input-wrapper">
+            <label for="origSendDate">תאריך שליחה<span *ngIf="!isPristine"> מקורי</span></label>
+            <p-calendar *ngIf="isPristine" formControlName="origSendDate" dateFormat="dd/mm/yy" [showIcon]="true" [appendTo]="'body'"></p-calendar>
+            <input *ngIf="!isPristine" type="text" pInputText formControlName="origSendDate" readonly />
+        </div>
+        <div class="input-wrapper">
+            <label for="mngMail">מייל מנהל</label>
+            <input class='ui-inputtext' formControlName="mngMail" type="email" id="mngMail">
+            <span class="error-desc" *ngIf="mngMail.invalid && showErrors">יש להזין מייל תקין</span>
+        </div>
+    </div>
+    <div class="inputs-row flex justify-between">
+        <div class="input-wrapper">
+            <label for="chooseDate">תאריך בחירת מתנה</label>
+            <input type="text" pInputText formControlName="chooseDate" readonly />
+        </div>
+        <div class="input-wrapper">
+            <label for="lastSent">תאריך שליחה אחרון</label>
+            <input type="text" pInputText formControlName="lastSent" readonly />
+        </div>
+    </div>
+</form>

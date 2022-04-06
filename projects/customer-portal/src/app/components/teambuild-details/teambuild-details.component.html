@@ -1,0 +1,67 @@
+<div *ngIf="choice" class="choice-container">
+    <ng-template [ngIf]="choice.id" [ngIfElse]="customOrder">
+        <div class="choice-wrapper">
+            <div class="choice-img">
+                <img src="https://www.justforu.co.il/pictures/{{choice.Image | encodeSpaces}}">
+            </div>
+            <div class="choice-desc">
+                <h3>{{choice.name}}</h3>
+                <div [innerHTML]="choice.Htmldescription"></div>
+            </div>
+        </div>
+        <div class="package-brief">
+            <div class="package-body">
+                <div class="package-activities">
+                    <div class="activities-wrapper">
+                        <div *ngFor="let item of choice.TeamBuildItems; let i = index" class="gift-item"
+                            [class.active]="expandedItem == i"
+                            [style.background-image]="'url(' + (item.image1 | encodeSpaces) + ')'"
+                            (click)="expandedItem = i">
+                            <div *ngIf="item.Images && item.Images.length" class="supp-logo"><img
+                                    src="{{item.Images[0].image | encodeSpaces}}"></div>
+                            <div class="item-footer" [innerHTML]="(item.SpecialDescription && item.SpecialDescription != item.Name) ? item.SpecialDescription : 
+                                item.Name.split('-')[0] + (item.LName ? ' ב' + item.LName : '')">
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngFor="let item of choice.TeamBuildItems; let i = index" class="activity-desc"
+                        [hidden]="expandedItem != i">
+                        <ng-template [ngIf]="!item.SpecialDescriptionLong" [ngIfElse]="overrideDesc">
+                            <h4>תיאור הפעילות:</h4>
+                            <div [innerHTML]="item.ItemSuppNotes"></div>
+                            <!-- <h4>לתיאום ובירורים עם בית העסק:</h4>
+                            <p><i class="fas fa-phone"></i>{{item.SuppPhone}}<br>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span *ngIf="item.CityInSite">{{item.AddressInSite}}, {{item.CityInSite}}</span>
+                                <span *ngIf="!item.CityInSite">{{item.AddressInSite}}</span>
+                            </p> -->
+                            <h4>אודות בית העסק:</h4>
+                            <div [innerHTML]="item.SuppDescription"></div>
+                        </ng-template>
+                        <ng-template #overrideDesc>
+                            <div [innerHTML]="item.SpecialDescriptionLong | safeHtml"></div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #customOrder>
+        <h3>יום גיבוש מותאם אישית הכולל את הפעילויות הבאות:</h3>
+        <div class="package-brief">
+            <div class="package-body">
+                <div class="package-activities">
+                    <div class="activities-wrapper">
+                        <div *ngFor="let item of choice.TeamBuildItems; let i = index" class="gift-item"
+                            [class.active]="expandedItem == i"
+                            [style.background-image]="'url(' + (item.image1 | encodeSpaces) + ')'"
+                            (click)="expandedItem = i">
+                            <div class="item-footer" [innerHTML]="item.Name">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>

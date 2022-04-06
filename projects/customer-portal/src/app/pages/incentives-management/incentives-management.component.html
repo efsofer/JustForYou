@@ -1,0 +1,68 @@
+<h1 class='page-title'>ניהול תמריצים</h1>
+<!--יצירת אתר תמריצים חדש
+ <div class='flex justify-between align-center'>
+  
+    <button class='btn primary' (click)='createActivity()'><span class='plus-sign'>+</span> אתר תמריצים חדש </button>
+</div> -->
+
+<div *ngIf="!haveDealers" class='massage'>
+    {{massage}}
+</div>
+
+<div *ngIf="haveDealers">
+<app-container>
+    <div class="flex justify-between align-center header-wrapper" style="margin-bottom:2rem;">
+        <h2>סך הכל תקציב: <span>{{TotalObligo}} ₪</span></h2>
+        <h2>נוצל: <span>{{TotalUsed}} ₪</span></h2>
+        <h2>יתרה: <span>{{TotalBalance}} ₪</span></h2>
+        <h2>שוברים שנשלחו: <span>{{TotalSent}}</span></h2>
+        <!-- <button class="btn secondary" [routerLink]="['/incentives-management','1']"><i class="icon pi pi-list"></i>צפייה בנתונים</button> -->
+    </div>
+    <div class="table-wrapper">
+        <p-table [columns]="cols" [value]="tableDate" [paginator]="true" [rows]="14" [rowsPerPageOptions]="[5,10,15,20,30]">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                      <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]='col.field'>
+                          {{col.header}}
+                          <p-sortIcon [field]="col.field" *ngIf='col.header.length > 0'></p-sortIcon>
+                      </th>
+                  </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                  <td>{{rowData.ViewOrderHeader}}</td>
+                  <td>{{rowData.CreationDate}}</td>
+                  <td>{{rowData.Obligo}}<span> ₪</span></td>
+                  <td *ngIf="rowData.totalwithvat!=null">{{rowData.totalwithvat}}<span> ₪</span></td>
+                  <td *ngIf="rowData.totalwithvat==null">0<span> ₪</span></td>
+
+                  <td *ngIf="rowData.balance!=null">{{rowData.balance}}<span> ₪</span></td>
+                  <td *ngIf="rowData.balance==null">0<span> ₪</span></td>
+
+                  <td *ngIf="rowData.totalsent!=null">{{rowData.totalsent}}</td>
+                  <td *ngIf="rowData.totalsent==null">0<span> ₪</span></td>
+
+                  <td>
+                    <!-- // "OrderId": 21916,
+                    // "ViewOrderHeader": "",
+                    // "CreationDate": "2020-11-23T11:14:06",
+                    // "Obligo": 500.00,
+                    // "totalwithvat": null,
+                    // "ballance": null,
+                    // "totalsent": 0,
+                    // "Notes": "אתר תמריצים לבנק דיסקונט",
+                    // "LinkInSite": "https://www.just4u.co.il//SelectGiftNew?id=j0KWqYM3fIaS_1Fv-fTBwg2",
+                    // "UserContactId": 0 -->
+              
+              
+                    <!-- <button class="display-button-as-link" (click)="openIncentive()">
+                        <i class="pi pi-arrow-circle-left"></i>
+                        צפייה
+                    </button> -->
+                </td>
+              </tr>
+              </ng-template>
+        </p-table>  
+    </div>
+</app-container> 
+</div>

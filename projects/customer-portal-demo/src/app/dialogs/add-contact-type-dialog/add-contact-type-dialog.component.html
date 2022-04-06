@@ -1,0 +1,12 @@
+<form>
+    <div class="inputs-row flex justify-between align-center">
+        <div class="input-wrapper first">
+            <label for="zip">שם סוג איש קשר</label>
+            <input type="text" pInputText [(ngModel)]="name" [ngModelOptions]="{standalone: true}"/>
+        </div>
+        <div class="input-wrapper second">
+            <label for="">מזהה ראשי</label>
+            <p-dropdown [options]="options" [(ngModel)]="selectedOption" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-dropdown>
+        </div>
+    </div>
+</form>

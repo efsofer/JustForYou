@@ -1,0 +1,15 @@
+:host {
+    ::ng-deep {
+        .ui-paginator-bottom {
+            //  * {
+            //     border: 1px solid red;
+            //     width: 1px !important;
+            // }
+            ::ng-deep {
+                // .ui-dropdown-label-container {
+                //     width: 100%;
+                // }
+            }
+        }
+    }
+}

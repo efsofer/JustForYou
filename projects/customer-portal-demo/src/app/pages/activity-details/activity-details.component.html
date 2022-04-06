@@ -1,0 +1,32 @@
+<div class='flex justify-between align-center'>
+    <h1 class='page-title'>פרטי פעילות</h1>
+    <button class='btn secondary' (click)='createActivity()'><i class='icon edit'></i>עריכת פעילות</button>
+</div>
+<!-- Coupon main card -->
+<app-card-item [type]='9' [data]='mockActivitis[0]'></app-card-item>
+
+<div class="p-rtl" dir="rtl">
+    <p-tabView>
+        <p-tabPanel header="אנשי קשר" [selected]="true">
+           <app-contacts-activities></app-contacts-activities>
+        </p-tabPanel>
+        <p-tabPanel header="שוברים בפעילות" >
+            <div class="header-wrapper">
+                <h3>שוברים בפעילות</h3>
+                <div class="info">
+                    <p *ngIf='showGrid'>הגדרת לבחור <span>באופן ידני</span> איזה שוברים אנשי הקשר יכולים להשתמש </p>
+                    <p *ngIf='!showGrid'>הגדרת לאפשר לאנשי הקשר  לבחור שובר כלשהו מ-just4U עד <span>₪1000</span></p>
+                </div>
+            </div>
+            <div class="contact-wrapper" *ngIf='showGrid'>
+                <h4><span>3</span> שוברים</h4>
+                    <div class="items-wrapper">
+                        <ng-container *ngFor='let coupon of mockCoupons'>
+                            <app-card-item [type]='3' [data]='coupon'></app-card-item>
+                        </ng-container>
+                        <app-paginator></app-paginator>
+                    </div>
+            </div>
+        </p-tabPanel>
+    </p-tabView>
+</div>

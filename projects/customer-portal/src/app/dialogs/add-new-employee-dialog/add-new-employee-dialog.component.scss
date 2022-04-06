@@ -1,0 +1,22 @@
+.inputsWrap{
+   display: flex;
+   flex-wrap: wrap;
+}
+.inputsWrap > div{
+   width: 47%;
+   margin: 5px;
+   flex-grow: 1;
+}
+.dialogFooterAddEmp button{
+   margin: 0 5px;
+}
+.positRel{
+   position: relative;
+}
+.positRel mat-datepicker-toggle{
+   position: absolute;
+    left: 0;
+}
+.mat-form-field{
+   width: 100%;
+}

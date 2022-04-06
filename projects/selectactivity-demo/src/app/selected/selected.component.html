@@ -1,0 +1,95 @@
+<div class="container">
+    <h2 class="color-primary">הבחירה שלך:</h2>
+    <div class="choice-container">
+        <ng-template [ngIf]="choice.combined_items" [ngIfElse]="regularItem">
+            <div class="choice-wrapper">
+                <div class="choice-img">
+                    <img src="https://www.just4u.co.il/pictures/{{choice.image | encodeSpaces}}">
+                </div>
+                <div class="choice-desc">
+                    <h3>{{choice.name}}</h3>
+                    <div [innerHTML]="choice.description"></div>
+                </div>
+            </div>
+            <div class="package-brief">
+                <div class="package-body">
+                    <div class="package-activities">
+                        <div class="activities-wrapper">
+                            <div *ngFor="let activity of choice.combined_items; let i = index" class="gift-item"
+                                [class.active]="expandedActivity == i"
+                                [style.background-image]="'url(' + (activity.picture | encodeSpaces) + ')'"
+                                (click)="expandedActivity = i">
+                                <div class="supp-logo"><img src="{{activity.supplierLogo | encodeSpaces}}"></div>
+                                <div class="item-footer"
+                                    [innerHTML]="activity.name.split('-')[0] + ' ב' + activity.supplierName">
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngFor="let activity of choice.combined_items; let i = index" class="activity-desc"
+                            [hidden]="expandedActivity != i">
+                            <h4>תיאור הפעילות:</h4>
+                            <div [innerHTML]="activity.description"></div>
+                            <h4>לתיאום ובירורים עם בית העסק:</h4>
+                            <p><i class="fas fa-phone"></i>{{activity.supplierPhone}}<br>
+                                <i class="fas fa-map-marker-alt"></i>{{activity.supplierAddress}}</p>
+                            <h4>אודות בית העסק:</h4>
+                            <div [innerHTML]="activity.aboutSupplier"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #regularItem>
+            <div class="choice-wrapper">
+                <div class="choice-img">
+                    <ng-template [ngIf]="choice.images.length > 1" [ngIfElse]="singleImage">
+                        <div class="carousel">
+                            <div class="slider">
+                                <div *ngFor="let imageObj of choice.images"><img src="{{imageObj.image | encodeSpaces}}"></div>
+                            </div>
+                            <div class="carousel-nav">
+                                <a class="prev"><i class="fa fa-chevron-right"></i></a>
+                                <a class="next"><i class="fa fa-chevron-left"></i></a>
+                            </div>
+                        </div>
+                    </ng-template><ng-template #singleImage>
+                        <div class="brief-img"><img src="{{choice.images[0].image | encodeSpaces}}"></div>
+                    </ng-template>
+                </div>
+                <div class="choice-desc">
+                    <h3>{{choice.supplierName}}</h3>
+                    <div [innerHTML]="choice.description"></div>
+                    <!--<h3>אודות {{choice.supplierName}}:</h3>
+                    <div class="brief-desc" [innerHTML]="choice.aboutSupplier"></div>-->
+                </div>
+            </div>
+        </ng-template>
+        <h2 class="color-primary">בחירה מעולה! :)</h2>
+        <ng-template [ngIf]="choice.VCVoucherid" [ngIfElse]=noCode>
+            <h3>הקודים שלכם:</h3>
+            <h4><span *ngFor="let vccode of choice.VCVoucherid">{{vccode}}<br></span></h4>
+            <h3>תוקף: 31.12.2021</h3>
+            <h4>קבלת הקודים</h4>
+            <div class="send-options color-primary">
+                <div class="send-option" [class.active]="sendPhone" (click)="sendPhone = !sendPhone"><i
+                        class="fa fa-mobile"></i><i class="fa fa-comment"></i><span>SMS</span></div>
+                <div class="send-option" [class.active]="sendMail" (click)="sendMail = !sendMail"><i
+                        class="fa fa-envelope"></i><span>מייל</span></div>
+                <div class="send-option"><i class="far fa-file-excel"></i><span>Excel</span></div>
+                <div class="send-option" (click)="print()"><i class="fa fa-print"></i><span>הדפסה</span></div>
+            </div>
+            <div class="sendform-wrapper">
+                <form *ngIf="sendPhone || sendMail" [formGroup]="sendForm" (ngSubmit)="onSendSubmit()">
+                    <div *ngIf="sendPhone"><input type="tel" id="phone" name="phone" formControlName="phone"
+                            class="form-control" placeholder="מס' טלפון"></div>
+                    <div *ngIf="sendMail"><input type="email" id="email" name="email" formControlName="email"
+                            class="form-control" placeholder="כתובת אימייל"></div>
+                    <button class="btn" type="submit" [disabled]="!sendForm.valid">שלח</button>
+                </form><span *ngIf="sent" class="color-primary">הקוד נשלח, עוד רגע המתנה אצלך!</span>
+            </div>
+        </ng-template>
+        <ng-template #noCode>
+            <h3>בחרתם באופציה בתוספת תשלום. נציג דור חדש בשוברים ייצור עמכם קשר ביום העסקים הקרוב.</h3>
+        </ng-template>
+    </div>
+</div>

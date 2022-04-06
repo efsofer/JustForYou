@@ -1,0 +1,47 @@
+<div class="container">
+    <h2 class="color-primary">בחירה מעולה! :)</h2>
+    <div *ngFor="let choice of choices; let i = index" class="choice-container">
+        <div class="choice-wrapper">
+            <div class="choice-img">
+                <img src="{{choice.image | encodeSpaces}}">
+            </div>
+            <div class="choice-desc">
+                <h3>{{choice.ITemName}}<span *ngIf="choice.IsGiftCard"> בשווי {{choice.LoadSum | number:'2.0-0'}}
+                        ש"ח</span></h3>
+                <div [innerHTML]="choice.description"></div>
+            </div>
+        </div>
+        <div *ngIf="!order.goToDelivery" class="suppliers-link no-print"><a href="../coupon/{{choice.itemid}}" target="_blank" class="btn">לרשימת
+                בתי עסק מכבדים</a></div>
+        <ng-template [ngIf]="choice.showCode" [ngIfElse]="noCode">
+            <div><h3>הקוד שלך: {{choice.VCVoucherid}}<br>
+                תוקף: {{vDate[i]}}</h3>
+            <h3 *ngIf="choice.RealizeDate">מומש ב{{choice.Location}} בתאריך {{rDate[i]}}</h3></div>
+            <div class="no-print">
+                <h4>קבלת הקוד</h4>
+                <div class="send-options color-primary">
+                    <div class="send-option" [class.active]="sendPhone" (click)="sendPhone = !sendPhone"><i
+                            class="fa fa-mobile"></i><i class="fa fa-comment"></i><span>SMS</span></div>
+                    <div class="send-option" [class.active]="sendMail" (click)="sendMail = !sendMail"><i
+                            class="fa fa-envelope"></i><span>מייל</span></div>
+                </div>
+                <div class="sendform-wrapper">
+                    <form *ngIf="allowSend && (sendPhone || sendMail)" [formGroup]="sendForm" (ngSubmit)="onSendSubmit(choice.itemid)">
+                        <div *ngIf="sendPhone"><input type="tel" id="phone" name="phone" formControlName="phone"
+                                class="form-control" placeholder="מס' טלפון"></div>
+                        <div *ngIf="sendMail"><input type="email" id="email" name="email" formControlName="email"
+                                class="form-control" placeholder="כתובת אימייל"></div>
+                        <button class="btn" type="submit" [disabled]="!sendForm.valid">שלח</button>
+                    </form><span *ngIf="sent" class="color-primary">הקוד נשלח, עוד רגע המתנה אצלך!</span><br>
+                    <span *ngIf="!allowSend" class="error-desc">יש להמתין במשך 15 דקות ממועד השליחה האחרון לפני שניתן יהיה לשלוח פעם נוספת.</span>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #noCode>
+            <h3 *ngIf="choice.noCodeNote">{{choice.noCodeNote}}</h3>
+            <h3 *ngIf="order.goToDelivery">הזמנתך התקבלה בהצלחה. האספקה תתבצע במרוכז החל מתאריך: {{endDate}}.<br>
+                לבירורים בנוגע למשלוח אנא פנו לספק. תודה!</h3>
+            <h3 *ngIf="!choice.noCodeNote && !order.goToDelivery">קוד השובר יתקבל בתאריך: {{endDate}}</h3>
+        </ng-template>
+    </div>
+</div>

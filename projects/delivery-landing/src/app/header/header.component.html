@@ -1,0 +1,8 @@
+<header>
+    <div *ngIf="benefit" class="banner" [style.background-image]="'url(' + benefit.background + ')'">
+        <h1 class="banner-title">{{benefit.title}}</h1>
+        <div [innerHTML]="benefit.content | safeHtml"></div>
+        <img *ngIf="benefit.image" src="{{benefit.image}}">
+    </div>
+    <div *ngIf="!benefit" class="default-banner"><img src=" " alt="Just4u Logo"></div>
+</header>

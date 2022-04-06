@@ -1,0 +1,26 @@
+{
+    "23287": [
+        {
+            "orderId": "hZXJpkbRkbFMZmBf4QfiLg2",
+            "title": "מוצרי חשמל מבית אלקטרה",
+            "greeting": "בחרו ממגוון מוצרי חשמל איכותיים. שימו לב: האספקה תחל בתאריך 07.03.2021.<style>.gift-item {background-color: #fff; background-size: contain !important;}</style>",
+            "image": "https://www.just4u.co.il/Pictures/electronics_passover_banner.jpg",
+            "addonItems": null,
+            "goToDelivery": 1
+        },
+        {
+            "orderId": "94D9zJX5gtIbzJRtXyOscA2",
+            "addonItems": [2609],
+            "noCodeProducts": [2688,2628,2434,2619,2631,2620,2621,2623,2622,2308,2624,2431,2627,2637,2626,2635,2629,2640,2636,2642,2625,2665,2630],
+            "noCodeNote": "קיבלנו את הזמנתך, קודי השוברים יישלחו אליך בימים הקרובים. תודה!",
+            "goToDelivery": 0
+        },
+        {
+            "orderId": "QTc0c1rWZFDSlgUXelE1Tw2",
+            "addonItems": [2609],
+            "autoChoose": 2614,
+            "autoChooseNoCodeNote": "קוד השובר יתקבל בתאריך: 07/03/2021",
+            "goToDelivery": 0
+        }
+    ]
+}

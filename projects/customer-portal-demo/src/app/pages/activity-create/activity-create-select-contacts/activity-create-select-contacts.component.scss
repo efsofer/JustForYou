@@ -1,0 +1,113 @@
+:host {
+    .page-title {
+        font-size: 25px;
+        line-height: 33px;
+        margin: 0 0 25px 0;
+    }
+
+    .header-wrapper {
+        margin-bottom: 15px;
+       .page-title {
+        margin: 0;
+    }
+    }
+    .actions-container {
+        .ml {
+            margin-left: 15px;
+        }
+    }
+
+    .radio-button-section {
+        .input-wrapper {
+            width: 100% !important;
+            margin-bottom: 25px;
+            ::ng-deep {
+                .p-multiselect {
+                    max-width: 305px;
+                } 
+            }
+            &.multiselect {
+                margin: 15px 25px 0 0;
+            }
+        }
+    }
+    p {
+        font-size: 18px;
+        line-height: 23px;
+        margin: 5px 25px 0 0;
+    }
+
+    .search-wrapper {
+        ::ng-deep {
+            app-container {
+                .container {
+                    background-color: #F2F5F8 !important;
+                }
+            }
+            .input-wrapper {
+               // margin-bottom: 15px;
+            }
+            .p-inputtext {
+                margin-left: 0 !important;
+            }
+        }
+    }
+
+    .result-item {
+        background-color: #F2F5F8 !important;
+        padding: 10px 33px;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.29);
+        border-radius: 10px;
+        margin-bottom: 25px;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        border: 9px solid transparent;
+        border-radius: 10px;
+        transition: all 0.1s linear;
+        &::before {
+            content: url('/assets/icons/trand-selected.svg');
+            position: absolute;
+            top: -25px;
+            right: -20px;
+            z-index: 1;
+            opacity: 0;
+            transition: all 0.1s linear;
+        }
+        .result-details {
+            display: flex;
+            align-items: center;
+            button {
+                padding: 7px 0;
+                margin-left: 15px;
+            }
+        }
+        .result-contacts {
+            display: flex;
+            align-items: center;
+            .contact-types {
+                span {
+                    font-size: 18px;
+                    line-height: 22px;
+                    border-left: 1px solid #000;
+                    padding-left: 10px;
+                    margin-left: 10px;
+                }
+            }
+            .event {
+                span {
+                    font-size: 18px;
+                    line-height: 22px;
+                    margin: 0 2px
+                }
+            }
+        }
+
+        &.selected {
+            border: 9px solid #D5C272;
+            &::before {
+                opacity: 1;
+            }
+        }
+    }
+}

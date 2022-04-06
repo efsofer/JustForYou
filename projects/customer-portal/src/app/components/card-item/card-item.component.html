@@ -1,0 +1,610 @@
+<!-- homepage coupons || דף הבית - שוברים -->
+<ng-container *ngIf='type === 1'>
+    <a [routerLink]="['/coupons-management','coupon']" [queryParams]="{id : data?.ItemId}">
+        <div class="card-item homepage" (click)="getCouponId(data.ItemId)">
+            <div class="image-wrapper">
+                <img src="{{data?.Image}}" alt="">
+            </div>
+            <div class="content-wrapper">
+                <div class="title">
+                    <h3>{{data?.ItemName}}</h3>
+                </div>
+                <div class="dl-wrapper">
+                    <div *ngIf='data?.Available'>
+                        <dl>
+                            <div class='dd-wrapper'>
+                                <span class='icon check'></span>
+                                <dd>{{data?.Available}} פנויים</dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div *ngIf='data?.Sent'>
+                        <dl>
+                            <div class='dd-wrapper'>
+                                <span class='icon users'></span>
+                                <dd>{{data?.Sent}} שיוכים</dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div *ngIf='data?.IsGiftCard'>
+                        <dl>
+                            <div>
+                                <dd class='dd-wrapper'>
+                                    <span class='icon gift'></span>
+                                    <span class=''>{{data?.IsGiftCard}}</span>
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </a>
+</ng-container>
+
+<!-- homepage activities || דף הבית - פעילויות -->
+<ng-container *ngIf='type === 11'>
+    <a [routerLink]="['/activities-management','activity']" [queryParams]="{id : data?.ActivityId}">
+        <div class="card-item homepage">
+            <div class="image-wrapper">
+                <img src="{{data?.image}}" alt="">
+            </div>
+            <div class="content-wrapper">
+                <div class="title">
+                    <h3>{{data?.Name}}</h3>
+                </div>
+                <div class="dl-wrapper">
+                    <div *ngIf='data?.available'>
+                        <dl>
+                            <div class='dd-wrapper'>
+                                <span class='icon check'></span>
+                                <dd>{{data?.Recipients - data?.choose}} פנויים</dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div *ngIf='data?.REceived'>
+                        <dl>
+                            <div class='dd-wrapper'>
+                                <span class='icon users'></span>
+                                <dd>{{data?.choose}} שיוכים</dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div *ngIf='data?.sendreason'>
+                        <dl>
+                            <div>
+                                <dd class='dd-wrapper'>
+                                    <span class='icon gift'></span>
+                                    <span class=''>{{data?.sendreason}}</span>
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</ng-container>
+
+<!-- Trand || אייטם טרנד-->
+<ng-container *ngIf='type === 2'>
+    <div (click)="link(data?.link)" class='trand'>
+        <!-- <a href={{data?.link}} -->
+        <div class="card-item trand">
+            <div class="image-wrapper">
+                <img src="{{data?.image}}" alt="">
+            </div>
+            <div class="content-wrapper strip">
+                <div class="title">
+                    <h3>{{data?.title}}</h3>
+                </div>
+                <div>
+                    <p class='price before'>₪{{data?.priceBefore}}</p>
+                    <p class='price after'>₪{{data?.priceAfter}}</p>
+                </div>
+            </div>
+        </div>
+        <!-- </a> -->
+    </div>
+</ng-container>
+
+<!-- Coupon item - coupons-management (type 3) || Coupon item - coupon details - related activites (type 6) -->
+<ng-container *ngIf='type === 3 || type ===  6'>
+    <!-- [routerLink]="['/coupons-management/1'] -->
+    <a [routerLink]="['/coupons-management','coupon']" [queryParams]="{id : data?.ItemId}">
+        <div class="card-item coupons-list">
+            <div class="image-wrapper">
+                <img src="{{data?.Image}}" alt="">
+            </div>
+            <div class="content-wrapper" *ngIf='type === 3'>
+                <div class="title-icons-wrapper">
+                    <div class="title">
+                        <h3>{{data?.ItemName}}</h3>
+                    </div>
+                    <div class="dl-wrapper">
+                        <div *ngIf='data?.Available'>
+                            <dl>
+                                <div class='dd-wrapper'>
+                                    <span class='icon check'></span>
+                                    <dd>{{data?.Available}} פנויים</dd>
+                                </div>
+                            </dl>
+                        </div>
+                        <div *ngIf='data?.Sent'>
+                            <dl>
+                                <div class='dd-wrapper'>
+                                    <span class='icon users'></span>
+                                    <dd>{{data?.Sent}} שיוכים</dd>
+                                </div>
+                            </dl>
+                        </div>
+                        <div *ngIf='data?.IsGiftCard'>
+                            <dl>
+                                <div>
+                                    <dd class='dd-wrapper'>
+                                        <span class='icon gift'></span>
+                                        <span class=''>{{data?.IsGiftCard}}</span>
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="card-details">
+
+                        <div class="dl-wrapper" *ngIf='type === 3'>
+
+
+                            <!-- <div *ngFor="let dl of data?.cardData;"> -->
+                            <dl>
+                                <dt>תאריך תוקף</dt>
+                                <dd>{{data?.LastValidDate | date: 'dd/MM/yyyy'}}</dd>
+                            </dl>
+                            <dl>
+                                <dt>מחיר שובר בודד</dt>
+                                <dd>{{data?.Price | number:'1.0-0'}}</dd>
+                            </dl>
+                            <dl>
+                                <dt>תאריך הזמנה</dt>
+                                <dd>{{data?.LastOrderDate | date: 'dd/MM/yyyy'}}</dd>
+                            </dl>
+                            <dl>
+                                <dt>מס' הזמנה</dt>
+                                <dd>{{data?.inOrders}} </dd>
+                            </dl>
+                            <dl>
+                                <dt>מס' יחידות</dt>
+                                <dd>{{data?.Total | number:'1.0-0'}} </dd>
+                            </dl>
+
+                            <!-- <dl>
+                                    <dt>קטגוריה</dt>
+                                    <dd>{{data?.Recipients | number:'1.0-0'}} </dd>
+                                </dl> -->
+                            <!-- <dl>
+                                 
+                                    <dt>{{dl.title}}</dt>
+                                    <dd>{{dl.description}}</dd>
+                                </dl> -->
+                            <!-- </div> -->
+
+                        </div>
+                    </div>
+                    <div class="dl-wrapper" *ngIf='type === 6'>
+                        <div *ngIf='data?.contacts'>
+                            <dl>
+                                <div class='dd-wrapper'>
+                                    <span class='icon contacts'></span>
+                                    <dd>{{data?.contacts}}</dd>
+                                </div>
+                            </dl>
+                        </div>
+                        <div *ngIf='data?.send'>
+                            <dl>
+                                <div class='dd-wrapper'>
+                                    <span class='icon send-paper'></span>
+                                    <dd>{{data?.send}}</dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-details">
+                    <div class="dl-wrapper">
+                        <div *ngFor="let dl of data?.cardData; first as isFirst">
+                            <dl [ngClass]='{"date": isFirst }'>
+                                <dt>{{dl.title}}</dt>
+                                <dd>{{dl.description}}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</ng-container>
+
+<!-- Activity item - activities-management -->
+<ng-container *ngIf='type === 4'>
+    <a [routerLink]="['/activities-management','activity']" [queryParams]="{id : data?.ActivityId}">
+        <div class="card-item activities-list">
+            <div class="image-wrapper">
+                <img src="{{data?.image}}" alt="">
+            </div>
+            <div class="content-wrapper">
+                <div class="title-icons-wrapper">
+                    <div class="title">
+                        <h3>{{data?.Name}}</h3>
+                    </div>
+                    <div class="dl-wrapper">
+                        <!-- <div>
+                            <dl>
+                                <div class='dd-wrapper'>
+                                    <span class='icon users'></span>
+                                    <dd *ngIf='data?.activitisTypeDetails.contactsSetting.selectType === 1'>
+                                        <span>אנשי הקשר נבחרים</span>  
+                                        <span class='bold-text'>באופן אוטומטי</span> 
+                                    </dd>
+                                    <dd *ngIf='data?.activitisTypeDetails.contactsSetting.selectType === 2'>
+                                        <span>אנשי הקשר נבחרים</span>  
+                                        <span class='bold-text'>באופן ידני</span> 
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div> -->
+                        <div>
+                            <dl>
+                                <div class='dd-wrapper'>
+                                    <span class='icon send-paper'></span>
+                                    <!-- <dd *ngIf='data?.activitisTypeDetails.sendSettings.type === 1'> -->
+                                    <dd>
+                                        <span>השוברים {{data?.sendTime}} </span>
+                                        <span class='bold-text'>{{data?.sendText}}</span>
+                                    </dd>
+                                    <!-- <dd *ngIf='data?.activitisTypeDetails.sendSettings.type === 2'>
+                                        <span> כל השוברים יישלחו ב-</span>
+                                        <span class='bold-text'>{{data?.activitisTypeDetails.sendSettings.time}}</span> 
+                                        <span>אחרי השיוך</span>
+                                    </dd>
+                                    <dd *ngIf='data?.activitisTypeDetails.sendSettings.type === 3'>
+                                        <span> כל השוברים יישלחו כשיגיע</span>
+                                        <span class='bold-text'>{{data?.activitisTypeDetails.sendSettings.event}}</span> 
+                                        <span> של המשוייכים עד</span>
+                                        <span class='bold-text'>{{data?.activitisTypeDetails.sendSettings.time}}</span> 
+                                    </dd> -->
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-details">
+                    <div class="dl-wrapper">
+
+                        <!-- <div *ngFor="let dl of data?.cardData;"> -->
+                        <dl>
+                            <dt>תקציב שהוקצה</dt>
+                            <dd>{{data?.totalAllocatedBudget | number:'1.0-0'}} ₪</dd>
+                        </dl>
+                        <dl>
+                            <dt>נוצל מהתקציב</dt>
+                            <dd>{{data?.TotalUsedBudget | number:'1.0-0'}} ₪</dd>
+                        </dl>
+                        <dl>
+                            <dt>תאריך יצירה</dt>
+                            <dd>{{data?.creationdate | date: 'dd/MM/yyyy'}} </dd>
+                        </dl>
+                        <dl>
+                            <dt>מס' שיוכים</dt>
+                            <dd>{{data?.Recipients | number:'1.0-0'}} </dd>
+                        </dl>
+                        <dl>
+                            <dt *ngIf="data.sendreason">תאור</dt>
+                            <dd>{{data?.sendreason }} </dd>
+                        </dl>
+
+                        <!-- <dl>
+                             
+                                <dt>{{dl.title}}</dt>
+                                <dd>{{dl.description}}</dd>
+                            </dl> -->
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</ng-container>
+
+<!-- Activity main - Activity-details -->
+<ng-container *ngIf='type === 9'>
+    <div class="card-item activities-details">
+        <div class="flex justify-between align-center" style='margin-bottom: 10px;'>
+            <div class="flex justify-between align-center card-title-wrapper">
+                <img src="./assets/icons/coupons.svg" alt="">
+                <div class="title-wrap">
+                    <h2 class="card-title">{{data?.Name || data?.TBName}}</h2>
+                    <p *ngIf="data?.creationdate" class='created-date'>נוצר בתאריך {{data?.creationdate |
+                        date:'dd/MM/yyyy'}}</p>
+                </div>
+            </div>
+        </div>
+        <div class='flex justify-between align-center'>
+            <div style="width: 40%">
+                <div class='image-content-container' style="margin-bottom: 3rem;">
+                    <div class="image-wrapper">
+                        <img src="{{data?.image || data?.Image}}" alt="">
+                    </div>
+                    <div class="content-wrapper">
+                        <div class="card-details">
+                            <div class="dl-wrapper" style="display: block;">
+                                <div>
+                                    <dl>
+                                        <dt>תקציב לעובד</dt>
+                                        <dd>{{data?.budgetperemployee || data?.Price4Individual | number:'1.0-0'}} ₪
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div>
+                                    <dl>
+                                        <dt>סך הכל לפעילות</dt>
+                                        <dd>{{data?.totalAllocatedBudget | number:'1.0-0'}} ₪</dd>
+                                    </dl>
+                                </div>
+                                <div>
+                                    <dl>
+                                        <dt>יתרת תקציב</dt>
+                                        <dd>{{data?.totalAllocatedBudget - data?.TotalUsedBudget | number:'1.0-0'}} ₪
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div>
+                                    <dl>
+                                        <dt class="activity-link"><a href="{{data?.link}}">קישור לאתר</a></dt>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="data?.pieData && data?.chartData"
+                    class="doughnut-detail doughnut-mid flex justify-between align-center">
+                    <app-pie-chart [chartInputData]='data?.pieData'></app-pie-chart>
+
+                </div>
+            </div>
+            <div *ngIf="data?.chartData" class="card" style="width: 60%">
+                <p-chart type="bar" [data]="data?.chartData" [options]="data?.chartOptions"></p-chart>
+            </div>
+            <div *ngIf="data?.pieData && !data?.chartData"
+                class="doughnut-detail doughnut-mid flex justify-between align-center" style="width: 60%">
+                <app-pie-chart [chartInputData]='data?.pieData' [availableCustomersCount]="availableCustomersCount">
+                </app-pie-chart>
+                <!-- <div>{{data.pieData | json}}</div> -->
+            </div>
+        </div>
+    </div>
+
+</ng-container>
+
+<!-- Coupon main - coupons-details -->
+
+<ng-container *ngIf='type === 5'>
+    <div class="card-item activities-details">
+        <div class="flex justify-between align-center" style='margin-bottom: 10px;'>
+            <div class="flex justify-between align-center card-title-wrapper">
+                <img src="./assets/icons/coupons.svg" alt="">
+
+                <div class="title-wrap">
+                    <h2 class="card-title">{{data?.ItemName || data?.TBName}}</h2>
+                    <p *ngIf="data?.creationdate" class='created-date'>נוצר בתאריך {{data?.creationdate |
+                        date:'dd/MM/yyyy'}}</p>
+                </div>
+                <!-- <h2 class="card-title">{{data?.ItemName}}</h2> -->
+            </div>
+            <button class='btn secondary'>
+                <a href='https://www.justforu.co.il/coupon/{{data?.ItemId}}' target="_blank">
+                    <i class='icon share'></i>
+                    לעמוד המוצר
+                </a>
+            </button>
+        </div>
+        <div class='flex justify-between align-center'>
+            <div class='image-content-container'>
+                <div class="image-wrapper">
+                    <img src="{{data?.Image}}" alt="">
+                </div>
+                <div class="content-wrapper">
+                    <!-- <div class="card-details">
+                        <div class="dl-wrapper">
+                            <div *ngFor="let dl of cardData2; let i = index">
+                                <dl>
+                                    <dt>{{dl.title}}</dt>
+                                    <dd>{{dl.description}}
+                                        <button *ngIf='dl.moreOrder' (click)='op.toggle($event)'>ועוד
+                                            {{dl.moreOrder.length}}</button>
+                                    </dd>
+                                </dl>
+
+                                <p-overlayPanel #op [appendTo]="'body'">
+                                    <div class="overlay-wrapper">
+                                        <p *ngFor="let order of dl.moreOrder;">{{order}}</p>
+                                    </div>
+                                </p-overlayPanel>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="card-details">
+                        <div class="dl-wrapper">
+
+                            <!-- <div *ngFor="let dl of data?.cardData;"> -->
+                            <dl>
+                                <dt>תאריך תוקף</dt>
+                                <dd>{{data?.LastValidDate | date: 'dd/MM/yyyy'}}</dd>
+                            </dl>
+                            <dl>
+                                <dt>מחיר שובר בודד</dt>
+                                <dd>{{data?.Price | number:'1.0-0'}}</dd>
+                            </dl>
+                            <dl>
+                                <dt>תאריך הזמנה</dt>
+                                <dd>{{data?.LastOrderDate | date: 'dd/MM/yyyy'}}</dd>
+                            </dl>
+                            <dl>
+                                <dt>מס' הזמנה</dt>
+                                <dd>{{data?.inOrders}} </dd>
+                            </dl>
+                            <dl>
+                                <dt>מס' יחידות</dt>
+                                <dd>{{data?.Total | number:'1.0-0'}} </dd>
+                            </dl>
+                            <dl>
+                                <dt class="activity-link"><a href="{{data?.link}}"></a> קישור לאתר</dt>
+                                <dd></dd>
+                            </dl>
+
+                            <!-- <dl>
+                                    <dt>קטגוריה</dt>
+                                    <dd>{{data?.Recipients | number:'1.0-0'}} </dd>
+                                </dl>
+                                  <dl>
+                                 
+                                    <dt>{{dl.title}}</dt>
+                                    <dd>{{dl.description}}</dd>
+                                </dl>
+                             </div> -->
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="doughnut-detail flex justify-between align-center">
+                <app-pie-chart [chartInputData]='data?.pieData'></app-pie-chart>
+            </div>
+        </div>
+    </div>
+
+
+</ng-container>
+
+<!-- order item - orderes-management -->
+<ng-container *ngIf='type === 7'>
+    <a [routerLink]="['/orders-management/1']">
+        <div class="card-item coupons-list">
+            <div class="content-wrapper">
+                <div class="title-icons-wrapper">
+                    <div class="title">
+                        <h3>{{data?.title}}</h3>
+                    </div>
+                </div>
+                <div class="card-details">
+                    <div class="dl-wrapper">
+                        <div *ngFor="let dl of data?.cardData; first as isFirst">
+                            <dl>
+                                <dt>{{dl.title}}</dt>
+                                <dd>{{dl.description}}</dd>
+                            </dl>
+                        </div>
+                        <div>
+                            <dl>
+                                <dt>קבלה</dt>
+                                <button class='display-button-as-link'>
+                                    <i class="icon download"></i>
+                                    הורדת קבלה
+                                </button>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</ng-container>
+
+<!-- Order main - order-details-->
+<ng-container *ngIf='type === 8'>
+    <div class="card-item coupons-details">
+        <div class="content-wrapper">
+            <div class="flex align-center card-title-wrapper">
+                <img src="./assets/icons/orders.svg" alt="">
+                <h2 class="card-title">הזמנה {{data?.title}}</h2>
+            </div>
+            <div class="card-details">
+                <div class="dl-wrapper">
+                    <div *ngFor="let dl of data?.cardData; first as isFirst">
+                        <dl>
+                            <dt>{{dl.title}}</dt>
+                            <dd>{{dl.description}}</dd>
+                        </dl>
+                    </div>
+                    <div>
+                        <dl>
+                            <dt>קבלה</dt>
+                            <button class='display-button-as-link'>
+                                <i class="icon download"></i>
+                                הורדת קבלה
+                            </button>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<!-- create-activity - step 2 - select coupons-->
+<ng-container *ngIf='type === 10'>
+    <div class="card-item coupons-list create-activity-page">
+        <div class="image-wrapper">
+            <img src="{{data?.image}}" alt="">
+        </div>
+        <div class="content-wrapper">
+            <div class="title-icons-wrapper">
+                <div class="title">
+                    <h3>{{data?.title}}</h3>
+                </div>
+                <div class="dl-wrapper">
+                    <div *ngIf='data?.available'>
+                        <dl>
+                            <div class='dd-wrapper'>
+                                <span class='icon check'></span>
+                                <dd>{{data?.available}}</dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div *ngIf='data?.shiyuch'>
+                        <dl>
+                            <div class='dd-wrapper'>
+                                <span class='icon users'></span>
+                                <dd>{{data?.shiyuch}}</dd>
+                            </div>
+                        </dl>
+                    </div>
+                    <div *ngIf='data?.gift'>
+                        <dl>
+                            <div>
+                                <dd class='dd-wrapper'>
+                                    <span class='icon gift'></span>
+                                    <span class=''>{{data?.gift}}</span>
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="card-details">
+                <div class="dl-wrapper">
+                    <div *ngFor="let dl of data?.cardData; first as isFirst">
+                        <dl [ngClass]='{"date": isFirst }'>
+                            <dt>{{dl.title}}</dt>
+                            <dd>{{dl.description}}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ng-container>

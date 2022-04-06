@@ -1,0 +1,59 @@
+:host {
+    display: block;
+    .input-wrapper {
+        min-width: 305px;
+        button {
+            width: 130px;
+        }
+    }
+
+    .current-logo-wrapper {
+        border: 1px solid #DBDBDB;
+        padding: 10px 15px;
+        height: 108px;
+        width: 150px;
+        img {
+            height: 100%;
+            width:  100%;
+            object-fit: contain;
+        }
+    }
+
+    ::ng-deep {
+        .p-rtl .p-tabview .p-tabview-nav li {
+            width: 18%;
+        }
+        .p-tabview .p-tabview-nav .p-state-default a {
+                padding: .5em 1em;
+                margin: 0 auto;
+                width: 100%;
+                text-align: center;
+        }
+
+        .p-fileupload-row {
+            & > div {
+                &:nth-of-type(1) {
+                    border: 1px solid #000;
+                }
+            }
+        }
+
+        .p-fileupload-choose {
+            border: 1px solid #873D4C;
+            border-radius: 5px;
+        }
+
+        .p-button-text {
+            font-size: 18px;
+            line-height: 22px;
+            color: #873D4C;
+            font-weight: 500;
+            padding: 7px 30px;
+        }
+
+        .p-button-icon-left {
+            display: none;
+        }
+
+    }
+}

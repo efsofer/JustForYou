@@ -1,0 +1,42 @@
+.custs-wrapper .tb-cust {
+    display: flex;
+    align-items: center;
+    padding: .5rem;
+    &.tb-cust-record {border-bottom: 1px solid hsla(0,0%,43.9%,.12);}
+}
+
+.tb-cust > * {width: 10%;}
+.tb-cust .col-sm {max-width: 55px;}
+.tb-cust .col-stat {max-width: 107px;}
+.tb-cust .col-ordid {max-width: 90px;}
+.tb-cust .col-med {width: 12%;}
+.tb-cust .col-lg {min-width: 140px;}
+.tb-cust .col-xlg {min-width: 200px;}
+
+.custs-wrapper.teambuild-approver {
+    font-size: 1.125rem;
+    text-align: center;
+}
+
+.tb-cust-header h4 {
+    font-weight:  500;
+    margin: 0;
+}
+
+.tb-cust .col-sm button:disabled {
+    cursor: default;
+    &.btn-check {opacity: .25;}
+}
+
+.display-button-as-link {
+    height: auto;
+    font-weight: 400;
+}
+
+.tb-order-details {
+    padding: 1rem 0 2rem;
+    border-bottom: 1px solid hsla(0,0%,43.9%,.12);
+}
+
+.col-3-5 { width: 60%; padding-left: 1rem; border-left: 1px solid rgba(112, 112, 112, 0.12); }
+.col-2-5 { width: 40%; padding: 0 1.5rem; }

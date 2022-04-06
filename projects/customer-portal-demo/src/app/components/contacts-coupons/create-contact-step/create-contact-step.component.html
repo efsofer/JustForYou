@@ -1,0 +1,109 @@
+<div class="header-wrapper flex justify-between align-center">
+    <h1 class='page-title'>בחירת אנשי קשר</h1>
+    <div class="actions-container">
+        <button class="btn secondary transparent" (click)='display2=true'><i class="icon excel"></i>טעינה מתוך קובץ</button>
+        <button class="btn secondary" (click)='display=true'><i class="icon add-person"></i>איש קשר חדש</button>
+    </div>
+</div>
+
+<!-- Search -->
+<div class='inner-container'>
+    <form class="search-container">
+        <div class="inputs-row flex justify-between fluid-row">
+            <div class="input-wrapper">
+                <label for="name">שם מלא</label>
+                <p-inputNumber [(ngModel)]="name" [ngModelOptions]="{standalone: true}"></p-inputNumber>
+            </div>
+            <div class="input-wrapper">
+                <label for="contactTypesOptions">סוג איש קשר</label>
+                <p-multiSelect  [filter]='false' [options]="contactTypesOptions" [(ngModel)]="selectedTypeOption" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-multiSelect>
+            </div>
+            <div class="input-wrapper">
+                <label for="departmentOptions">מחלקה</label>
+                <p-dropdown [options]="departmentOptions" [(ngModel)]="selectedDepartmentOption" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-dropdown>
+            </div>
+            <div class="input-wrapper">
+                <label for="roleOptions">תפקיד</label>
+                <p-dropdown [options]="roleOptions" [(ngModel)]="selectedRoleOption" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-dropdown>
+            </div>
+        </div>
+        <div class="inputs-row flex justify-between align-center">
+            <div class="flex">
+                <div class="flex">
+                    <div class="input-wrapper width-auto">
+                        <label for="birdthdayFrom">יום הולדת - מ</label>
+                        <p-calendar [(ngModel)]="birdthdayFrom" [ngModelOptions]="{standalone: true}" [showIcon]="true" placeholder="____/__/__" [appendTo]='"body"'></p-calendar>
+                    </div>
+                    <div class="input-wrapper  width-auto">
+                        <label for="birdthdayTo">עד</label>
+                        <p-calendar [(ngModel)]="birdthdayTo" [ngModelOptions]="{standalone: true}" [showIcon]="true" placeholder="____/__/__" ></p-calendar>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="input-wrapper width-auto">
+                        <label for="startingJobDateFrom">כניסה לחברה - מ</label>
+                        <p-calendar [(ngModel)]="startingJobDateFrom" [ngModelOptions]="{standalone: true}" [showIcon]="true" placeholder="____/__/__" ></p-calendar>
+                    </div>
+                    <div class="input-wrapper  width-auto">
+                        <label for="startingJobDateTo">עד</label>
+                        <p-calendar [(ngModel)]="startingJobDateTo" [ngModelOptions]="{standalone: true}" [showIcon]="true" placeholder="____/__/__"  ></p-calendar>
+                    </div>
+                </div>
+            </div>
+            <button class="btn primary">חיפוש</button>
+        </div>
+    </form>
+</div>
+<!-- table -->
+<div class="table-wrapper">
+    <p-table [columns]="cols" [value]="tableData" [paginator]="true" [rows]="14" [rowsPerPageOptions]="[5,10,15,20,30]">
+        <ng-template pTemplate="header"  let-columns>
+            <tr>
+                    <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]='col.field'>
+                        {{col.header}}
+                        <p-sortIcon *ngIf='col.header.length' [field]="col.field"></p-sortIcon>
+                    </th>
+                </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData">
+                <td>
+                    <button class="display-button-as-link">{{rowData.name}}</button>
+                </td>
+                <td>{{rowData.idNumber}}</td>
+                <td>{{rowData.type}}</td>
+                <td>{{rowData.department}}</td>
+                <td>{{rowData.role}}</td>
+                <td>{{rowData.startDate}}</td>
+                <td>{{rowData.birthDate}}</td>
+                <td>{{rowData.city}}</td>
+            </tr>
+            </ng-template>
+    </p-table>  
+</div>
+
+
+
+<!-- modals -->
+
+<p-dialog [style]="{width: '769px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]="display" header='הוספת איש קשר' [styleClass]='""'>
+    <app-new-contact-dialog></app-new-contact-dialog>
+    <p-footer>
+    <div class="">
+        <button class="btn secondary" (click)="display=false">ביטול</button>
+        <button class="btn primary">שמירה</button>
+    </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [style]="{width: '1225px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]="display2" header='טעינה מתוך קובץ' [styleClass]='""'>
+    <app-load-from-file-dialog></app-load-from-file-dialog>
+    <p-footer>
+    <div class="">
+        <button class="btn secondary" (click)="display2=false">ביטול</button>
+        <button class="btn primary">שמירה</button>
+    </div>
+    </p-footer>
+</p-dialog>
+
+

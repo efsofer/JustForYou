@@ -1,0 +1,33 @@
+:host {
+    ul.breadcrumb {
+        padding: 5px;
+        margin-bottom: 0;
+        list-style: none;
+        background-color: transparent;
+        //display: flex;
+        display: none;
+        li {
+            display: inline;
+            font-size: 16px;
+            line-height: 21px;
+            a {
+                color: #768290;
+                text-decoration: none;
+                &:hover {
+                    color: #01447e;
+                    text-decoration: underline;
+                }
+            }
+            span {
+                color: #768290;
+            }
+        }
+        li+li {
+            &:before {
+                padding: 5px;
+                color: #768290;
+                content: ">";
+            }
+        }
+    }
+}

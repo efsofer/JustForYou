@@ -1,0 +1,435 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$delivery-landing-primary: mat-palette($mat-indigo);
+$delivery-landing-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$delivery-landing-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$delivery-landing-theme: mat-light-theme($delivery-landing-primary, $delivery-landing-accent, $delivery-landing-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($delivery-landing-theme);
+
+html, body { height: 100%; scroll-behavior: smooth; }
+
+.overlay {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	right: 0;
+	position: fixed;
+	background-color: rgba(255, 255, 255, 0.9);
+	z-index: 1000;
+}
+
+body {
+	direction: rtl;
+	margin: 0;
+	font-family: Assistant, 'Segoe UI';
+	line-height: 1.5;
+}
+
+body div {
+	box-sizing: border-box;
+}
+
+.container {
+	padding: 0 4rem 2rem;
+}
+
+@media (max-width: 992px) {
+	.container {
+		padding: 0 1.5rem 1rem;
+	}
+}
+
+h2 {
+	font-weight: 400;
+	font-size: 2.5rem;
+	margin: 1rem 0 1.5rem;
+}
+
+h3 {
+	font-size: 2rem;
+}
+
+h4 {
+	font-size: 1.5rem;
+}
+
+h5 {
+	font-size: 1.25rem;
+}
+
+h1, h3, h4, h5, p {
+	margin: 0 0 1rem;
+}
+
+.color-primary {
+	color: #873d4c;
+}
+
+.grid-2-col {
+	display: grid;
+	grid-template-columns: repeat(2,1fr);
+	grid-gap: 2rem;
+}
+
+.d-none {
+	display: none;
+}
+
+.d-flex {
+	display: flex;
+}
+
+.flex-2-col {
+	width: 50%;
+}
+
+.footer .flex-2-col {
+	padding: 0 4rem;
+}
+
+.col-3-5 {
+	width: 60%;
+	padding-left: 2rem;
+}
+
+.col-2-5 {
+	width: 40%;
+}
+
+.jc-between {
+	justify-content: space-between;
+}
+
+.banner {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 4rem;
+	color: #fff;
+	position: relative;
+}
+
+.banner h1 {
+	font-size: 54pt;
+	font-weight: 700;
+	text-shadow: 1px 1px 4px rgba(0,0,0,.8);
+	line-height: 1.2;
+}
+
+.banner p {
+	font-size: 21pt;
+	text-shadow: 1px 1px 4px rgba(0,0,0,.8)
+}
+
+.banner img {
+	margin-top: 0.5rem;
+	max-width: 320px;
+	max-height: 180px;
+}
+
+@media (max-width: 768px) {
+	.banner {
+		padding: 2rem;
+	}
+	.banner h1 {
+		font-size: 36pt;
+	}
+	.banner p {
+		font-size: 16pt;
+	}
+	.grid-2-col {
+		grid-template-columns: auto;
+	}
+}
+
+.footer {
+	background-color: #242424;
+	color: #fff;
+}
+
+.footer .d-flex {
+	padding: 1rem 0;
+}
+
+.footer .flex-2-col:first-child {
+	border-left: 1px solid #555;
+}
+
+.footer h4 {
+	color: #d4b158;
+	font-size: 1.5rem;
+	margin-bottom: .5rem;
+}
+
+.footer ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	line-height: 2;
+}
+
+.footer p {
+	margin-bottom: .5rem;
+}
+
+.footer i {
+	color: #d4b158;
+	margin-left: .5rem;
+}
+
+.footer a {
+	text-decoration: none;
+	color: #fff;
+}
+
+.footer-logo {
+	padding: .5rem 0;
+	text-align: center;
+	background-color: #000;
+}
+
+@media (max-width: 992px) {
+	.footer .flex-2-col {
+		padding: 0 2rem;
+	}
+}
+
+@media (max-width: 576px) {
+	.d-flex.jc-between:not(.keep-sm) {
+		display: block;
+		justify-content: unset;
+	}
+
+	.d-flex:not(.keep-sm), .grid-2-col > .d-flex {
+		display: block;
+		& > div {
+			width: auto;
+		}
+	}
+	
+	.footer .flex-2-col {
+		width: auto;
+		padding: 1rem 0;
+	}
+
+	.footer .flex-2-col:first-child {
+		border-left: none;
+		border-bottom: 1px solid #555;
+	}
+
+	.footer .d-flex {
+		display: block;
+		padding: 0 2rem;
+	}
+}
+
+.btn {
+	border: none;
+	border-radius: 4px;
+	background-image: linear-gradient(to right,#bb8a3e,#c79d4e,#d2b05f,#dec370,#e9d783);
+	color: #000;
+	cursor: pointer;
+	font-family: Assistant, 'Segoe UI';
+	padding: 0.25rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1;
+	transition: box-shadow .2s;
+	text-align: center;
+}
+
+.btn-large {
+	font-size: 1.5rem;
+	padding: .5rem 1.5rem;
+}
+
+.btn-back {
+	background: #efefef;
+}
+
+a.btn {
+	text-decoration: none;
+}
+
+.btn:focus {
+	outline: none;
+	box-shadow: 0 0 0 0.2rem rgba(0,148,255,.4);
+}
+
+.btn i {
+	margin-right: .5rem;
+}
+
+.btn[disabled] {
+	background: #eee;
+	color: #fff;
+}
+
+font[face="Arial"] {
+	font-family: Assistant, 'Segoe UI';
+}
+
+.form-control {
+	display: block;
+	width: 100%;
+	max-width: 30rem;
+	font-family: Assistant, 'Segoe UI';
+	font-size: 1rem;
+	line-height: 1.5;
+	border: 1px solid #ced4da;
+	border-radius: 4px;
+	padding: .375rem .5rem;
+	margin-bottom: 1rem;
+	box-sizing: border-box;
+}
+.form-control:focus {
+	border-color: #80bdff;
+	outline: 0;
+	box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+}
+
+.multiple-info {
+	padding: .5rem 0;
+}
+.multiple-info h2 {
+	margin: 0;
+}
+.multiple-info .btn {
+	margin-top: .5rem;
+}
+
+.brief-desc a {
+	color: #fff !important;
+}
+
+.error-desc {
+	color: red;
+	white-space: pre-wrap;
+}
+
+.send-options {
+	display: flex;
+	margin: 0 auto 1rem;
+	justify-content: center;
+	text-align: center;
+}
+
+.send-option {
+	border: 1px solid #ced4da;
+	padding: .375rem .75rem;
+	position: relative;
+	border-radius: 4px;
+	min-width: 68px;
+	cursor: pointer;
+	transition: border .2s;
+}
+
+.send-option.active {
+	border: 2px solid #873d4c;
+}
+
+.send-option span {
+	display: block;
+	color: #495057;
+}
+
+.send-option:not(:last-child) {
+	margin-left: 1rem;
+}
+
+.send-option i {
+	font-size: 2rem;
+}
+
+.send-option i.fa.fa-comment {
+	position: absolute;
+	font-size: 1rem;
+	top: 1px;
+	right: 15px;
+	box-shadow: -2px 2px 0px #fff;
+}
+
+.preview-wrapper {
+	background-color: #242424;
+	color: #fff;
+}
+.preview-wrapper img {
+	display: block;
+	width: 100%;
+	object-fit: cover;
+}
+.preview-footer {
+	padding: 1rem;
+}
+.preview-footer p {
+	white-space: pre-wrap;
+}
+.preview-footer h4, .preview-footer h5, .preview-footer p {
+	font-weight: normal;
+	margin-bottom: .5rem;
+}
+
+@media print {
+	.footer {
+		display: none;
+	}
+}
+
+/* Loader */
+.loader {
+	text-align: center;
+}
+
+.lds-ring {
+	display: inline-block;
+	position: relative;
+	width: 48px;
+	height: 48px;
+}
+.lds-ring div {
+	box-sizing: border-box;
+	display: block;
+	position: absolute;
+	width: 42px;
+	height: 42px;
+	margin: 6px;
+	border: 6px solid #3a3a3a;
+	border-radius: 50%;
+	animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+	border-color: #3a3a3a transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+	animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+	animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+	animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

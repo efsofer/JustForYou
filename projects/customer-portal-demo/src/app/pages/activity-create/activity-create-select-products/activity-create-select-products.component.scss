@@ -1,0 +1,168 @@
+:host {
+    .page-title {
+        font-size: 25px;
+        line-height: 33px;
+        margin: 0 0 25px 0;
+    }
+    .radio-button-section {
+        .input-wrapper {
+            width: 100% !important;
+            margin-bottom: 25px;
+        }
+    }
+    p {
+        font-size: 18px;
+        line-height: 23px;
+        margin: 5px 25px 0 0;
+    }
+
+    .max-amount {
+        width: 290px;
+        display: flex;
+        align-items: center;
+        margin: 15px 25px 0 0;
+        label {
+            min-width: 86px;
+            margin-left: 10px;
+        }
+        span {
+            margin-right: 5px;
+            font-size: 25px;
+            font-weight: 500;
+        }
+    }
+
+    .search-wrapper {
+        ::ng-deep {
+            app-container {
+                .container {
+                    background-color: #F2F5F8 !important;
+                }
+            }
+            .input-wrapper {
+                margin-bottom: 15px;
+            }
+            .p-inputtext {
+                margin-left: 0 !important;
+            }
+            .ml {
+                margin-left: 10px;
+            }
+            .primary {
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    .panel-paragraph {
+        font-size: 18px;
+        line-height: 23px;
+        // margin: 0;
+        color: rgba(0,0,0,0.6);
+        margin: 0 0 15px 0;
+    }
+
+    .trands {
+        .items-wrapper {
+            display: grid;
+            // grid-template-columns: repeat(3, 386px);
+            //grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(336px, 386px));
+            grid-gap: 34px;
+            justify-items: center;
+            align-items: center;
+            justify-content: space-between;
+            // transition: grid-template-columns 0.3s ease-in-out; 
+            margin-bottom: 25px;
+            ::ng-deep {
+                app-card-item {
+                    display: block;
+                    min-height: 255px;
+                    min-width: 336px;
+                    max-height: 285px;
+                    max-width: 386px;
+                    height: 21vw;
+                    width: 27.5vw;
+           
+                    transition: all 0.3s ease-in-out;   
+                } 
+            }
+        }
+        .trand-wrapper {
+            text-align: center;
+            position: relative;
+            &::before {
+                content: url('/assets/icons/trand-selected.svg');
+                position: absolute;
+                top: -7px;
+                right: -10px;
+                z-index: 1;
+                opacity: 0;
+                transition: all 0.1s linear;
+            }
+            ::ng-deep {
+                .card-item.trand {
+                    border: 0 solid #D5C272;
+                    transition: all 0.1s linear;
+                    border-radius: 10px;
+                }
+                .image-wrapper {
+                    cursor: pointer;
+                }
+            }
+            .secondary {
+                margin-top: 15px;
+            }
+            &.selected {
+                ::ng-deep {
+                    .card-item.trand {
+                        border: 9px solid #D5C272;
+                    }
+                }
+                &::before {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .selectable-coupon-container {
+        position: relative;
+        ::ng-deep {
+            .card-item.create-activity-page {
+                border: 9px solid transparent;
+                border-radius: 10px;
+                transition: all 0.1s linear;
+            }
+        }
+        &.selected {
+            ::ng-deep {
+                .card-item.create-activity-page {
+                    border: 9px solid #D5C272;
+                }
+            }
+        }
+
+        .button-wrapper {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translate(10%, -50%);
+        }
+    }
+
+    .fluid-row {
+        @media (max-width: 1539px) {
+            .input-wrapper {
+                width: 24%;
+                &.double-inputs {
+                    width: 24%;
+                    & > .input-wrapper {
+                        width: auto;
+                    }
+                }
+            }
+
+        }
+    }
+}

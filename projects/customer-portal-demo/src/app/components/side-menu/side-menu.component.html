@@ -1,0 +1,23 @@
+<div class="nav-wrapper">
+    <nav>
+        <a  *ngFor="let item of navDetails; let i = index"
+              [routerLink]="[ item.path]"
+              [routerLinkActive]="'selected'"
+              #rla = "routerLinkActive"
+              [routerLinkActiveOptions]="{exact: item.exact }">
+            <div class='nav-item' (mouseenter)='op.show($event)' (mouseleave)='op.hide()'>
+                <img [src]="rla.isActive ? item.iconSelected : item.icon"
+                    alt='{{item.name}}'>
+                <span>{{item.name}}</span>
+            </div>
+
+            <p-overlayPanel #op [appendTo]="'body'" [styleClass]='"menu-item-hover " + menuState'>
+                <div class="menu-item-hover">
+                    <p>{{item.name}}</p>
+                </div>
+            </p-overlayPanel>
+        </a>
+      </nav>
+</div>
+
+

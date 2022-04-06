@@ -1,0 +1,40 @@
+<h1 class='page-title'>פרטי שובר</h1>
+<!-- Coupon main card -->
+<!-- <app-card-item [type]='5' [data]='itemById.returnobj'></app-card-item> -->
+
+<!-- <ng-container *ngFor='let item of itemById.returnobj'> -->
+    <app-card-item [type]='5' [data]='itemById?.returnobj[0]'></app-card-item>
+<!-- </ng-container> -->
+
+<div  class="ui-rtl" dir="rtl" *ngIf='!progressView && haveVouchers'>
+    <p-tabView>
+        <p-tabPanel header="אנשי קשר משוייכים" [selected]="true">
+           <app-contacts-coupons (startProgress)='showProgessView($event)'></app-contacts-coupons>
+        </p-tabPanel>
+        <!-- <p-tabPanel header="פעילויות המשוייכות" >
+            <app-related-activites></app-related-activites>
+        </p-tabPanel> -->
+    </p-tabView> 
+</div>
+
+
+<ng-container *ngIf='progressView'>
+    <app-progress-bar [steps]='steps'></app-progress-bar>
+    <ng-container *ngIf='currentIndex === 0'>
+        <app-container>
+            <app-create-contact-step></app-create-contact-step>
+        </app-container>
+    </ng-container>
+    <ng-container *ngIf='currentIndex === 1'>
+       <app-mail-sms></app-mail-sms>
+    </ng-container>
+    <ng-container *ngIf='currentIndex === 2'>
+       <app-final-step [message]='"אנשי קשר משוייכים נוספו בהצלחה!"' [btnLabel]='"צפייה בשובר"'></app-final-step>
+    </ng-container>
+    <app-progress-actions [idxLength]='steps.length' *ngIf='currentIndex !== 2'></app-progress-actions>
+  </ng-container>
+
+
+
+
+

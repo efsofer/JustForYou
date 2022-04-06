@@ -1,0 +1,101 @@
+<h2 class="color-primary">פרטים למשלוח</h2>
+<div class="notes" [innerHTML]="product.notes | safeHtml"></div>
+<form [formGroup]="deliveryForm" (ngSubmit)="submitForm()">
+    <div class="form-options" *ngIf="product.options">
+        <div *ngFor="let option of product.options; let i = index">
+            <h5>{{option.label}}</h5>
+            <mat-radio-group *ngIf="option.type == 'radio'" formControlName="option_{{i}}" required #radOpt>
+                <mat-radio-button *ngFor="let opt of option.opts" [value]="opt.text">{{opt.text}}
+                </mat-radio-button>
+            </mat-radio-group>
+            <select *ngIf="option.type == 'dropdown'" formControlName="option_{{i}}" required #selectOpt>
+                <option *ngFor="let opt of option.opts" [value]="(opt | json)">{{opt.text}}</option>
+            </select>
+            <input *ngIf="option.type == 'text'" type="text" required formControlName="option_{{i}}"
+                class="form-control">
+        </div>
+    </div>
+    <div class="form-section d-block" *ngIf="product.pickUp">
+        <mat-radio-group (change)="toggleValidation()" aria-label="בחר אופן אספקה" formControlName="deliveryMethod"
+            required>
+            <mat-radio-button value="pickup">איסוף עצמי</mat-radio-button>
+            <mat-radio-button value="delivery">משלוח</mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div class="form-section">
+        <div><input type="text" required formControlName="recipient" class="form-control"
+                [placeholder]="!product.pickUp || deliveryMethod.value == 'delivery' ? 'שם המקבל' : 'שם מלא'">
+            <span class="error-desc" *ngIf="recipient.invalid && (recipient.dirty || recipient.touched)">שדה
+                חובה</span>
+        </div>
+        <div><input type="text" required formControlName="phone" class="form-control" placeholder="טלפון (מספרים בלבד)">
+            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                <span class="error-desc" *ngIf="phone.errors.required">שדה חובה</span>
+                <span class="error-desc" *ngIf="phone.errors.pattern">יש להזין 9 או 10 ספרות
+                    בלבד</span>
+            </div>
+        </div>
+    </div>
+    <ng-template [ngIf]="!product.pickUp || deliveryMethod.value == 'delivery'">
+        <div class="form-section form-address">
+            <div class="fm-large">
+                <input type="text" required formControlName="city" class="form-control" placeholder="עיר"
+                    [matAutocomplete]="autoCity">
+                <mat-autocomplete #autoCity="matAutocomplete">
+                    <mat-option *ngFor="let b_city of filteredCities | async" [value]="b_city">
+                        {{b_city}}
+                    </mat-option>
+                </mat-autocomplete>
+                <span class="error-desc" *ngIf="city.value == '' && (city.dirty || city.touched)">שדה
+                    חובה</span>
+            </div>
+            <div class="fm-large"><input type="text" required formControlName="street" class="form-control"
+                    placeholder="רחוב" [matAutocomplete]="autoStr">
+                <mat-autocomplete #autoStr="matAutocomplete">
+                    <mat-option *ngFor="let b_street of filteredStreets | async" [value]="b_street">
+                        {{b_street}}
+                    </mat-option>
+                </mat-autocomplete>
+                <span class="error-desc" *ngIf="street.invalid && (street.dirty || street.touched)">שדה
+                    חובה</span>
+            </div>
+            <div style="max-width: 7rem;" class="flex-break">
+                <input type="text" required formControlName="streetnum" class="form-control" placeholder="מספר בית">
+                <span class="error-desc" *ngIf="streetnum.invalid && (streetnum.dirty || streetnum.touched)">שדה
+                    חובה</span>
+            </div>
+            <div style="max-width: 5rem;">
+                <input type="text" formControlName="floor" class="form-control" placeholder="קומה">
+            </div>
+            <div style="max-width: 5rem;">
+                <input type="text" formControlName="aptnum" class="form-control" placeholder="דירה">
+            </div>
+        </div>
+        <div *ngIf="product.credit" class="form-section">
+            <div><input type="text" required formControlName="creditNum" class="form-control"
+                    placeholder="מספר אשראי">
+                <span class="error-desc" *ngIf="creditNum.invalid && (creditNum.dirty || creditNum.touched)">
+                    יש להזין מספר אשראי תקין
+                </span>
+            </div>
+            <div><input type="text" required formControlName="creditExp" class="form-control" placeholder="תוקף">
+                <span class="error-desc" *ngIf="creditExp.invalid && (creditExp.dirty || creditExp.touched)">יש להזין תוקף תקין</span>
+            </div>
+        </div>
+        <textarea type="text" formControlName="notes" class="form-control" rows="5" placeholder="הערות לכתובת/לשליח"
+            maxlength="250"></textarea>
+    </ng-template>
+    <div class="d-flex jc-between keep-sm" style="max-width: 33rem;">
+        <button type="button" class="btn btn-back btn-large" [disabled]="isLoading" (click)="goBack()">חזור</button>
+        <button *ngIf="!isLoading" class="btn btn-large" type="submit" [disabled]="!deliveryForm.valid">בצע
+            הזמנה<i class="fas fa-arrow-left"></i></button>
+        <div *ngIf="isLoading" class="loader">
+            <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</form>

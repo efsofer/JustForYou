@@ -1,0 +1,91 @@
+<h1 class='page-title'>ניהול שוברים</h1>
+<!-- Search -->
+<app-container [paddingValues]='"22px 29px 0 29px"'>
+    <form class="search-container">
+        <div class="inputs-row flex justify-between first-row">
+            <div class="input-wrapper">
+                <label for="query">ביטוי לחיפוש</label>
+                <input type="text" pInputText [(ngModel)]="query" [ngModelOptions]="{standalone: true}" />
+            </div>
+            <div class="input-wrapper">
+                <label for="couponCode">קוד שובר</label>
+                <p-inputNumber [(ngModel)]="couponCode" [ngModelOptions]="{standalone: true}"></p-inputNumber>
+            </div>
+            <div class="input-wrapper">
+                <label for="orderNumber">מספר הזמנה</label>
+                <p-inputNumber [(ngModel)]="orderNumber" [ngModelOptions]="{standalone: true}"></p-inputNumber>
+            </div>
+            <!-- <div class="input-wrapper">
+                <label for="assigns">מספר שיוכים פנויים</label>
+                <p-dropdown [options]="assigns" [(ngModel)]="selectedAssign" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-dropdown>
+            </div>  -->
+            <div class="input-wrapper width-auto">
+                <label for="fromPrice">מספר שיוכים פנויים</label>
+                <p-inputNumber [(ngModel)]="value" [ngModelOptions]="{standalone: true}" [style]="{width: '116px'}">
+                </p-inputNumber>
+            </div>
+        </div>
+        <div class="inputs-row second-row">
+            <!-- <div class="input-wrapper">
+                <label for="categories">קטגוריה</label>
+                <p-dropdown [options]="categories" [(ngModel)]="selectedCategory" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-dropdown>
+            </div> -->
+            <div class="input-wrapper double-inputs">
+                <div class="input-wrapper width-auto">
+                    <label for="fromPrice">מחיר מ-</label>
+                    <p-inputNumber [(ngModel)]="fromPrice" [ngModelOptions]="{standalone: true}"
+                        [style]="{width: '116px'}"></p-inputNumber>
+                </div>
+                <div class="input-wrapper width-auto">
+                    <label for="toPrice">עד</label>
+                    <p-inputNumber [(ngModel)]="toPrice" [ngModelOptions]="{standalone: true}"
+                        [style]="{width: '116px'}"></p-inputNumber>
+                </div>
+            </div>
+            <!-- <div class="flex">
+                <div class="input-wrapper width-auto">
+                    <label for="orderDateFrom">מתאריך הזמנה</label>
+                    <p-calendar [(ngModel)]="orderDateFrom" dateFormat="dd.mm.yy" [ngModelOptions]="{standalone: true}" [showIcon]="true" placeholder="____/__/__"></p-calendar>
+                </div>
+                <div class="input-wrapper width-auto">
+                    <label for="orderDateTo">עד</label>
+                    <p-calendar [(ngModel)]="orderDateTo" dateFormat="dd.mm.yy" [ngModelOptions]="{standalone: true}" [showIcon]="true" placeholder="____/__/__"></p-calendar>
+                </div>
+            </div> -->
+            <!-- <div class="input-wrapper"></div> -->
+        </div>
+        <div class="inputs-row flex justify-between align-center">
+            <div class="flex">
+                <div class="input-wrapper width-auto">
+                    <label for="fromDate">מתאריך תוקף</label>
+                    <p-calendar [(ngModel)]="fromDate" dateFormat="dd.mm.yy" [ngModelOptions]="{standalone: true}"
+                        [showIcon]="true" placeholder="____/__/__" [appendTo]='"body"'></p-calendar>
+                </div>
+                <div class="input-wrapper width-auto">
+                    <label for="toDate">עד</label>
+                    <p-calendar [(ngModel)]="toDate" dateFormat="dd.mm.yy" [ngModelOptions]="{standalone: true}"
+                        [showIcon]="true" placeholder="____/__/__"></p-calendar>
+                </div>
+            </div>
+            <button class="btn primary" (click)="search()">חיפוש</button>
+        </div>
+    </form>
+</app-container>
+<!-- loads data -->
+<div *ngIf="isLoading" class="loader">
+    <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!-- List -->
+
+<app-container *ngIf="haveVouchers">
+    <div class="items-wrapper">
+        <ng-container *ngFor='let coupon of vouchers?.returnobj'>
+            <app-card-item [type]='3' [data]='coupon'></app-card-item>
+        </ng-container>
+    </div>
+</app-container>

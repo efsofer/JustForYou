@@ -1,0 +1,14 @@
+<ng-container *ngIf='showInstructions'>
+    <div class='instructions'>
+        <p>הקובץ חייב להיות xls.</p>
+        <p>.יש לטעון קובץ עם מבנה עמודות מסוים בהתאם למבנה הנתונים של רשימת העובדים</p>
+    </div>
+    <a href="#" download> 
+        <button class='display-button-as-link'>
+            <i class="icon download"></i>
+            ניתן להוריד את קובץ המבנה כאן
+        </button>
+    </a>
+</ng-container>
+
+<app-drag-and-drop [fileType]='fileType'></app-drag-and-drop>

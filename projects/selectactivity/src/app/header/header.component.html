@@ -1,0 +1,8 @@
+<header>
+    <div *ngIf="pkgHeader" class="banner" [style.background-image]="'url(' + (pkgHeader.Image | encodeSpaces) + ')'">
+        <h1 class="banner-title">{{ pkgHeader.Header }}</h1>
+        <p><span class="recipient-name">{{employeeName}},<br></span>
+            <span class="greeting" [innerHTML]="pkgHeader.Greeting | safeHtml"></span></p>
+        <img class="banner-logo" src="{{ pkgHeader.Supplierlogo | encodeSpaces}}">
+    </div>
+</header>

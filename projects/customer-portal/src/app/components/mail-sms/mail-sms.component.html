@@ -1,0 +1,161 @@
+<form class="settings-container">
+    <h2 class='page-title'>הגדרת חומרי שובר</h2>
+    <!-- banner -->
+    <div class="setting-item banner">
+        <div class="setting-instructions">
+            <h3>באנר/תמונה ראשי</h3>
+            <p> קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו </p>
+        </div>
+        <div class="setting-content">
+            <!-- <p-fileUpload name="myfile[]" 
+                          url="./upload.php" 
+                          accept="image/*"
+                          mode="basic" 
+                          [showCancelButton]='false' [showUploadButton]='false'
+                          [chooseLabel]='"העלה תמונה"'>
+            </p-fileUpload> -->
+          <button class="btn secondary" (click)='display2=true'>העלה תמונה</button>
+          <span>- או -</span>
+          <button class="btn secondary" (click)='display3=true'>בחירת בין תמונות מוצעות</button>
+        </div>
+    </div>
+
+    <!-- greeting sentence -->
+    <div class="setting-item greeting-sentence">
+        <div class="setting-instructions">
+            <h3>משפט ברכה</h3>
+            <p> קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו </p>
+        </div>
+        <div class="setting-content">
+            <div class="ui-inputgroup">
+                <button class=""><i class='icon previous'></i></button>    
+                <p-dropdown [options]="sentences" [(ngModel)]="selectedSentences" editable="true" placeholder="בחר משפט ברכה" [ngModelOptions]="{standalone: true}"></p-dropdown>
+                <button class=""><i class='icon next'></i></button>      
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- componay logo -->
+    <div class="setting-item componay-logo">
+        <div class="setting-instructions">
+            <h3>לוגו החברה</h3>
+            <p> קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו </p>
+        </div>
+        <div class="setting-content">
+            <app-upload-new-logo></app-upload-new-logo>
+        </div>
+    </div>
+
+    <hr>
+
+    <h2 class='page-title'>הגדרת אתר</h2>
+    <!-- rich content -->
+    <div class="setting-item rich-content">
+        <div class="setting-instructions">
+            <h3>תוכן עשיר באתר</h3>
+            <p> קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו </p>
+        </div>
+        <div class="setting-content">
+            <button class='btn secondary' (click)='display=true'><i class='icon preview'></i>תצוגה מקדימה</button>
+            <p-editor [(ngModel)]="text" [style]="{'height':'228px', 'width': '100%'}" [ngModelOptions]="{standalone: true}"></p-editor>
+        </div>
+    </div>
+
+    <!-- picture/video -->
+    <div class="setting-item picture-video">
+        <div class="setting-instructions">
+            <h3> תמונה / וידאו ראשי</h3>
+            <p> קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו </p>
+        </div>
+        <div class="setting-content">
+            <!-- <p-fileUpload name="myfile[]" 
+                          url="./upload.php" 
+                          accept="image/*"
+                          mode="basic" 
+                          [showCancelButton]='false' [showUploadButton]='false'
+                          [chooseLabel]='"העלה תמונה"'>
+            </p-fileUpload> -->
+          <button class="btn secondary" (click)='display2=true'>העלה תמונה</button>
+          <span>- או -</span>
+          <button class="btn secondary" (click)='display3=true'>בחירת בין תמונות מוצעות</button>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- mail -->
+    <div class="setting-item send mail">
+        <div class="title-container">
+            <div class="flex align-center">
+                <h2 class='page-title'>שליחת מייל</h2>
+                <div class="toggle">
+                   <p-inputSwitch [(ngModel)]="checked" [ngModelOptions]="{standalone: true}"></p-inputSwitch>
+                </div>
+            </div>
+            <button class='btn secondary'><i class='icon preview'></i>תצוגה מקדימה</button>
+        </div>
+        <div class="setting-instructions">
+            <p> קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו </p>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- sms -->
+    <div class="setting-item send sms">
+
+        <div class='flex justify-between align-center'>
+            <div class="setting-instructions">
+                <div class="title-container">
+                    <div class="flex align-center" style='margin-bottom: 25px;'>
+                        <h2 class='page-title'>שליחת sms</h2>
+                        <div class="toggle">
+                           <p-inputSwitch [(ngModel)]="checked2" [ngModelOptions]="{standalone: true}"></p-inputSwitch>
+                        </div>
+                    </div>
+                </div>
+                <h3>תמונה / וידאו</h3>
+                <p> קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו </p>
+            </div>
+            <div class="setting-content">
+                <textarea maxlength="270" pInputTextarea [(ngModel)]="smsText" [ngModelOptions]="{standalone: true}"></textarea>
+                <div class="phone-img-wrapper">
+                    <img src="./assets/images/phone.png" alt="">
+                    <p class="txt-bubble">{{smsText}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- modals -->
+<p-dialog [style]="{width: '767px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]="display" header='שליחת בדיקה' [styleClass]='""'>
+    <app-resending-dialog [successIsDefultIcon]='true' [message]='".(company@email.com)הודעת בדיקה נשלחה למייל שלך"'></app-resending-dialog>
+    <p-footer>
+    <div class="">
+        <button class="btn primary">אישור</button>
+    </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [style]="{width: '1225px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]="display2" header='העלה תמונה מותאמת אישית' [styleClass]='""'>
+    <app-load-from-file-dialog [fileType]='"image/*"'></app-load-from-file-dialog>
+    <p-footer>
+    <div class="">
+        <button class="btn secondary" (click)="display2=false">ביטול</button>
+        <button class="btn primary">שמירה</button>
+    </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [style]="{width: '1225px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]="display3" header='בחירה בין תמונות מוצעות' [styleClass]='""'>
+    <app-suggested-images-dialog></app-suggested-images-dialog>
+    <p-footer>
+    <div class="">
+        <button class="btn secondary" (click)="display3=false">ביטול</button>
+        <button class="btn primary">שמירה</button>
+    </div>
+    </p-footer>
+</p-dialog>
+

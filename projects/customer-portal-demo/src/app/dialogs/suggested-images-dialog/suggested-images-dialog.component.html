@@ -1,0 +1,23 @@
+<div class="search-wrapper">
+    <form class="search-container">
+        <div class="inputs-row flex align-center">
+            <div class="input-wrapper">
+                <label for="">ביטוי לחיפוש</label>
+                <input type="text" pInputText [(ngModel)]="query" [ngModelOptions]="{standalone: true}"/>
+            </div>
+            <div class="input-wrapper">
+                <label for="">קטגוריה</label>
+                <p-dropdown [options]="categories" [(ngModel)]="selectedcategory" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-dropdown>
+            </div>
+            <button class="btn primary">חיפוש</button>
+        </div>
+    </form>
+</div>
+
+<div class="images-list">
+    <ng-container *ngFor='let image of mockImages; let i = index'>
+        <div class="image-item" [ngClass]='{"selected": i === currentIndex}' (click)='chooseImage(i)'>
+            <img src="{{image.path}}" alt="{{image.desc}}" title="{{image.desc}}">
+        </div>
+    </ng-container>
+</div>

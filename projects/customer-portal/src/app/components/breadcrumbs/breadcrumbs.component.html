@@ -1,0 +1,7 @@
+<ul class="breadcrumb">
+    <li *ngFor='let item of items; last as isLast;'>
+        <a *ngIf='!isLast' [routerLink]="[item.path]">{{item.title}}</a>
+        <span *ngIf='isLast'>{{item.title}}</span>
+        <!--test-->
+    </li>
+</ul>

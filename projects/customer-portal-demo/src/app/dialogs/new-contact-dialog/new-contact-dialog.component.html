@@ -1,0 +1,72 @@
+<form class="search-container">
+    <div class="inputs-row flex justify-between">
+        <div class="input-wrapper">
+            <label for="">שם מלא</label>
+            <input type="text" pInputText [(ngModel)]="query" [ngModelOptions]="{standalone: true}"/>
+        </div>
+        <div class="input-wrapper">
+            <label for="idNumber">תעודת זהות</label>
+            <p-inputNumber [(ngModel)]="idNumber" [ngModelOptions]="{standalone: true}"></p-inputNumber>
+        </div>
+
+    </div>
+    <div class="inputs-row flex justify-between">
+        <div class="input-wrapper">
+            <label for="contactTypes">סוג איש קשר</label>
+            <p-dropdown [options]="contactTypes" [(ngModel)]="selectedContactType" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-dropdown>
+        </div>
+        <div class="input-wrapper">
+            <label for="departments">מחלקה</label>
+            <p-dropdown [options]="departments" [(ngModel)]="selectedDepartments" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-dropdown>
+        </div>
+    </div>
+    <div class="inputs-row flex justify-between">
+        <div class="input-wrapper">
+            <label for="roles">תפקיד</label>
+            <p-dropdown [options]="roles" [(ngModel)]="selectedRole" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-dropdown>
+        </div>
+        <div class="input-wrapper">
+            <label for="email">מייל</label>
+            <input class='p-inputtext' type="email" id="email">
+        </div>
+    </div>
+    <div class="inputs-row flex justify-between">
+        <div class="input-wrapper">
+            <label for="phone">מס. טלפון</label>
+            <input class='p-inputtext' type="tel" id="phone" name="phone">
+        </div>
+        <div class="input-wrapper">
+            <label for="celephone">טלפון נייד</label>
+            <input class='p-inputtext' type="tel" id="celephone" name="celephone">
+        </div>
+    </div>
+    <div class="inputs-row flex justify-between">
+        <div class="input-wrapper">
+            <label for="startJobDate">תאריך כניסה לחברה</label>
+            <p-calendar [(ngModel)]="startJobDate" [ngModelOptions]="{standalone: true}" [showIcon]="true" [appendTo]="'body'"></p-calendar>
+        </div>
+        <div class="input-wrapper ">
+            <label for="birdtday">תאריך לידה</label>
+            <p-calendar [(ngModel)]="birthday" [ngModelOptions]="{standalone: true}" [showIcon]="true"   [appendTo]="'body'"></p-calendar>
+        </div>
+    </div>
+    <div class="inputs-row flex justify-between">
+        <div class="input-wrapper">
+            <label for="addeess">כתובת</label>
+            <input type="text" pInputText [(ngModel)]="addeess" [ngModelOptions]="{standalone: true}"/>
+        </div>
+        <div class="input-wrapper">
+            <label for="cities">יישוב</label>
+            <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" [ngModelOptions]="{standalone: true}"> </p-dropdown>
+        </div>
+    </div>
+    <div class="inputs-row flex justify-between align-center">
+        <div class="input-wrapper">
+            <label for="zipCode">מיקוד</label>
+            <p-inputNumber [(ngModel)]="zipCode" [ngModelOptions]="{standalone: true}"></p-inputNumber>
+        </div>
+        <div class="input-wrapper width-auto checkbox align-center">
+            <p-checkbox [(ngModel)]="value" [binary]="true" label="הצג פעילים בלבד" [ngModelOptions]="{standalone: true}"></p-checkbox> 
+        </div>
+    </div>
+</form>

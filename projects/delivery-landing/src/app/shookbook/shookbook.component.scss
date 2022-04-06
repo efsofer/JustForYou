@@ -1,0 +1,25 @@
+form { margin-bottom: 2rem; }
+.mat-radio-button {
+	min-width: 34%;
+	font-size: 1.1rem;
+}
+.form-addrs-nums > div {
+	max-width: 7rem;
+}
+@media (max-width: 576px) {
+	.form-section.form-addrs-nums {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.form-addrs-nums > div {
+		max-width: unset;
+		flex-shrink: 0;
+		width: calc(50% - .5rem);
+		margin-left: 0;
+	}
+	.form-addrs-nums > div.ml-m {
+		margin-left: 1rem;
+	}
+	.btn-back {margin-left: 1rem;}
+	.btn-large {font-size: 1.1rem}
+}

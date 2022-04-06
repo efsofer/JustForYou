@@ -1,0 +1,106 @@
+:host {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    background-color: #000;
+    display: block;
+    .main-header-container {
+        display: flex;
+        justify-content: space-between;
+        color: #fff;
+        background-color: #000;
+        padding: 6px 9px;
+        max-width: 1485px;
+        margin: 0 auto;
+    }
+    //site-branding 
+    .site-branding {
+        width: 327px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .menu-btn {
+            height: 16px;
+            width: 24px;
+            background-image: url('^assets/icons/menu-icon.svg');
+            background-repeat: no-repeat;
+            background-size: contain;
+
+            // height: 26px;
+            // width: 34px;
+            // background-image: url('^assets/icons/menu-icon.svg');
+            // background-repeat: no-repeat;
+            // background-size: auto;
+            // background-position: 5px 5px;
+        }
+        img {
+            width: 98px;
+            height: 29px;
+            object-fit: cover;
+        }
+        p {
+            font-size: 20px;
+            line-height: 24px;
+            color: #D5C272; 
+            margin: 0;
+        }
+    }
+
+    //personal-section
+    .personal-section {
+        display: flex;
+        align-items: center;
+        p {
+            margin: 0;
+            color: #fff;
+        }
+        .financial-balance {
+            button {
+                height: auto;
+                text-align: right;
+                .title {
+                    font-size: 13px;
+                    line-height: 15px;
+                    font-weight: 400;
+                }
+                .cash-number {
+                    font-size: 24px;
+                    line-height: 21px;
+                    font-weight: 400; 
+                    color: #D5C272;
+                }
+            }
+        }
+        .separator {
+            margin: 0 10px 0 14px;
+        }
+        .account-details {
+            display: flex;
+            align-items: center;
+            .icon-wrapper {
+                height: 27px;
+                width: 27px;
+                img {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+            .details-wrapper {
+                padding-right: 5px;
+                .name {
+                    font-size: 17px; 
+                    line-height: 15px;
+                }
+                .logout-btn {
+                    height: 14px;
+                    font-size: 14px;
+                    line-height: 17px;
+                    color: #fff;
+                    text-align: right;
+                    text-decoration: underline;
+                    padding: 0;
+                }
+            }
+        }
+    }
+}

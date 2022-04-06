@@ -1,0 +1,8 @@
+<header>
+    <div *ngIf="order.id" class="banner"
+        [style.background-image]="'url(' + (order.headerbackpicture | encodeSpaces) + ')'">
+        <h1 class="banner-title">{{ order.header }}</h1>
+        <p><span class="recipient-name">{{employeeName}},<br></span><span class="greeting" [innerHTML]="order.greeting | safeHtml"></span></p>
+        <img src="{{ order.logo | encodeSpaces}}">
+    </div>
+</header>

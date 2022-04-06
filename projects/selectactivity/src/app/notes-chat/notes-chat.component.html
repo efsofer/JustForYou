@@ -1,0 +1,7 @@
+<div *ngFor="let msgObj of messages" class="clearfix">
+    <div *ngIf="msgObj.msg.length" class="chat-bubble" [class.peer-msg]="!msgObj.cust" [class.my-msg]="msgObj.cust">
+        <div *ngIf="msgObj.cust"><label>את/ה:</label></div>
+        <div *ngIf="!msgObj.cust"><label>{{name}}:</label></div>
+        <p>{{msgObj.msg}}</p>
+    </div>
+</div>

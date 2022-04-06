@@ -1,0 +1,108 @@
+<div class="header-wrapper flex justify-between align-center">
+    <h3><span>25 </span>אנשי קשר משוייכים</h3>
+    <div class="actions-container">
+        <button class="btn secondary"><i class="icon excel"></i>ייצוא לאקסל</button>
+        <button class="btn secondary" (click)='display=true'><i class="icon send"></i>שליחה חוזרת לנבחרים</button>
+    </div>
+</div>
+<div class="search-wrapper">
+    <app-container [paddingValues]='"22px 29px 0 29px"'>
+        <form class="search-container">
+            <div class="inputs-row flex justify-between fluid-row">
+                <div class="input-wrapper">
+                    <label for="name">שם</label>
+                    <input type="text" pInputText [(ngModel)]="name" [ngModelOptions]="{standalone: true}"/>
+                </div>
+                <div class="input-wrapper">
+                    <label for="phone">טלפון</label>
+                    <input class='p-inputtext' type="tel" id="phone" name="phone">
+                </div>
+                <div class="input-wrapper">
+                    <label for="email">מייל</label>
+                    <input class='p-inputtext' type="email" id="email">
+                </div>
+                <div class="input-wrapper">
+                    <label for="code">קוד שובר</label>
+                    <p-inputNumber [(ngModel)]="code" [ngModelOptions]="{standalone: true}"></p-inputNumber>
+                </div> 
+            </div>
+            <div class="inputs-row flex justify-between align-center">
+                <div class="flex">
+                    <div class="input-wrapper width-auto">
+                        <label for="expDateFrom">מתאריך תוקף</label>
+                        <p-calendar [(ngModel)]="expDateFrom" [ngModelOptions]="{standalone: true}" [showIcon]="true" placeholder="____/__/__" ></p-calendar>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="expDateTo">עד</label>
+                        <p-calendar [(ngModel)]="expDateTo" [ngModelOptions]="{standalone: true}" [showIcon]="true" placeholder="____/__/__"  ></p-calendar>
+                    </div>
+                </div>
+                <button class="btn primary">חיפוש</button>
+            </div>
+        </form>
+    </app-container>
+</div>
+<div class="table-wrapper">
+    <p-table [columns]="cols" [value]="tableData" [paginator]="true" [rows]="14" [rowsPerPageOptions]="[5,10,15,20,30]">
+        <ng-template pTemplate="header"  let-columns>
+            <tr>
+                <th style='width: 25px; padding: 0 0 10px 0 ;text-align: right;'>
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                  <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]='col.field'>
+                      {{col.header}}
+                      <p-sortIcon *ngIf='col.header.length' [field]="col.field"></p-sortIcon>
+                  </th>
+              </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData">
+              <td >
+                  <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+              </td>
+              <td>
+                  <button class="display-button-as-link">{{rowData.name}}</button>
+            </td>
+              <td>{{rowData.type}}</td>
+              <td>{{rowData.department}}</td>
+              <td>{{rowData.role}}</td>
+              <td>{{rowData.birthDate}}</td>
+              <td>{{rowData.couponCode}}</td>
+              <td>{{rowData.orderNumber}}</td>
+              <td>
+                  <span *ngIf='rowData.statusDetails.status === 1'>נשלח</span>
+                  <span *ngIf='rowData.statusDetails.status === 2'>טרם נשלח</span>
+                  <button *ngIf='rowData.statusDetails.status === 3' class="display-button-as-link" pTooltip="{{rowData.statusDetails?.couponName}}"  tooltipPosition="bottom">שובר נבחר</button> 
+              </td>
+              <td>{{rowData.sendDate}}</td>
+              <td>
+                  <button  (click)='display2=true' [disabled]='!rowData.removeBtn'>
+                      <i *ngIf='rowData.removeBtn' class="icon remove"></i>
+                      <i *ngIf='!rowData.removeBtn' class="icon remove-disabled"></i>
+                  </button>
+            </td>
+          </tr>
+          </ng-template>
+    </p-table>  
+</div>
+
+<!-- modals -->
+<p-dialog [style]="{width: '767px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]="display" header='שליחה חוזרת לנבחרים' [styleClass]='""'>
+    <app-resending-dialog [message]='"האם ברצונך לשלוח את השובר לנבחרים?"'></app-resending-dialog>
+    <p-footer>
+    <div class="">
+        <button class="btn secondary" (click)="display=false">ביטול</button>
+        <button class="btn primary">אישור</button>
+    </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [style]="{width: '767px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]="display2" header='הסרת איש קשר' [styleClass]='""'>
+    <app-resending-dialog [message]='"האם ברצונך להסיר את האיש קשר הזה?"'></app-resending-dialog>
+    <p-footer>
+    <div class="">
+        <button class="btn secondary" (click)="display2=false">ביטול</button>
+        <button class="btn primary">אישור</button>
+    </div>
+    </p-footer>
+</p-dialog>

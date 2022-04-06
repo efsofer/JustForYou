@@ -1,0 +1,14 @@
+<svg id="Group_18539" data-name="Group 18539" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35" height="35" viewBox="0 0 35 35">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_3722" data-name="Rectangle 3722" width="19" height="19" fill="#d2dbe3"/>
+    </clipPath>
+  </defs>
+  <circle id="Ellipse_175" data-name="Ellipse 175" cx="17.5" cy="17.5" r="17.5" transform="translate(0 0)" fill="#d2dbe3"/>
+  <g id="Mask_Group_6" data-name="Mask Group 6" transform="translate(8.001 8)" clip-path="url(#clip-path)">
+    <g id="transfer" transform="translate(0 0.79)">
+      <path id="Caminho_5352" data-name="Caminho 5352" d="M19.532,12.253a.594.594,0,0,1-.594-.594A4.161,4.161,0,0,0,14.782,7.5H9.043v2.567a.594.594,0,0,1-1,.433L3.684,6.346a.593.593,0,0,1,0-.858L8.039,1.331a.594.594,0,0,1,1,.429V4.328H13.99a6.143,6.143,0,0,1,6.136,6.136v1.193a.594.594,0,0,1-.594.6Z" transform="translate(-1.126 -1.168)" fill="#7990a6"/>
+      <path id="Caminho_5353" data-name="Caminho 5353" d="M11.086,20.992V18.425H6.136A6.143,6.143,0,0,1,0,12.283V11.1a.594.594,0,0,1,1.188,0,4.161,4.161,0,0,0,4.155,4.155h5.742V12.685a.594.594,0,0,1,1-.429l4.354,4.157a.593.593,0,0,1,0,.858l-4.354,4.157a.594.594,0,0,1-1-.434Z" transform="translate(0 -4.17)" fill="#7990a6"/>
+    </g>
+  </g>
+</svg>

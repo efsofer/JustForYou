@@ -1,0 +1,131 @@
+.container {
+    text-align: center;
+}
+
+.choice-container:not(:last-child) { margin-bottom: 5rem; }
+
+.choice-wrapper {
+    width: 50%;
+    margin: 0 auto;
+    display: grid;
+    -ms-grid-columns: 1fr 2rem 1fr;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 2rem;
+}
+
+.choice-img img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+.choice-desc {
+    font-size: 1.2rem;
+    text-align: right;
+}
+
+@media (max-width: 1366px) {
+    .choice-wrapper {
+        width: 75%;
+    }
+}
+
+@media (max-width: 768px) {
+    .choice-wrapper {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .choice-wrapper {
+        -ms-grid-columns: auto;
+        grid-template-columns: auto;
+    }
+    .choice-desc {
+        text-align: center;
+    }
+}
+
+.sendform-wrapper {
+    min-height: 164px;
+}
+
+.form-control {
+    width: 18%;
+    min-width: 250px;
+    margin: 0 auto 1rem;
+}
+
+.btn {
+    font-size: 1.25rem;
+}
+
+.suppliers-link {
+    margin: 1.5rem 0 2rem;
+    .btn {
+        font-size: 1.5rem;
+    }
+}
+
+.print-suppliers {
+    display: none;
+    > div {
+        display: inline-block;
+    }
+}
+
+.supp-block {
+    float: right;
+    margin: .5rem;
+    line-height: 1;
+    font-size: .75rem;
+    min-height: 96px;
+}
+
+.supp-block img {
+    max-height: 70px;
+    max-width: 185px;
+}
+
+.print-footer {
+    display: none;
+    margin-bottom: 1.5rem;
+    p {
+        display: inline;
+        margin-right: 1rem;
+    }
+    img {
+        max-width: 100px;
+    }
+}
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    .print-footer {
+        display: block;
+    }
+    .print-suppliers {
+        display: block;
+    }
+    .choice-wrapper {
+        -ms-grid-columns: 1fr 2rem 1fr;
+        grid-template-columns: repeat(2,1fr)
+    }
+    .choice-desc {
+        font-size: .9rem;
+    }
+    h2 {
+        font-size: 2rem;
+        margin: .75rem 0 1rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+    h4 {
+        font-size: 1.2rem;
+    }
+    h4, h4 {
+        margin: 0 0 .75rem;
+    }
+}

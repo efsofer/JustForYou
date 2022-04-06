@@ -1,0 +1,24 @@
+<div class="container">
+    <div *ngIf="!unsupportedBrowser" class="form-wrapper">
+        <ng-template [ngIf]="!isPais" [ngIfElse]="pais">
+        <h2 class="color-primary" style="text-align: center;">אימות</h2>
+        <form #vldForm="ngForm" (ngSubmit)="checkVoucher()">
+            <label for="vld">אנא הזינו את קוד השובר:</label><br>
+            <input type="text" class="form-control" name="vld" required [(ngModel)]="vcValue" #name="ngModel">
+            <button *ngIf="!isLoading" type="submit" class="btn" [disabled]="!vldForm.form.valid">המשך<i
+                    class="fas fa-arrow-left"></i></button>
+            <div *ngIf="isLoading" class="loader"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+        </form>
+        <span *ngIf="isError && !isPais" class="error-desc">קוד שגוי. אם אתם בטוחים שהקלדתם נכון, פנו לשירות הלקוחות שלנו:
+            03-5322313</span>
+        <span *ngIf="isError && isPais" class="error-desc">קוד שגוי. אם אתם בטוחים שהקלדתם נכון, פנו לשירות הלקוחות של מועדון מפעל הפיס</span>
+    </ng-template>
+    <ng-template #pais>
+        <h2 class="color-primary" style="text-align: center;">ההטבה הסתיימה!</h2>
+    </ng-template>
+    </div>
+    <div *ngIf="unsupportedBrowser" class="form-wrapper">
+        <h3 style="font-family:Arial, Helvetica, sans-serif;">מצטערים, דפדפן זה אינו נתמך. אנא נסו שנית מדפדפן Microsoft
+            Edge או מכל דפדפן מודרני אחר לבחירתכם.</h3>
+    </div>
+</div>

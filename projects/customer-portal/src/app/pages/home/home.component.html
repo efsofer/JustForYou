@@ -1,0 +1,131 @@
+<h1 class='page-title'>שלום, <span>{{FName}}!</span></h1>
+<!-- Graph -->
+<app-container [paddingValues]='"0"'>
+    <div class="flex general-details-wrapper">
+        <!--  -->
+        <div class="doughnut-detail flex justify-between align-center">
+            <app-pie-chart [chartInputData]='pieData' [setHeight]='150'></app-pie-chart>
+            <div class="dl-wrapper doughnut">
+                <div>
+                    <dl>
+                        <dt>{{myActive}}</dt>
+                        <div>
+                            <span class='circle yellow'></span>
+                            <dd>משוייכים לפעילויות</dd>
+                        </div>
+                    </dl>
+                </div>
+                <div>
+                    <dl>
+                        <dt>{{size}}</dt>
+                        <div>
+                            <span class='circle blue'></span>
+                            <dd>משוייכים לאנשי קשר</dd>
+                        </div>
+                    </dl>
+                </div>
+                <div>
+                    <dl>
+                        <dt>{{notActive}}</dt>
+                        <div>
+                            <span class='circle green'></span>
+                            <dd>פנויים</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <div class="dl-wrapper regular-dl-details">
+            <div>
+                <dl>
+                    <dt>{{sumVouchers}}</dt>
+                    <dd>שוברים</dd>
+                </dl>
+            </div>
+            <div>
+                <dl>
+                    <dt>{{sumActivities}}</dt>
+                    <dd>פעילויות</dd>
+                </dl>
+            </div>
+            <div>
+                <dl>
+                    <dt>{{size}}</dt>
+                    <dd>אנשי קשר</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</app-container>
+<!-- Banner -->
+<div class="banner-wrapper">
+    <a href="#">
+        <img src="./assets/images/banner.png" alt="">
+    </a>
+</div>
+<!-- Coupons + Activities -->
+<div class="coupons-activities-wrapper">
+    <app-container>
+        <div class="flex justify-between align-center">
+            <h2 class="card-title homepage">השוברים שלי</h2>
+            <button class='btn secondary' (click)="contact()">
+                <i class='icon share'></i>
+                לרכישת שוברים באתר
+            </button>
+        </div>
+        <div class="items-wrapper">
+            <ng-container *ngFor='let coupon of vouchers?.returnobj |  slice:0:3'>
+                <app-card-item [type]='1' [data]='coupon'></app-card-item>
+            </ng-container>
+        </div>
+        <div class="flex justify-end align-center">
+            <!-- <a href="#" class='link-btn'>לכל השוברים<i class='icon arrow'></i></a> -->
+            <a [routerLink]="['/coupons-management']" class='link-btn'>לכל השוברים<i class='icon arrow'></i></a>
+        </div>
+    </app-container>
+    <app-container>
+        <div class="flex justify-between align-center">
+            <h2 class="card-title homepage">הפעילויות שלי</h2>
+            <button class='btn secondary' (click)='createActivity()'><span class='plus-sign'>+</span> יצירת פעילות חדשה
+            </button>
+        </div>
+        <div class="items-wrapper">
+            <ng-container *ngFor='let activity of activities?.returnobj |  slice:0:3'>
+                <app-card-item [type]='11' [data]='activity'></app-card-item>
+            </ng-container>
+        </div>
+        <div class="flex justify-end align-center">
+            <!-- <a href="#" class='link-btn'>לכל הפעילויות<i class='icon arrow'></i></a> -->
+            <a [routerLink]="['/activities-management']" class='link-btn'>לכל הפעילויות<i class='icon arrow'></i></a>
+        </div>
+    </app-container>
+</div>
+<!-- loads data -->
+<div *ngIf="isLoading" class="loader">
+    <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+<!-- Trand Coupons -->
+<app-container class='trands'>
+    <div class="flex justify-between align-center">
+        <h2 class="card-title homepage">השוברים הטרנדים של just4u</h2>
+        <button class='btn secondary' (click)="contactAll()">
+            <i class='icon share'></i>
+            לרכישת שוברים ב-just4u
+        </button>
+    </div>
+    <!-- <p>קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי הועניב היושבב שערש שמחויט - שלושע ותלברו חשלו שעותלשך וחאית נובש ערששף. זותה מנק הבקיץ אפאח דלאמת יבש, כאנה ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וקלורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק. לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו בלוקריה שיצמה ברורק. קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו בלוקריה שיצמה ברורק.</p> -->
+    <div class="items-wrapper">
+        <ng-container *ngFor='let coupon of mockTrandCoupons'>
+            <app-card-item [type]='2' [data]='coupon'></app-card-item>
+        </ng-container>
+    </div>
+    <app-paginator></app-paginator>
+
+</app-container>

@@ -1,0 +1,531 @@
+// Form elements
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  width: 300px;
+  transition: width 0.3s ease-in-out;
+  label {
+    margin-bottom: 3px;
+  }
+  p, label, span {
+    font-size: 18px;
+    line-height: 22px;
+  }
+  &.width-auto {
+    width: auto;
+  }
+  .ui-inputnumber {
+    width: 100%;
+  }
+  &.double-inputs {
+    flex-direction: row;
+    max-width: 240px;
+  }
+  @media (max-width: 1539px)  {
+    width: 240px;
+  }
+}
+
+.ui-inputtext {
+  border: 1px solid #DBDBDB;
+  font-size: 18px;
+  line-height: 22px;
+  color: rgba(0, 0, 0, 0.58);
+  padding: 7px 15px;
+  border-radius: 5px;
+  // margin-left: 10px;
+  width: 100%;
+}
+
+.ui-dropdown, .ui-multiselect {
+  border: 1px solid #DBDBDB;
+  background-color: #fff;
+  font-size: 18px;
+  line-height: 22px;
+  color: #fff;
+  border-radius: 5px;
+  margin-left: 10px;
+  width: 100%;
+  height: 38px;
+  .ui-dropdown-trigger,
+  .ui-multiselect-trigger {
+    right: auto;
+    left: 10px;
+  }
+  .ui-dropdown-label,
+  .ui-multiselect-label {
+    padding-right: 15px; 
+  }
+  .ui-dropdown-trigger-icon,
+  .ui-multiselect-trigger-icon {
+    position: relative;
+    &::before {
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 10px 5px 0 5px;
+      border-color: #7990A6 transparent transparent transparent;
+      position: absolute;
+      top: 5px;
+      left: 0;
+    }
+  }
+}
+
+.ui-multiselect-header {
+  display: none;
+  .ui-multiselect-filter-container {
+    width: 83%;
+  }
+}
+
+.ui-dropdown-items-wrapper,
+.ui-multiselect-items {
+  background-color: #fff;
+}
+
+.ui-dropdown-panel,
+.ui-multiselect-panel {
+  background-color: #fff;
+  .ui-dropdown-item,
+  .ui-multiselect-item {
+    text-align: right;
+    color: #000;
+    font-size: 18px;
+    line-height: 22px;
+    padding: 5px;
+  }
+} 
+
+.ui-chkbox {
+  height: 17px;
+  width: 17px;
+  border: 1px solid #DBDBDB;
+  border-radius: 5px;
+  margin-left: 10px;
+  .ui-chkbox-icon {
+    display: block;
+    font-size: 12px !important;
+    color: #000;
+    line-height: 16px !important;
+    position: relative;
+    left: 3px;
+  }
+}
+
+// Calendar
+.ui-calendar {
+    display: flex;
+    align-items: center;
+    max-width: 170px;
+    margin-left: 15px;
+   &.ui-calendar-w-btn {
+        input {
+            margin: 0;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-left: 0;
+            text-align: left;
+        }
+   } 
+
+   .ui-inputtext {
+
+   }
+
+   .ui-datepicker-monthpicker {
+
+   }
+
+   .ui-datepicker-calendar {
+
+   }
+
+   .ui-calendar-button {
+       height: 38px;
+       background-color: #D2DBE3;
+       border-top-right-radius: 0;
+       border-bottom-right-radius: 0;
+       border-top-left-radius: 5px;
+       border-bottom-left-radius: 5px;
+       border: 1px solid #DBDBDB;
+       border-right: 0;
+       &:hover {
+          border: 1px solid #DBDBDB !important;
+          border-right: 0 !important;
+       }
+   }
+
+   .pi.pi-calendar {
+      &::before {
+          content: url('^assets/icons/calendar-icon.svg')
+      } 
+   }
+}
+
+.ui-datepicker {
+   background-color: #fff;
+   font-size: 18px;
+   line-height: 22px;
+  // left: 50% !important;
+  // transform: translate(-50%, 0%) !important;
+  //  td>span, 
+  //  td>a {
+  //   font-size: 18px;
+  //   line-height: 22px;
+  //  }
+}
+
+// ui-paginator
+.ui-paginator {
+  direction: ltr;
+  background-color: #F2F5F8;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  padding: 7px 25px 7px 0;
+  margin-top: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  .ui-paginator-pages {
+    height: 27px;
+    .ui-paginator-page {
+      font-size: 18px;
+      min-width: 23px;
+      &.ui-state-active {
+        background-color: #873D4C;
+        color: #fff;
+        border-radius: 3px;
+      }
+    }
+  }
+
+  .ui-dropdown {
+    width: auto;
+    direction: rtl;
+    min-width: 65px;
+    background-color: transparent;
+    .ui-inputtext {
+      padding: 7px 15px !important;
+    }
+  }
+
+  .ui-paginator-first {
+    margin: 0 5px;
+    &.ui-state-disabled {
+      opacity: 0.5;
+    }
+  }
+  .ui-paginator-prev {
+    margin: 0 5px;
+    &.ui-state-disabled {
+      opacity: 0.5;
+    }
+  }
+  
+  .ui-paginator-next {
+    margin: 0 5px;
+    &.ui-state-disabled {
+      opacity: 0.5;
+    }
+  }
+  .ui-paginator-last {
+    margin: 0 5px;
+    &.ui-state-disabled {
+      opacity: 0.5;
+    }
+  }
+
+  .ui-paginator-icon {
+    &.pi {
+      &.pi-caret-right {
+        &::before {
+          content: url('^assets/icons/step-right.svg');
+        }
+      }
+
+      &.pi-step-forward {
+        &::before {
+          content: url('^assets/icons/step-forward.svg');
+        }
+      }
+
+      &.pi-caret-left {
+        &::before {
+          content: url('^assets/icons/step-left.svg');
+        }
+      }
+
+      &.pi-step-backward {
+        &::before {
+          content: url('^assets/icons/step-backward.svg');
+        }
+      }
+      &::before {
+        position: relative;
+        bottom: 1px;
+      }
+    }
+  }
+
+}
+
+// toggle 
+.ui-inputswitch {
+  position: relative;
+  display: inline-block;
+  width: 49px;
+  height: 24px;
+  margin: 0 15px;
+  .ui-inputswitch-checked {
+
+  }
+  .ui-inputswitch-slider {
+    transition: background-color 0.2s, box-shadow 0.2s;
+    border-radius: 30px;
+    border: 1px solid #707070;
+    background: #fff;
+    &::before {
+      border: 1px solid #707070;
+      background-color: #575757;
+      height: 20px;
+      width: 20px;
+      left: 0;
+      bottom: 0;
+      border-radius: 50%;
+      transition: 0.2s;
+    }
+  }
+  &.ui-inputswitch-checked {
+    .ui-inputswitch-slider {
+
+      &::before {
+        transform: translateX(2.45em);
+        background-color: #873D4C;
+        border: 1px solid #873D4C;
+      }
+    }
+  }
+  &-focus {
+    outline: 2px solid #000;
+  }
+}
+
+.ui-state-focus {
+  border: 1px solid #7990A6;
+}
+.ui-inputtext:focus {
+  border: 1px solid #7990A6;
+}
+
+// editor
+.ui-editor-container {
+  .ui-editor-toolbar {
+    border: 1px solid #c8c8c8;
+    background-color: #f4f4f4;
+  }
+  .ui-editor-content {
+    border: 1px solid #c8c8c8;
+    .ql-editor {
+      background-color: #ffffff;
+      color: #333333;
+    }
+  }
+  .ql-picker.ql-expanded {
+    .ql-picker-label {
+      color: #333333;
+    }
+  }
+  .ql-stroke {
+    stroke: #333333;
+  }
+  .ql-picker-label {
+    color: #333333;
+  }
+  .ql-snow.ql-toolbar {
+    button {
+      &:hover {
+        color: #007ad9;
+        .ql-stroke {
+          stroke: #007ad9;
+        }
+        .ql-stroke-miter {
+          stroke: #007ad9;
+        }
+      }
+    }
+    button.ql-active {
+      color: #007ad9;
+      .ql-stroke {
+        stroke: #007ad9;
+      }
+      .ql-stroke-miter {
+        stroke: #007ad9;
+      }
+    }
+    .ql-picker-label {
+      &:hover {
+        color: #007ad9;
+        .ql-stroke {
+          stroke: #007ad9;
+        }
+        .ql-stroke-miter {
+          stroke: #007ad9;
+        }
+      }
+    }
+    .ql-picker-label.ql-active {
+      color: #007ad9;
+      .ql-stroke {
+        stroke: #007ad9;
+      }
+      .ql-stroke-miter {
+        stroke: #007ad9;
+      }
+    }
+    .ql-picker-item {
+      &:hover {
+        color: #007ad9;
+        .ql-stroke {
+          stroke: #007ad9;
+        }
+        .ql-stroke-miter {
+          stroke: #007ad9;
+        }
+      }
+    }
+    .ql-picker-item.ql-selected {
+      color: #007ad9;
+      .ql-stroke {
+        stroke: #007ad9;
+      }
+      .ql-stroke-miter {
+        stroke: #007ad9;
+      }
+    }
+  }
+  .ql-snow {
+    .ql-toolbar {
+      button {
+        &:hover {
+          color: #007ad9;
+          .ql-stroke {
+            stroke: #007ad9;
+          }
+          .ql-stroke-miter {
+            stroke: #007ad9;
+          }
+        }
+      }
+      button.ql-active {
+        color: #007ad9;
+        .ql-stroke {
+          stroke: #007ad9;
+        }
+        .ql-stroke-miter {
+          stroke: #007ad9;
+        }
+      }
+      .ql-picker-label {
+        &:hover {
+          color: #007ad9;
+          .ql-stroke {
+            stroke: #007ad9;
+          }
+          .ql-stroke-miter {
+            stroke: #007ad9;
+          }
+        }
+      }
+      .ql-picker-label.ql-active {
+        color: #007ad9;
+        .ql-stroke {
+          stroke: #007ad9;
+        }
+        .ql-stroke-miter {
+          stroke: #007ad9;
+        }
+      }
+      .ql-picker-item {
+        &:hover {
+          color: #007ad9;
+          .ql-stroke {
+            stroke: #007ad9;
+          }
+          .ql-stroke-miter {
+            stroke: #007ad9;
+          }
+        }
+      }
+      .ql-picker-item.ql-selected {
+        color: #007ad9;
+        .ql-stroke {
+          stroke: #007ad9;
+        }
+        .ql-stroke-miter {
+          stroke: #007ad9;
+        }
+      }
+    }
+  }
+}
+
+
+// radio-button
+.ui-radiobutton {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  bottom: 3px;
+  .ui-radiobutton-box {
+    border: 1px solid #a6a6a6;
+    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    position: relative;
+    transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    border-radius: 50%;
+    .ui-radiobutton-icon {
+      background: transparent;
+      width: 10px;
+      height: 10px;
+      display: inline-block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -5px;
+      margin-top: -5px;
+      transition: background-color 0.2s;
+      border-radius: 50%;
+      &::before {
+        content: none
+      }
+    }
+
+    &.ui-state-active{
+      border: 1px solid #a6a6a6;
+      background-color: #fff;
+      color: #fff;
+      .ui-radiobutton-icon {
+        background-color: #7990A6;
+      }
+    }
+  }
+}
+
+.ui-radiobutton-label {
+  margin: 0.5em 5px 0 0;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 600;
+  cursor: pointer;
+}

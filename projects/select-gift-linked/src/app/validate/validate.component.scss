@@ -1,0 +1,36 @@
+.form-wrapper {
+    width: 100%;
+	max-width: 450px;
+	margin: 0 auto;
+	padding-bottom: 5rem;
+}
+
+.form-wrapper label {
+    font-size: 1.5rem;
+}
+
+.form-control {
+	display: initial;
+	width: 65%;
+	font-size: 1.25rem;
+	margin: 0 0 0 1rem;
+}
+
+@media (max-width: 440px) {
+	.form-control {
+		width: 95%;
+		margin: 0 0 1rem;
+	}
+}
+
+.form-wrapper .btn {
+	padding: .5rem 1rem;
+	font-size: 1.25rem;
+	vertical-align: bottom;
+}
+
+@media (min-width: 576px) {
+	.error-desc {
+		position: absolute;
+	}
+}

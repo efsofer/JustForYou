@@ -1,0 +1,42 @@
+<div class='flex justify-between align-center'>
+    <h1 class='page-title'>ניהול תמריצים</h1>
+    <button class='btn primary' (click)='createActivity()'><span class='plus-sign'>+</span> אתר תמריצים חדש </button>
+</div>
+
+<app-container>
+    <div class="flex justify-between align-center header-wrapper" style="margin-bottom:2rem;">
+        <h2>סך הכל תקציב: <span>7700 ₪</span></h2>
+        <h2>נוצל: <span>2764 ₪</span></h2>
+        <h2>יתרה: <span>4936 ₪</span></h2>
+        <h2>שוברים שנשלחו: <span>30</span></h2>
+        <button class="btn secondary" [routerLink]="['/incentives-management','1']"><i class="icon pi pi-list"></i>צפייה בנתונים</button>
+    </div>
+    <div class="table-wrapper">
+        <p-table [columns]="cols" [value]="tableDate" [paginator]="true" [rows]="14" [rowsPerPageOptions]="[5,10,15,20,30]">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                      <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]='col.field'>
+                          {{col.header}}
+                          <p-sortIcon [field]="col.field" *ngIf='col.header.length > 0'></p-sortIcon>
+                      </th>
+                  </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr [pSelectableRow]="rowData">
+                  <td>{{rowData.name}}</td>
+                  <td>{{rowData.date}}</td>
+                  <td>{{rowData.budget}}<span> ₪</span></td>
+                  <td>{{rowData.used}}<span> ₪</span></td>
+                  <td>{{rowData.balance}}<span> ₪</span></td>
+                  <td>{{rowData.vouchers}}</td>
+                  <td>
+                    <button class="display-button-as-link" (click)="openIncentive()">
+                        <i class="pi pi-arrow-circle-left"></i>
+                        צפייה
+                    </button>
+                </td>
+              </tr>
+              </ng-template>
+        </p-table>  
+    </div>
+</app-container>

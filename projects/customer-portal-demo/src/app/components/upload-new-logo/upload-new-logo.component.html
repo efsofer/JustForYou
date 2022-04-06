@@ -1,0 +1,27 @@
+<div class="flex align-center">
+    <div class="current-logo-wrapper">
+        <img src="/assets/images/mockImg/logo-placeholder.png" alt="לוגו חברה">
+    </div>
+    <div class="input-wrapper" style='margin: 0 10px 0 0;'>
+        <!-- <p-fileUpload name="myfile[]" 
+                      url="./upload.php" 
+                      multiple="multiple" 
+                      accept="image/*"
+                      mode="basic" 
+                      [showCancelButton]='false' [showUploadButton]='false'
+                      [chooseLabel]='"העלה לוגו חדש"'>
+        </p-fileUpload> -->
+        <button class="btn secondary" (click)='display=true'>בחר קובץ</button>
+    </div>
+</div>
+
+<!-- modals -->
+<p-dialog [style]="{width: '1225px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]="display" header='העלה תמונה מותאמת אישית' [styleClass]='""'>
+    <app-load-from-file-dialog [fileType]='"image/*"'></app-load-from-file-dialog>
+    <p-footer>
+    <div class="">
+        <button class="btn secondary" (click)="display=false">ביטול</button>
+        <button class="btn primary">שמירה</button>
+    </div>
+    </p-footer>
+</p-dialog>

@@ -1,0 +1,16 @@
+<div class='file' [ngClass]='{"image": fileType === "image/*"}'>
+    <p-fileUpload (change)="upload($event)" 
+                   name="myfile[]" url="#" 
+                   accept="{{fileType}}" [showCancelButton]='false' 
+                   [showUploadButton]='false' 
+                   [chooseLabel]='"בחר קובץ"'
+                   (onSelect)='selectFile($event)'
+                   (onRemove)='removeFile($event)'>
+    
+    
+        <ng-template pTemplate="content">
+            <p class='instructions' *ngIf='showInstructions'>  גרור ושחרר קובץ לכאן או בחר קובץ</p>
+        </ng-template> 
+    
+    </p-fileUpload>
+</div>

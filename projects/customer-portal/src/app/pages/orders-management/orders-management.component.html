@@ -1,0 +1,51 @@
+<h1 class='page-title'>ניהול הזמנות</h1>
+<!-- Search -->
+<app-container [paddingValues]='"22px 29px 0 29px"'>
+    <form class="search-container">
+        <div class="inputs-row flex justify-between first fluid-row">
+            <div class="input-wrapper">
+                <label for="orderNumber">מספר הזמנה</label>
+                <p-inputNumber [(ngModel)]="orderNumber" [ngModelOptions]="{standalone: true}"></p-inputNumber>
+            </div>
+            <div class="input-wrapper">
+                <label for="phone">טלפון</label>
+                <input class='ui-inputtext' type="tel" id="phone" name="phone">
+            </div>
+            <div class="input-wrapper">
+                <label for="code">קוד שובר</label>
+                <p-inputNumber [(ngModel)]="code" [ngModelOptions]="{standalone: true}"></p-inputNumber>
+            </div>
+            <div class="input-wrapper double-inputs justify-between">
+                <div class="input-wrapper width-auto">
+                    <label for="fromPrice">מחיר מ-</label>
+                    <p-inputNumber [(ngModel)]="fromPrice" [ngModelOptions]="{standalone: true}"  [style]="{width: '116px'}"></p-inputNumber>
+                </div>
+                <div class="input-wrapper width-auto">
+                    <label for="toPrice">עד</label>
+                    <p-inputNumber [(ngModel)]="toPrice" [ngModelOptions]="{standalone: true}" [style]="{width: '116px'}"></p-inputNumber>
+                </div>
+            </div>
+        </div>
+        <div class="inputs-row flex justify-between align-center">
+            <div class="flex">
+                <div class="input-wrapper width-auto">
+                    <label for="dateFrom">מתאריך</label>
+                    <p-calendar [(ngModel)]="dateFrom" [ngModelOptions]="{standalone: true}" [showIcon]="true" placeholder="____/__/__" [appendTo]='"body"'></p-calendar>
+                </div>
+                <div class="input-wrapper">
+                    <label for="dateTo">עד תאריך</label>
+                    <p-calendar [(ngModel)]="dateTo" [ngModelOptions]="{standalone: true}" [showIcon]="true" placeholder="____/__/__"  ></p-calendar>
+                </div>
+            </div>
+            <button class="btn primary">חיפוש</button>
+        </div>
+    </form>
+</app-container>
+<!-- List -->
+<app-container>
+    <div class="items-wrapper">
+        <ng-container *ngFor='let order of mockOrders'>
+            <app-card-item [type]='7' [data]='order'></app-card-item>
+        </ng-container>
+    </div>
+</app-container>

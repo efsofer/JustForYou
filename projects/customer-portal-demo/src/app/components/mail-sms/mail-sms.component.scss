@@ -1,0 +1,192 @@
+:host {
+    display: block;
+    background-color: #fff;
+    height: auto;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+    border-radius: 5px;
+    padding: 23px 30px 0 30px;
+    .page-title {
+        font-size: 25px;
+        line-height: 33px;
+        margin-bottom: 20px;
+    }
+
+    .settings-container {
+        display: flex;
+        flex-direction: column;
+       
+    }
+
+    hr {
+        height: 1px;
+        width: 100%;
+        margin: 30px 0;
+        border-top: 1px solid  rgba(112, 112, 112, 0.3);
+    }
+
+    .setting-item {
+        display: flex;
+        margin-bottom: 30px;
+        .setting-instructions {
+            flex: 0 1 455px;
+            max-width: 455px;
+            padding-left: 55px;
+            h3 {
+                font-size: 18px;
+                line-height: 23px;
+                font-weight: 600;
+                margin: 0 0 5px 0;
+            }
+            p {
+                margin: 0;
+                font-size: 18px;
+                line-height: 23px;
+                font-weight: 400;
+                color: rgba(0, 0, 0, 0.52);
+                max-height: 70px;
+            }
+        }
+        .setting-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        &.greeting-sentence {
+            .icon {
+                height: 30px;
+                width: 30px;
+            }
+        }
+        &.banner,
+        &.picture-video {
+            .setting-content {
+                // display: flex;
+                // align-items: center;
+                span {
+                    font-size: 18px;
+                    line-height: 23px;
+                    margin: 0 15px
+                }
+            }
+        }
+        &.send {
+            flex-direction: column;
+            .title-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 20px;
+                .page-title {
+                    margin-bottom: 0;
+                }   
+            }
+            .setting-instructions {
+                flex: 1;
+            }
+        }
+        &.rich-content {
+            .setting-content {
+                margin-top: 0;
+                flex-direction: column;
+                align-items: flex-end;
+                .btn.secondary {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        &.sms {
+            margin-bottom: 0;
+            .setting-content {
+                padding: 0 25px;
+                justify-content: space-between;
+            }
+            .setting-instructions {
+                align-self: baseline;
+            }
+        }
+    }
+
+    .toggle {
+        position: relative;
+        top: 4px;
+    }
+    textarea {
+        resize: none;
+        width: 310px;
+        height: 179px;
+        border-radius: 0%;
+    }
+    .phone-img-wrapper {
+        position: relative;
+        &::before {
+
+        }
+        .txt-bubble {
+            position: absolute;
+            top: 130px;
+            right: 50px;
+            font-size: 12px;
+            width: 225px;
+            min-height: 35px;
+            max-height: 170px;
+            margin: 0 auto;
+            border-radius: 15px;
+            background: #E5E5EA;
+            color: #000;
+            padding: 10px 20px;
+            text-align: right;
+            font-weight: 400;
+            word-wrap: break-word;
+            //overflow: hidden;
+            &::before {
+                content: "";
+                width: 0;
+                height: 0;
+                position: absolute;
+                border-left: 15px solid #E5E5EA;
+                border-right: 15px solid transparent;
+                border-top: 15px solid #E5E5EA;
+                border-bottom: 15px solid transparent;
+                right: -16px;
+                top: 0;
+            }
+        }
+
+    }
+    ::ng-deep {
+        // upload button
+        p-fileupload {
+            display: flex;
+        }
+        .p-fileupload-row {
+            & > div {
+                &:nth-of-type(1) {
+                    border: 1px solid #000;
+                }
+            }
+        }
+    
+        .p-fileupload-choose {
+            border: 1px solid #873D4C;
+            border-radius: 5px;
+        }
+    
+        .p-button-text {
+            font-size: 18px;
+            line-height: 22px;
+            color: #873D4C;
+            font-weight: 500;
+            padding: 7px 30px;
+            height: 35px;
+        }
+    
+        .p-button-icon-left {
+            display: none;
+        }
+        // ************** //
+        p-editor {
+            width: 100%;
+        }
+    }
+}

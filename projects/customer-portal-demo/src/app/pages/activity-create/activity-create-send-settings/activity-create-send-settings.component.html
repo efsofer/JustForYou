@@ -1,0 +1,48 @@
+<h2 class="page-title">הגדרות שליחה</h2>
+<form class='radio-button-section'>
+    <div class="inputs-row">
+        <div class="input-wrapper">
+            <p-radioButton name="group" value="val1" 
+                           label="שלח כל השוברים מידי (לאחר סיום תהליך זה)" 
+                           [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
+            </p-radioButton>
+            <p>כל השוברים יישלחו מיד לאחר סיום תהליך זה</p>
+        </div>
+        <hr>
+        <div class="input-wrapper">
+            <p-radioButton name="group" value="val2"
+                           label="שלח כל השוברים בתאריך מסוים" 
+                           [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
+            </p-radioButton>
+            <p>השוברים יישלחו רק בתאריך שנקבע (לדוגמא: אם הרצון שלך הוא שכל השוברים יישלחו בפסח, תוכל להזין את תאריך הפסח בשדה להלן)</p>
+            <div class='calendar' [ngClass]='{"disabled": selectedValue !== "val2"}'>
+                <label for="date">עד</label>
+                <p-calendar [(ngModel)]="date" [ngModelOptions]="{standalone: true}" [showIcon]="true" [disabled]='selectedValue !== "val2"' [appendTo]='"body"'></p-calendar>
+            </div>
+        </div>
+        <hr>
+        <div class="input-wrapper">
+            <p-radioButton name="group" value="val3" 
+                           label="שלח שוברים בזמן שמגיע תאריך מסוים ממאפיין של האנשי קשר" 
+                           [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
+            </p-radioButton>
+            <p>השוברים ישלחו רק כשיגיע תאריך מסוים מאפיין של אנשי הקשר</p>
+            <div class="inputs-row flex justify-between align-center calendar" [ngClass]='{"disabled": selectedValue !== "val3"}'>
+                <div class="input-wrapper">
+                    <label for="">מאפיין</label>
+                    <p-dropdown [options]="options" [(ngModel)]="selectedOption" optionLabel="name" [ngModelOptions]="{standalone: true}" [disabled]='selectedValue !== "val3"'></p-dropdown>
+                </div>
+                <div class="input-wrapper">
+                    <label for="">תאריך יצירה</label>
+                    <p-calendar [(ngModel)]="date" [ngModelOptions]="{standalone: true}" [showIcon]="true" [disabled]='selectedValue !== "val3"' [appendTo]='"body"'></p-calendar>
+                </div>
+                <div class="input-wrapper amount">
+                        <label for="">תקציב עצירה</label>
+                    <div class="flex align-center max-amount">
+                        <p-inputNumber [(ngModel)]="amountLimit" [ngModelOptions]="{standalone: true}" [disabled]='selectedValue !== "val3"'></p-inputNumber><span>₪</span>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+</form>

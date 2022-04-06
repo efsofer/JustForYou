@@ -1,0 +1,161 @@
+<app-container>
+    <h2 class="page-title">סיכום</h2>
+    <p class='orderNumber'>הזמנה מספר <span>{{"#34543535" }}</span></p>
+
+    <div class="order-summery">
+        <div class="payment-side">
+            <table *ngIf='type === 1; else otherType'>
+                <tbody style="display: table; width: 100%;">
+                    <ng-container *ngFor='let item of mockData.payment'>
+                        <tr>
+                          <th>{{item.title}}</th>
+                          <td>{{item.amount}}</td>
+                        </tr>
+                    </ng-container>                                         
+                </tbody>
+            </table>
+        </div>
+        <div class="options-side">
+            <div class="dl-wrapper">
+                <div>
+                    <dl>
+                        <div class='dd-wrapper'>
+                            <span class='icon users'></span>
+                            <dd *ngIf='mockData.activitisTypeDetails.contactsSetting.selectType === 1'>
+                                <span>נבחרו</span>  
+                                <span class='bold-text'>{{mockData.activitisTypeDetails.contactsSetting.quantity}}</span>
+                                <span>אנשי קשר</span> 
+                                <span class='bold-text'>באופן אוטומטי</span>
+                                <div class="btn-wrap">
+                                    <button (click)='goTo(2)'>הגדרות שיוך אנשי קשר</button>
+                                </div>
+                            </dd>
+                            <dd *ngIf='mockData.activitisTypeDetails.contactsSetting.selectType === 2'>
+                                <span>נבחרו</span>  
+                                <span class='bold-text'>{{mockData.activitisTypeDetails.contactsSetting.quantity}}</span>
+                                <span>אנשי קשר</span> 
+                                <span class='bold-text'>באופן ידני</span>
+                                <div class="btn-wrap">
+                                    <button (click)='goTo(2)'>הגדרות שיוך אנשי קשר</button>
+                                </div>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+                <div>
+                    <dl>
+                        <div class='dd-wrapper'>
+                            <span class='icon send-paper'></span>
+                            <dd *ngIf='mockData.activitisTypeDetails.sendSettings.type === 1'>
+                                <span> כל השוברים יישלחו</span>
+                                <span class='bold-text'>{{mockData.activitisTypeDetails.sendSettings.time}}</span> 
+                                <div class="btn-wrap">
+                                    <button (click)='goTo(3)'>הגדרות שליחה</button>
+                                </div>
+                            </dd>
+                            <dd *ngIf='mockData.activitisTypeDetails.sendSettings.type === 2'>
+                                <span> כל השוברים יישלחו ב-</span>
+                                <span class='bold-text'>{{mockData.activitisTypeDetails.sendSettings.time}}</span> 
+                                <div class="btn-wrap">
+                                    <button (click)='goTo(3)'>הגדרות שליחה</button>
+                                </div>
+                            </dd>
+                            <dd *ngIf='mockData.activitisTypeDetails.sendSettings.type === 3'>
+                                <span> כל השוברים יישלחו כשיגיע</span>
+                                <span class='bold-text'>{{mockData.activitisTypeDetails.sendSettings.event}}</span> 
+                                <span> של המשוייכים עד</span>
+                                <span class='bold-text'>{{mockData.activitisTypeDetails.sendSettings.time}}</span> 
+                                <div class="btn-wrap">
+                                    <button (click)='goTo(3)'>הגדרות שליחה</button>
+                                </div>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="payment-time">
+        <h3>התשלום יהיה רק בזמן שאיש הקשר יבחר את השובר שלו</h3>
+        <p>לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק. לפרומי בלוף קי</p>
+    </div>
+
+    
+    <div class="info-container">
+        <div class="flex align-center info-wrapper" *ngIf='type === 1'>
+            <img src="/assets/icons/warning.svg" alt="">
+            <p>הסכום המקסימלי לתשלום עבור פעילות זאת הוא גדול יותר מהיתרה כספית שלך.
+                מומלץ לטעון כסף לחשבונך עכשיו כדי למנוע יתרה שלילית.</p>
+        </div>
+
+        <div class="money-balance-wrapper">
+            <dl class="dl-wrapper">
+                <div>
+                    <dt>יתרה כספית:</dt>
+                    <dd>7000 ₪</dd>
+                </div>
+                <div>
+                    <dt>סכום מקסימלי לתשלום:</dt>
+                    <dd>60000 ₪</dd>
+                </div>
+            </dl>
+            <button class="btn secondary" (click)='display=true'><i class='icon cash'></i>טען כסף לחשבון</button>
+        </div>
+    </div>
+
+        <div class="end-section">
+            <h3>מספר הזמנת רכש וקובץ הסכם</h3>
+            <div class="inputs-row">
+                <div class="input-wrapper">
+                    <label for="">מספר הזמנת רכש:</label>
+                    <p-inputNumber></p-inputNumber>
+                </div>
+                <div class="input-wrapper file">
+                    <label for="">קובץ הסכם/טופס הזמנה:</label>
+                    <p-fileUpload name="myfile[]" 
+                        url="./upload.php" 
+                        accept=".pdf"
+                        (onSelect)='selectFile($event)'
+                        (onClear)='removeFile($event)'
+                        [cancelLabel]='"הסרה"'
+                        [showCancelButton]='showCancelButton' [showUploadButton]='false'
+                        [chooseLabel]='"צירוף קובץ הסכם/טופס הזמנה"'>
+                    </p-fileUpload>
+                    <span class='no-file-selected' *ngIf='!showCancelButton'>אף קובץ לא נבחר...</span>
+                </div>
+            </div>
+        </div>
+
+</app-container>
+
+
+<ng-template #otherType>
+   <div class='other-type'>
+       <div class="product-info">
+           <p>הגדרת לאפשר לאנשי הקשר לבחור שובר כלשהו מ-just4u עד <span style='font-weight: 600;'>{{500}} ₪</span></p>
+           <div class="btn-wrap">
+                <button (click)='goTo(1)'>הגדרת בחירת מוצרים</button>
+            </div>
+       </div>
+        <hr>
+        <dl class="dl-wrapper">
+            <div>
+                <dt>סכום מקסימלי לתשלום עבור פעילות זאת:</dt>
+                <dd>{{100000}} ₪</dd>
+            </div>
+        </dl>
+   </div>
+</ng-template>
+
+<!-- modal -->
+<div  style='position: absolute'>
+    <p-dialog [style]="{width: '623px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]="display" header='טען כסף לחשבון' [styleClass]='""'>
+        <app-load-cash-dialog></app-load-cash-dialog>
+        <p-footer>
+        <div class="">
+            <button class="btn secondary" (click)="display=false">ביטול</button>
+            <button class="btn primary">שמירה</button>
+        </div>
+        </p-footer>
+    </p-dialog>
+</div>

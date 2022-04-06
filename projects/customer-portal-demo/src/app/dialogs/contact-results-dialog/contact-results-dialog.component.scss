@@ -1,0 +1,27 @@
+:host {
+    display: block;
+    .header-wrapper {
+        // border-bottom: 1px solid #DBDBDB;
+        padding: 15px 0;
+        h2 {
+            font-size: 21px;
+            line-height: 25px;
+            font-weight: 400;
+            margin: 0;
+            span {
+                font-weight: 600; 
+                margin-left: 5px;
+                font-size: 22px;
+            }
+        }
+    }
+
+    .table-wrapper {
+        margin-top: 10px;
+        ::ng-deep {
+            .p-paginator .p-paginator-icon.pi::before {
+                bottom: 3px;
+            }
+        }
+    }
+}

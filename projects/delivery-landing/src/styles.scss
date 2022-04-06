@@ -1,0 +1,436 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$delivery-landing-primary: mat-palette($mat-indigo);
+$delivery-landing-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$delivery-landing-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$delivery-landing-theme: mat-light-theme($delivery-landing-primary, $delivery-landing-accent, $delivery-landing-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($delivery-landing-theme);
+
+html, body { height: 100%; }
+
+body {
+	direction: rtl;
+	margin: 0;
+	font-family: "Assistant", "Arial";
+	line-height: 1.5;
+}
+
+body div {
+	box-sizing: border-box;
+}
+
+.default-banner {
+	padding: 1rem 4rem;
+	background-color: #000;
+}
+
+.banner {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 4rem;
+	color: #fff;
+}
+
+.banner h1 {
+	font-size: 54pt;
+	font-weight: 700;
+	text-shadow: 1px 1px 4px rgba(0,0,0,.8);
+	line-height: 1.2;
+	white-space: pre-wrap;
+}
+
+.banner p {
+	font-size: 21pt;
+	text-shadow: 1px 1px 4px rgba(0,0,0,.8)
+}
+
+.banner .features {
+	font-size: 18pt;
+}
+
+.show-sm {
+	display: none;
+}
+
+.container {
+	padding: 0 4rem 2rem;
+}
+
+@media (max-width: 992px) {
+	.container {
+		padding: 0 2rem 1rem;
+	}
+	.footer .flex-2-col {
+		padding: 0 2rem;
+	}
+}
+
+h2 {
+	font-weight: 400;
+	font-size: 2.5rem;
+	margin: 1rem 0 1.5rem;
+}
+
+h3 {
+	font-size: 2rem;
+}
+
+h4 {
+	font-size: 1.5rem;
+}
+
+h5 {
+	font-size: 1.25rem;
+}
+
+h1, h3, h4, h5, p {
+	margin: 0 0 1rem;
+}
+
+.color-primary {
+	color: #873d4c;
+}
+
+.d-flex {
+	display: flex;
+}
+
+.jc-between {
+	justify-content: space-between;
+}
+
+.col-3-5 {
+	width: 50%;
+	padding-left: 2rem;
+	border-left: 1px solid #e0e0e0;
+}
+
+.col-2-5 {
+	width: 50%;
+	padding-right: 2rem;
+}
+
+.flex-2-col {
+	width: 50%;
+}
+
+.footer .flex-2-col {
+	padding: 0 4rem;
+}
+
+.footer {
+	background-color: #242424;
+	color: #fff;
+}
+
+.footer .d-flex {
+	padding: 1rem 0;
+}
+
+.footer .flex-2-col:first-child {
+	border-left: 1px solid #555;
+}
+
+.footer h4 {
+	color: #d4b158;
+	font-size: 1.5rem;
+	margin-bottom: .5rem;
+}
+
+.footer ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	line-height: 2;
+}
+
+.footer p {
+	margin-bottom: .5rem;
+}
+
+.footer i {
+	color: #d4b158;
+	margin-left: .5rem;
+}
+
+.footer a {
+	text-decoration: none;
+	color: #fff;
+}
+
+.footer-logo {
+	padding: .5rem 0;
+	text-align: center;
+	background-color: #000;
+}
+
+.btn {
+	border: none;
+	border-radius: 4px;
+	background-image: linear-gradient(to right,#bb8a3e,#c79d4e,#d2b05f,#dec370,#e9d783);
+	color: #000;
+	cursor: pointer;
+	font-family: "Assistant", "Arial";
+	padding: 0.25rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1;
+	transition: box-shadow .2s;
+	text-align: center;
+}
+
+.btn-large {
+	font-size: 1.5rem;
+	padding: .5rem 1.5rem;
+}
+
+.btn-back {
+	background: #efefef;
+}
+
+a.btn {
+	text-decoration: none;
+}
+
+.btn:focus {
+	outline: none;
+	box-shadow: 0 0 0 0.2rem rgba(0,148,255,.4);
+}
+
+.btn i {
+	margin-right: .5rem;
+}
+
+.btn[disabled] {
+	background: #eee;
+	color: #fff;
+}
+
+.change-content {
+	border-bottom: 1px solid #e0e0e0;
+	padding-bottom: 1rem;
+	margin-bottom: 1rem;
+}
+.change-content h5 { color: red; }
+.change-send .form-control {
+	width: auto;
+	font-size: .9rem;
+	margin-left: .5rem;
+}
+
+.form-section > div:not(:last-child) { margin-left: 1rem; }
+.form-section > div {
+	width: 100%;
+	max-width: 16rem;
+}
+.form-control {
+	width: 100%;
+	font-family: "Assistant", "Arial";
+	font-size: 1rem;
+	line-height: 1.5;
+	border: 1px solid #ced4da;
+	border-radius: 4px;
+	padding: .375rem .5rem;
+	box-sizing: border-box;
+}
+.form-control:focus {
+	border-color: #80bdff;
+	outline: 0;
+	box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+}
+textarea.form-control {
+	margin: 0 0 1rem;
+	display: block;
+	max-width: 33rem;
+}
+.form-options {
+	display: flex;
+	flex-flow: wrap;
+	max-width: 33rem;
+	// gap: 1rem;
+	margin-bottom: 2rem;
+}
+.form-options > div {
+	width: calc(50% - .5rem);
+	&:nth-child(odd) {
+		margin-left: 1rem;
+	}
+}
+.form-section {
+	display: flex;
+	margin-bottom: 1rem;
+}
+.form-section.d-block {
+	display: block;
+}
+.form-section.form-address {
+	max-width: 33rem;
+	flex-flow: wrap;
+	margin-bottom: 0;
+	// gap: 1rem;
+}
+.form-section.form-address > div {
+    max-width: 12rem;
+    margin-bottom: 1rem;
+}
+.flex-break { margin-left: 0 !important; }
+.form-pais > div {
+	max-width: 10rem;
+}
+.mat-checkbox { line-height: 2; }
+
+.error-desc {
+	color: red;
+	white-space: pre-wrap;
+}
+
+.notes { margin-bottom: 1rem; }
+.notes h5 { margin: 0; }
+
+@media (max-width: 576px) {
+	.show-sm {
+		display: inherit;
+	}
+	.hide-sm {
+		display: none;
+	}
+	.banner {
+		padding: 2rem;
+	}
+	.banner h1 {
+		font-size: 42pt;
+	}
+
+	.footer .flex-2-col {
+		width: auto;
+		padding: 1rem 0;
+	}
+
+	.footer .flex-2-col:first-child {
+		border-left: none;
+		border-bottom: 1px solid #555;
+	}
+
+	.d-flex:not(.keep-sm) {
+		display: block;
+		& > div {
+			width: auto;
+		}
+	}
+
+	.col-3-5, .col-2-5 {
+		padding: 0;
+		border: none;
+	}
+
+	.footer .d-flex {
+		display: block;
+		padding: 0 2rem;
+	}
+	
+    .form-options > div { width: 100%; }
+    .form-options > div:not(:last-child) { margin-bottom: 1rem; }
+    .form-section:not(.form-address) > div, .form-pais > div, .form-section > .mat-checkbox .mat-checkbox-layout {
+		max-width: unset;
+		margin: 0 0 1rem;
+	}
+	.form-section:not(.form-address) {
+		margin: 0;
+		display: block;
+	}
+	.form-section.form-address > div {
+		max-width: unset;
+    }
+    .flex-break { margin-left: 1rem !important; }
+    .fm-large {margin-left: 0 !important; }
+}
+
+.b-image img {
+	width: 100%;
+	max-width: 720px;
+	max-height: 600px;
+	object-fit: contain;
+}
+
+.form-options select {
+	font-size: 1rem;
+	font-family: "Assistant", "Arial";
+    min-width: 7.5rem;
+    width: 100%;
+}
+.mat-option, .mat-checkbox, .mat-radio-button {
+	font-family: "Assistant", "Arial";
+}
+.mat-option { text-align: right !important; }
+.mat-checkbox .mat-checkbox-inner-container {
+	margin-right: auto;
+	margin-left: 8px;
+}
+.form-section .mat-radio-button, .form-options .mat-radio-button {
+	display: block;
+}
+.form-section .mat-radio-label-content {
+	padding-left: 0 !important;
+	padding-right: 8px !important;
+}
+
+/* Loader */
+.loader {
+	text-align: center;
+}
+
+.lds-ring {
+	display: inline-block;
+	position: relative;
+	width: 48px;
+	height: 48px;
+}
+.lds-ring div {
+	box-sizing: border-box;
+	display: block;
+	position: absolute;
+	width: 42px;
+	height: 42px;
+	margin: 6px;
+	border: 6px solid #3a3a3a;
+	border-radius: 50%;
+	animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+	border-color: #3a3a3a transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+	animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+	animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+	animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

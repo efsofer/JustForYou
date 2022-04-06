@@ -1,0 +1,372 @@
+:host {
+    & > a {
+        display: block;
+        text-decoration: none;
+        cursor: pointer;
+        color: #000;
+        &.trand {
+            height: 100%;
+            width: 100%; 
+        }
+    }
+    .card-item {
+        background-color: #F2F5F8;
+        border-radius: 10px;
+        padding: 13px;
+        box-shadow: 0 3px 3px rgba(0,0,0, 0.26);
+        display: flex;
+        margin-bottom: 15px;
+        column-gap: 15px;
+        
+        &.homepage {
+            h3 {
+                font-size: 23px;
+                line-height: 28px;
+
+                max-height: 28px;
+                overflow: hidden;
+             }
+        }
+
+        .card-title-wrapper {
+            img {
+                height: 56px;
+            }
+        }
+
+        .image-wrapper {
+            height: 75px;
+            width: 133px;
+            border-radius: 10px;
+            overflow: hidden;
+
+            min-width: 133px;
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;  
+            }
+        }
+    
+        h3 {
+           font-size: 30px;
+           line-height: 37px;
+           color:#873D4C;
+           margin: 0;
+           font-weight: 400;
+
+           max-height: 37px;
+           overflow: hidden;
+        }
+    
+        .dl-wrapper {
+            display: flex;
+            .dd-wrapper {
+                display: flex;
+                align-items: center;
+                column-gap: 5px;
+                margin-left: 25px;
+            }
+            dl {
+              font-weight: 500;
+              text-align: center;
+              dt {
+                 font-size: 35px;
+                 line-height: 42px;
+                 padding: 0;
+              }
+              dd {
+            //    font-size: 17px;
+            //    line-height: 20px;
+                margin: 0;
+              }
+            }
+        }
+    
+        span.icon {
+            display: inline-block;
+            height: 15px;
+            width: 15px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            &.check {
+                background-image: url('/assets/icons/check-circle.svg');
+            }
+            &.users {
+                background-image: url('/assets/icons/users.svg');
+            }
+            &.gift {
+                background-image: url('/assets/icons/calendar-star.svg');
+            }
+            &.contacts {
+                background-image: url('/assets/icons/team.svg');
+            }
+            &.send-paper {
+                background-image: url('/assets/icons/send-plane-grey.svg');
+            }
+        }
+
+        // TRAND TYPE
+        &.trand {
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: none;
+            // height: 285px;
+            // width: 386px;
+            transition: all 0.3s ease-in-out; 
+
+            height: 100%;
+            width: 100%;
+            .image-wrapper {
+                height: 100%;
+                width: 100%;
+                border-radius: 0;
+            }
+            .content-wrapper.strip {
+                position: absolute;
+                display: flex;
+                bottom: 0;
+                right: 0;
+                width: 100%;
+                background-color:rgba(0,0,0, 0.78);
+                color: #fff;
+                justify-content: space-between;
+                align-items: center;
+                padding: 2px 13px 8px 24px;
+                h3 {
+                   color: #fff;
+                   font-size: 22px;
+                   line-height: 28px;
+                }
+                .price {
+                    position: relative;
+                    margin: 0;
+                    &.before {
+                        font-size: 16px;
+                        line-height: 21px;
+                        text-align: left;
+                        &::before {
+                            content: '';
+                            width: 2px;
+                            height: 42px;
+                            background-color: rgba(255, 255, 255, 0.85);
+                            position: absolute;
+                            top: -10px;
+                            left: 20px;    
+                            transform: rotate(70deg);
+                        }
+                    }
+                    &.after {
+                        font-size: 22px;
+                        line-height: 27px;
+                    }
+                }
+            }
+            @media (max-width: 1539px)  {
+                // max-height: 255px;
+                // max-width: 336px;
+            }
+        }
+
+        .card-details {
+            margin-top: auto;
+            .dl-wrapper {
+                width: 595px;
+                justify-content: space-between;
+                align-items: center;
+                dl {
+                    text-align: right;
+                    dt {
+                       font-size: 15px;
+                       line-height: 28px;
+                       color: #676767;
+                       padding: 0;
+                       font-weight: 400;
+                    }
+                    dd {
+                        font-size: 17px;
+                        line-height: 21px;
+                        margin: 0;
+                        color: #000;
+                        font-weight: 500;
+                        button {
+                            display: inline;
+                            // font-size: 20px;
+                            // line-height: 26px;
+                            color: #873D4C;
+                            text-decoration: underline;
+                            padding: 0;
+                        }
+                    }
+                    &.date {
+                        dd {
+                            font-size: 20px;
+                            line-height: 26px;
+                            font-weight: 500;
+                            line-height: 18px;
+                        }
+                    }
+                  }
+            }
+        }
+
+        &.coupons-list, &.activities-list {
+            margin-bottom: 25px;
+            padding: 17px 25px;
+            column-gap: 20px;
+            .content-wrapper {
+                display: flex;
+                flex-direction: column;
+            }
+            .title-icons-wrapper {
+                // margin-top: 10px;
+                h3 {
+                    margin: 0;
+                }
+                .dl-wrapper {
+                    dl {
+                        margin: 5px 0 5px 5px;
+                    }
+                }
+            }
+            .image-wrapper {
+                width: auto;
+                height: 164px;
+                flex: 0 0 284px; //0 1 284px;
+            }
+        }
+
+        &.activities-list, &.activities-details {
+            .content-wrapper {
+                width: 100%;
+            }
+            .dl-wrapper {
+                column-gap: 50px;
+            }
+            .dd-wrapper {
+                align-items: baseline !important;
+                dd {
+                    display: flex;
+                    flex-wrap: wrap;
+                    span {
+                       font-size: 20px ;
+                       line-height: 24px ;
+                       font-weight: 500 ;
+                       margin: 0 2px ;
+                       &.bold-text {
+                        font-weight: 600 ;
+                       } 
+                    }
+                }
+            }
+
+
+            .regular-dl-details {
+                flex: 0 1 470px;
+                height: 168px;
+                dl {
+                    dd {
+                        font-size: 20px;
+                        line-height: 26px;
+                    }
+                }
+                .separator {
+                    height: 100px;
+                    background-color: rgba(112, 112, 112, 0.25);
+                }
+            }
+        }
+
+        &.coupons-details, &.activities-details {
+            flex-direction: column;
+            background-color: #fff;
+            padding: 15px 26px 13px 32px;
+            .card-title {
+                font-size: 32px;
+                line-height: 38px;
+                color: #873D4C;
+                font-weight: 400;
+                margin-right: 10px;
+
+                max-height: 38px;
+                overflow: hidden;
+            }
+            .created-date {
+                font-size: 18px;
+                line-height: 28px;
+                font-size: #707070;
+                margin: 0 10px 0 0 ;
+            }
+            .title-wrap {
+                display: flex;
+                flex-direction: column;
+            }
+            .image-content-container {
+                display: flex;
+                width: 100%;
+                .image-wrapper {
+                    width: auto;
+                    height: 156px;
+                    flex: 0 0 272px; // 0 1 272px
+                }
+                .content-wrapper {
+                    // max-width: auto;
+                    height: 164px;
+                    flex: 0 1 410px;
+                    margin-right: 20px;
+                    .dl-wrapper {
+                        width: 100%;
+                        flex-wrap: wrap;
+                        justify-content: space-between;
+                        align-items: center;
+                        & > div {
+                            flex: 0 1 30%
+                        }
+                    }
+                }
+            }
+            ::ng-deep {
+                .chart-wrapper {
+                    width: 290px;
+                    // min-width: 445px;
+                    // .main-number {
+                    //     top: 40px;
+                    //     right: 136px;
+                    //     transform: translate(0%, 0%);
+                    // }
+                    .main-number {
+                        position: absolute;
+                        right: auto;
+                        width: 170px;
+                        text-align: left;
+                        max-width: 250px;
+                        left: 0;
+                        top: -35px;
+                        p {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.activities-details {
+            .content-wrapper {
+                flex: 0 1 580px !important;
+            }
+        }
+
+        &.incentives {
+            dt {font-size: 18px !important;}
+            dd {font-size: 24px !important;}
+        }
+    }
+
+    // &:nth-of-type(3) {
+    //     &.trand {
+    //         margin-left: 0;
+    //     }
+    // }
+}

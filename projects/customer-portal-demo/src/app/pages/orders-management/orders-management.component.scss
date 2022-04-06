@@ -1,0 +1,40 @@
+:host {
+    ::ng-deep {
+        .card-item .card-details .dl-wrapper dl {
+            dt {
+                font-size: 18px;
+                line-height: 23px;
+            }
+            dd {
+                font-size: 20px;
+                line-height: 26px;
+            }
+        } 
+        .display-button-as-link {
+            height: auto;
+        }
+    }
+    .inputs-row {
+        &.first {
+            .input-wrapper {
+                margin-bottom: 15px;
+            }
+        }
+    }
+
+    .fluid-row {
+        @media (max-width: 1539px) {
+            .input-wrapper {
+                width: 24%;
+                &.double-inputs {
+                    width: 24%;
+                    & > .input-wrapper {
+                        width: auto;
+                    }
+                }
+            }
+
+        }
+    }
+}
+

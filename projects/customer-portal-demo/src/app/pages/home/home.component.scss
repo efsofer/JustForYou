@@ -1,0 +1,101 @@
+:host {
+    h1 {
+        font-weight: 300; 
+        span {
+           font-weight: 400; 
+        }
+    }
+    .doughnut-detail {
+        padding: 24px 60px 24px 0;
+        flex: 0 1 65%;
+        dl {
+            white-space: nowrap;
+            overflow: hidden;
+        }
+    }
+
+    .general-details-wrapper {
+        column-gap: 50px;
+        .regular-dl-details {
+            flex: 0 1 35%;
+            & > div {
+                flex: 0 1 33%; 
+                border-right: 1px solid #D6D6D6;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+
+    .banner-wrapper {
+        //height: 345px;
+        height: auto;
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 25px;
+        a {
+            display: block;
+            height: 100%;
+        }
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 10px;
+
+            max-height: 100%;
+            height: auto;
+        }
+    }
+
+
+    .coupons-activities-wrapper {
+        display: flex;
+        width: 100%;
+        column-gap: 25px;
+        app-container {
+            flex: 0 1 50%;
+            
+        }
+    }
+
+    .items-wrapper {
+        margin-top: 15px;
+    }
+
+    .trands {
+        p {
+            font-size: 18px;
+            line-height: 22px;
+            max-height: 47px;
+            max-width: 68%;
+            overflow: hidden;
+        }
+        .items-wrapper {
+            display: grid;
+            // grid-template-columns: repeat(3, 386px);
+            //grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(336px, 386px));
+            grid-gap: 34px;
+            justify-items: center;
+            align-items: center;
+            justify-content: space-between;
+            // transition: grid-template-columns 0.3s ease-in-out; 
+
+            ::ng-deep {
+                app-card-item {
+                    display: block;
+                    min-height: 255px;
+                    min-width: 336px;
+                    max-height: 285px;
+                    max-width: 386px;
+                    height: 21vw;
+                    width: 27.5vw;
+                    transition: all 0.3s ease-in-out;   
+                } 
+            }
+        }
+    }
+}

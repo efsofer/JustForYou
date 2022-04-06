@@ -1,0 +1,29 @@
+<div class="chart-wrapper">
+    <p-chart type="doughnut" [data]="data" [options]="chartOptions" [height]='setHeight' [width]='setWidth'></p-chart>
+    <div class="main-number middle-text" *ngIf='isHomePage; else pieText'>
+        <p class='number'>{{chartInputData.number}}</p>
+        <p class='text'>{{chartInputData.title}}</p>
+    </div>
+</div>
+
+<ng-template #pieText>
+  <div class="main-number">
+    <p class='number-text'><span>{{chartInputData.number}}</span> {{chartInputData.title}}</p>
+  </div>
+</ng-template>
+
+
+<!-- <div  class="chart-wrapper">
+    <div>
+      <div style="display: block">
+        <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
+        [options]='chartOptions' 
+          [plugins]="doughnutChartPlugins"></canvas>
+      </div>
+    </div>
+  </div> -->
+
+<!-- <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
+  [options]='chartOptions' 
+    [plugins]="doughnutChartPlugins" (chartHover)="chartHovered($event)"
+    (chartClick)="chartClicked($event)"></canvas> -->

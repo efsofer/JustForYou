@@ -1,0 +1,127 @@
+<form [formGroup]="newEmpForm" dir="rtl" (submit)="addNewEmpployee()">
+   <div class="wrapDialogAddEmp">
+      <div class="dialogHeaderAddEmp">
+         <span class="dialogTitleAddEmp">הוספת עובדים</span>
+      </div>
+      <div class="dialogContentAddEmp">
+
+
+         <mat-tab-group mat-align-tabs="center" animationDuration="0ms">
+            <mat-tab label="הוספת עובד ידני">
+               <div class="container containerPadding">
+                  <div class="addEmpFormWrap">
+
+                     <div class="inputsWrap">
+                        <div>
+                           <!-- <label class="dialogTitleAddEmp">שם</label>
+                              <input class='ui-inputtext' type="text" formControlName="name">
+                              <mat-error *ngIf="newEmpForm.get('name').valid">error
+                              </mat-error> -->
+                           <label class="dialogTitleAddEmp">שם</label>
+                           <mat-form-field appearance="outline">
+                              <!-- <mat-label>Outline form field</mat-label> -->
+                              <input matInput formControlName="name">
+                              <mat-error *ngIf="newEmpForm.get('name').hasError('required')">
+                                 {{MsgList.requiredField}}
+                              </mat-error>
+                           </mat-form-field>
+                        </div>
+                        <div>
+                           <div>
+                              <label class="dialogTitleAddEmp">טלפון</label>
+                              <mat-form-field appearance="outline">
+                                 <input matInput formControlName="phone" numbersOnly [attr.maxlength]="10">
+                                 <mat-error *ngIf="newEmpForm.get('phone').hasError('required')">
+                                    {{MsgList.requiredField}}
+                                 </mat-error>
+                              </mat-form-field>
+                           </div>
+                        </div>
+                        <div>
+                           <div>
+                              <label class="dialogTitleAddEmp">מייל</label>
+                              <mat-form-field appearance="outline">
+                                 <input matInput formControlName="email">
+                                 <mat-error *ngIf="newEmpForm.get('email').hasError('required')">
+                                    {{MsgList.requiredField}}
+                                 </mat-error>
+                                 <mat-error *ngIf="newEmpForm.get('email').hasError('email')">
+                                    {{MsgList.emailFormatWrong}}</mat-error>
+                              </mat-form-field>
+
+                           </div>
+                        </div>
+                        <div>
+                           <div>
+                              <label class="dialogTitleAddEmp">מייל מנהל</label>
+                              <mat-form-field appearance="outline">
+                                 <input matInput formControlName="mngEmail">
+                                 <mat-error *ngIf="newEmpForm.get('mngEmail').hasError('required')">
+                                    {{MsgList.requiredField}}
+                                 </mat-error>
+                                 <mat-error *ngIf="newEmpForm.get('mngEmail').hasError('email')">
+                                    {{MsgList.emailFormatWrong}}</mat-error>
+                              </mat-form-field>
+                           </div>
+                        </div>
+                        <div>
+                           <div>
+                              <label class="dialogTitleAddEmp">מספר עובד</label>
+                              <mat-form-field appearance="outline">
+                                 <input matInput formControlName="empWorkNumber" numbersOnly>
+                                 <mat-error *ngIf="newEmpForm.get('empWorkNumber').hasError('required')">
+                                    {{MsgList.requiredField}}
+                                 </mat-error>
+                              </mat-form-field>
+                           </div>
+                        </div>
+                        <div>
+                           <div>
+                              <label class="dialogTitleAddEmp">ת.ז</label>
+                              <mat-form-field appearance="outline">
+                                 <input matInput formControlName="empId" numbersOnly>
+                                 <mat-error *ngIf="newEmpForm.get('empId').hasError('required')">
+                                    {{MsgList.requiredField}}
+                                 </mat-error>
+                              </mat-form-field>
+                           </div>
+                        </div>
+                        <div>
+                           <div>
+                              <label class="dialogTitleAddEmp">תאריך שליחה</label>
+                              <!-- <input class='ui-inputtext' type="text"> -->
+                              <!-- <p-calendar [showIcon]="true" placeholder="____/__/__" dateFormat="dd.mm.yy"
+                                 formControlName="sendDate" firstDayOfWeek="4">
+                              </p-calendar> -->
+
+                              <!-- <mat-error *ngIf="newEmpForm.get('sendDate').hasError('required')">
+                                 {{MsgList.requiredField}}
+                              </mat-error> -->
+
+                              <mat-form-field appearance="outline">
+                                 <input matInput [matDatepicker]="picker" formControlName="sendDate"
+                                    placeholder="____/__/__" readonly>
+                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                 <mat-datepicker #picker></mat-datepicker>
+                                 <mat-error *ngIf="newEmpForm.get('sendDate').hasError('required')">
+                                    {{MsgList.requiredField}}
+                                 </mat-error>
+                              </mat-form-field>
+
+                           </div>
+                        </div>
+                     </div>
+
+
+                  </div>
+               </div>
+            </mat-tab>
+            <!-- <mat-tab label="הוספת עובדים מהקובץ"></mat-tab> -->
+         </mat-tab-group>
+      </div>
+      <div class="dialogFooterAddEmp">
+         <button class="btn primary" type="submit">שמור</button>
+         <button class="btn secondary" (click)="closeDialog()">ביטול</button>
+      </div>
+   </div>
+</form>

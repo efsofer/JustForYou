@@ -1,0 +1,32 @@
+:host {
+    .actions-container {
+        .secondary {
+            background-color: transparent;
+            margin-left: 15px;
+        }
+    }
+    .checkbox {
+        justify-content: center;
+        margin: 0;
+    }
+    ::ng-deep {
+        .p-datatable .p-datatable-tbody > tr > .td-icon {
+            padding-right: 15px !important;
+        }
+    }
+
+    .fluid-row {
+        @media (max-width: 1539px) {
+            .input-wrapper {
+                width: 24%;
+                &.double-inputs {
+                    width: 24%;
+                    & > .input-wrapper {
+                        width: auto;
+                    }
+                }
+            }
+
+        }
+    }
+}

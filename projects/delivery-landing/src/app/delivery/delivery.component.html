@@ -1,0 +1,251 @@
+<div class="container">
+    <div class="d-flex" style="padding-bottom: 2rem;">
+        <div class="col-3-5">
+            <ng-template [ngIf]="!deliveryNum || isLoading" [ngIfElse]="showDelivery">
+                <h2 *ngIf="!isPais" class="color-primary">פרטים למשלוח</h2>
+                <div class="notes" *ngIf="!isPais" [innerHTML]="benefit.notes | safeHtml"></div>
+                <form [formGroup]="deliveryForm" (ngSubmit)="submitDelivery()">
+                    <ng-template [ngIf]="!isPais" [ngIfElse]="pais">
+                        <div class="form-options" *ngIf="benefit.options">
+                            <div *ngFor="let option of benefit.options; let i = index">
+                                <h5>{{option.label}}</h5>
+                                <mat-radio-group (change)="toggleImage($any(radOpt).value)" *ngIf="option.type == 'radio'" formControlName="option_{{i}}" required #radOpt>
+                                    <mat-radio-button *ngFor="let opt of option.opts" [value]="opt.text">{{opt.text}}</mat-radio-button>
+                                </mat-radio-group>
+                                <select (change)="toggleImage(selectOpt.value)" *ngIf="option.type == 'dropdown'" formControlName="option_{{i}}" required #selectOpt>
+                                    <option *ngFor="let opt of option.opts" [value]="(opt | json)">{{opt.text}}</option>
+                                </select>
+                                <input *ngIf="option.type == 'text'" type="text" required formControlName="option_{{i}}" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-section d-block" *ngIf="benefit.pickUp">
+                            <mat-radio-group (change)="toggleValidation()" aria-label="בחר אופן אספקה" formControlName="deliveryMethod" required>
+                                <mat-radio-button value="pickup">איסוף עצמי</mat-radio-button>
+                                <mat-radio-button *ngIf="!benefit.pickUpOnly" value="delivery">משלוח</mat-radio-button>
+                            </mat-radio-group>
+                            <span *ngIf="deliveryMethod.value == 'delivery' && benefit.deliveryNotes" style="margin-bottom: 1rem; display: block;" class="error-desc">{{benefit.deliveryNotes}}</span>
+                        </div>
+                        <div class="form-section">
+                            <div><input type="text" required formControlName="recipient" class="form-control"
+                                    [placeholder]="!benefit.pickUp || deliveryMethod.value == 'delivery' ? 'שם המקבל' : 'שם מלא'">
+                                <span class="error-desc"
+                                    *ngIf="recipient.invalid && (recipient.dirty || recipient.touched)">שדה חובה</span>
+                            </div>
+                            <div><input type="text" required formControlName="phone" class="form-control"
+                                    placeholder="טלפון (מספרים בלבד)">
+                                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                                    <span class="error-desc" *ngIf="phone.errors.required">שדה חובה</span>
+                                    <span class="error-desc" *ngIf="phone.errors.pattern">יש להזין 9 או 10 ספרות
+                                        בלבד</span>
+                                </div>
+                            </div>
+                        </div>
+                        <ng-template [ngIf]="!benefit.pickUp || deliveryMethod.value == 'delivery'">
+                            <div class="form-section form-address">
+                                <div class="fm-large">
+                                    <input type="text" required formControlName="city" class="form-control"
+                                        placeholder="עיר" [matAutocomplete]="autoCity">
+                                    <mat-autocomplete #autoCity="matAutocomplete">
+                                        <mat-option *ngFor="let b_city of filteredCities | async" [value]="b_city">
+                                            {{b_city}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                    <span class="error-desc" *ngIf="city.value == '' && (city.dirty || city.touched)">שדה
+                                        חובה</span>
+                                    <span class="error-desc" *ngIf="city.value && city.errors?.outOfRange && (city.dirty || city.touched)">עיר
+                                        מחוץ לאזור החלוקה</span>
+                                </div>
+                                <div class="fm-large"><input type="text" required formControlName="street" class="form-control"
+                                        placeholder="רחוב" [matAutocomplete]="autoStr">
+                                    <mat-autocomplete #autoStr="matAutocomplete">
+                                        <mat-option *ngFor="let b_street of filteredStreets | async" [value]="b_street">
+                                            {{b_street}}
+                                        </mat-option>
+                                    </mat-autocomplete>
+                                    <span class="error-desc"
+                                        *ngIf="street.invalid && (street.dirty || street.touched)">שדה
+                                        חובה</span>
+                                </div>
+                                <div style="max-width: 7rem;" class="flex-break">
+                                    <input type="text" required formControlName="streetnum" class="form-control"
+                                        placeholder="מספר בית">
+                                    <span class="error-desc"
+                                        *ngIf="streetnum.invalid && (streetnum.dirty || streetnum.touched)">שדה
+                                        חובה</span>
+                                </div>
+                                <div style="max-width: 5rem;">
+                                    <input type="text" formControlName="floor" class="form-control"
+                                        placeholder="קומה">
+                                </div>
+                                <div style="max-width: 5rem;">
+                                    <input type="text" formControlName="aptnum" class="form-control"
+                                        placeholder="דירה">
+                                </div>
+                            </div>
+                            <div *ngIf="benefit.isDelivery" class="form-section">
+                                <div><input type="text" formControlName="sender" class="form-control"
+                                        placeholder="שם שולח (אם מדובר במתנה)"></div>
+                                <mat-checkbox (change)="isIsolated = !isIsolated" id="is-isolated">מקבל החבילה נמצא
+                                    בבידוד
+                                </mat-checkbox>
+                            </div>
+                            <textarea type="text" formControlName="notes" class="form-control" rows="5"
+                                placeholder="הערות לכתובת/לשליח" maxlength="250"></textarea>
+                            <div *ngIf="!benefit.isDelivery">
+                                <h5>שולחים מתנה?</h5>
+                                <div class="form-section">
+                                    <div><input type="text" formControlName="sender" class="form-control"
+                                            placeholder="שם שולח"></div>
+                                    <div><input type="text" formControlName="senderphone" class="form-control"
+                                            placeholder="טלפון שולח (מספרים בלבד)">
+                                        <span class="error-desc"
+                                            *ngIf="senderphone.invalid && (senderphone.dirty || senderphone.touched)">יש
+                                            להזין 9 או 10 ספרות בלבד</span>
+                                    </div>
+                                </div>
+                                <textarea *ngIf="benefit.greeting" type="text" formControlName="greeting"
+                                    class="form-control" rows="5" placeholder="ברכה (אופציונלי, עד 150 תווים)"
+                                    maxlength="150"></textarea>
+                                <!-- <div class="form-section" *ngIf="isFlowers">
+                                    <mat-radio-group aria-label="בחר מועד אספקה" formControlName="deliveryWindow"
+                                        required>
+                                        <mat-radio-button value="immediate">אספקה מיידית - 2-3 ימי עסקים
+                                        </mat-radio-button><br>
+                                        <mat-radio-button value="weekend">אספקה בסוף השבוע הקרוב
+                                        </mat-radio-button>
+                                    </mat-radio-group>
+                                </div> -->
+
+                                <!-- <p>
+                                <mat-checkbox [checked]="customGreeting" (change)="checkGreeting()"
+                                    id="custom-greeting">
+                                    אני רוצה לכתוב ברכה בעצמי (עשוי לעכב את זמן המשלוח)</mat-checkbox>
+                            </p> -->
+                            </div>
+                        </ng-template>
+                    </ng-template>
+                    <ng-template #pais>
+                        <h4 style="margin-top: 1rem;">פרטי שולח הזר (המנוי)</h4>
+                        <div class="form-section">
+                            <div><input type="text" required formControlName="sender" class="form-control"
+                                    placeholder="שם מלא של השולח*">
+                                <span class="error-desc" *ngIf="sender.invalid && (sender.dirty || sender.touched)">שדה
+                                    חובה</span>
+                            </div>
+                            <div><input type="text" required formControlName="senderphone" class="form-control"
+                                    placeholder="נייד שולח (מספרים בלבד)*">
+                                <div *ngIf="senderphone.invalid && (senderphone.dirty || senderphone.touched)">
+                                    <span class="error-desc" *ngIf="senderphone.errors.required">שדה חובה</span>
+                                    <span class="error-desc" *ngIf="senderphone.errors.pattern">יש להזין 9 או 10 ספרות
+                                        בלבד</span>
+                                </div>
+                            </div>
+                        </div>
+                        <h4>פרטי מקבל הזר (הנמען)</h4>
+                        <div class="form-section">
+                            <div><input type="text" required formControlName="recipient" class="form-control"
+                                    placeholder="שם מקבל הזר*">
+                                <span class="error-desc"
+                                    *ngIf="recipient.invalid && (recipient.dirty || recipient.touched)">שדה חובה</span>
+                            </div>
+                            <div><input type="text" required formControlName="phone" class="form-control"
+                                    placeholder="נייד מקבל הזר (מספרים בלבד)*">
+                                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                                    <span class="error-desc" *ngIf="phone.errors.required">שדה חובה</span>
+                                    <span class="error-desc" *ngIf="phone.errors.pattern">יש להזין 9 או 10 ספרות
+                                        בלבד</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-section form-pais">
+                            <div><input type="text" required formControlName="city" class="form-control"
+                                    placeholder="עיר*" [matAutocomplete]="autoCity">
+                                <mat-autocomplete #autoCity="matAutocomplete">
+                                    <mat-option *ngFor="let b_city of filteredCities | async" [value]="b_city">
+                                        {{b_city}}
+                                    </mat-option>
+                                </mat-autocomplete>
+                                <span class="error-desc" *ngIf="city.invalid && (city.dirty || city.touched)">שדה
+                                    חובה</span>
+                            </div>
+                            <div><input type="text" required formControlName="street" class="form-control"
+                                    placeholder="רחוב*" [matAutocomplete]="autoStr">
+                                <mat-autocomplete #autoStr="matAutocomplete">
+                                    <mat-option *ngFor="let b_street of filteredStreets | async" [value]="b_street">
+                                        {{b_street}}
+                                    </mat-option>
+                                </mat-autocomplete>
+                                <span class="error-desc" *ngIf="street.invalid && (street.dirty || street.touched)">שדה
+                                    חובה</span>
+                            </div>
+                            <div style="max-width: 5rem; margin-left: 1rem;"><input type="text" required
+                                    formControlName="streetnum" class="form-control" placeholder="מס בית*">
+                                <span class="error-desc"
+                                    *ngIf="streetnum.invalid && (streetnum.dirty || streetnum.touched)">שדה חובה</span>
+                            </div>
+                            <div style="max-width: 5rem;"><input type="text" required formControlName="aptnum"
+                                    class="form-control" placeholder="מס דירה*">
+                                <!-- <span class="error-desc" *ngIf="aptnum.invalid && (aptnum.dirty || aptnum.touched)">שדה
+                                    חובה. עבור בית פרטי הזינו 0</span> -->
+                            </div>
+                        </div>
+                        <div class="form-section"><strong>*במידה והשליחות לבית פרטי יש להכניס במספר הדירה את הספרה
+                                0</strong></div>
+                        <textarea type="text" formControlName="notes" class="form-control" rows="5"
+                            placeholder="הערות לכתובת/לשליח בלבד" maxlength="250"></textarea>
+                        <h5 *ngIf="isPais">* כל השדות (פרט להערות) הם שדות חובה.</h5>
+                        <h5>לידיעתך, עם מסירת הזר, ישלח SMS עם שמך ועם האיחול הבא: "שיהיה לך יום צבעוני כיפי ואביבי..."
+                            <br>שימו לב- לא ניתן לשנות את נוסח איחול זה.</h5>
+                    </ng-template>
+                    <div class="d-flex jc-between keep-sm" style="max-width: 33rem;">
+                        <button type="button" class="btn btn-back btn-large" [disabled]="isLoading"
+                            (click)="goBack()">חזור</button>
+                        <button *ngIf="!isLoading" class="btn btn-large" type="submit"
+                            [disabled]="!deliveryForm.valid">בצע הזמנה<i class="fas fa-arrow-left"></i></button>
+                        <div *ngIf="isLoading" class="loader">
+                            <div class="lds-ring">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </ng-template>
+            <ng-template #showDelivery>
+                <div style="text-align: center;">
+                    <h2 class="color-primary">הזמנתך התקבלה!</h2>
+                    <div *ngIf="deliveryNum == 1">
+                        <h5 *ngIf="isTransfer">הנכם מועברים לתשלום דמי המשלוח...</h5>
+                        <h5>לבירורים בנוגע למשלוח אנו פנו לספק.<br>
+                            תודה!</h5>
+                    </div>
+                    <div *ngIf="deliveryNum != 1 && deliveryNum != 2">
+                        <h5>מספר המשלוח: {{ deliveryNum }}</h5>
+                        <div *ngIf="deliveryCompany == 'cargo'">
+                            <p><a href="http://185.241.7.143/Baldar/deliverystatus.aspx?dlvnum={{deliveryNum}}">
+                                    למעקב באתר קרגו אקספרס</a></p>
+                            <h5>לבדיקת סטטוס משלוח, שינוי כתובת ובירורים נוספים, יש ליצור קשר עם חברת קרגו אקספרס:
+                                03-5555833</h5>
+                        </div>
+                        <div *ngIf="deliveryCompany == 'isgav'">
+                            <p><a href="https://baldar.isgav.co.il/baldar/DeliveryStatus.aspx">
+                                    למעקב באתר ישגב</a></p>
+                            <h5>לבדיקת סטטוס משלוח, שינוי כתובת ובירורים נוספים, יש ליצור קשר עם חברת ישגב:
+                                03-7918611</h5>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+        <div class="col-2-5 b-image">
+            <h2 *ngIf="benefit.title" class="color-primary">{{benefit.title}}</h2>
+            <div *ngIf="benefit.image"><a *ngIf="benefit.link" href="{{benefit.link}}">
+                    <img style="width: 100%; max-width: 720px;" src="{{imgSrc}}" alt="לצפייה באתר">
+                </a>
+                <img *ngIf="!benefit.link" style="width: 100%; max-width: 720px;" src="{{imgSrc}}"
+                    alt="{{benefit.name}}"></div>
+        </div>
+    </div>
+</div>

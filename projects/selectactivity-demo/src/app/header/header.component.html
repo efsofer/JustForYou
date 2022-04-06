@@ -1,0 +1,6 @@
+<header>
+    <div *ngIf="order.header" class="banner" [style.background-image]="'url(' + (order.headerbackpicture | encodeSpaces) + ')'">
+        <h1>{{ order.header }}</h1>
+        <p [innerHTML]="employeeName + ',<br>' + order.greeting"></p>
+    </div>
+</header>

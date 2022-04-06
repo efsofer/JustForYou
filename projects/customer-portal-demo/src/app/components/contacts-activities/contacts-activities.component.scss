@@ -1,0 +1,45 @@
+:host {
+    display: block;
+    .header-wrapper {
+        border-bottom: 1px solid #DBDBDB;
+        padding-bottom: 24px;
+        margin-bottom: 25px;
+        h3 {
+            font-size: 25px;
+            line-height: 30px;
+            font-weight: 400;
+            margin: 0;
+            span {
+                font-weight: 600; 
+            }
+        }
+        .actions-container {
+            display: flex;
+            column-gap: 15px;
+        }
+    }
+
+
+    ::ng-deep {
+        app-container {
+            .container {
+                background-color: #F2F5F8 !important;
+            }
+        }
+        .p-inputtext {
+            margin-left: 0 !important;
+        }
+    }
+
+    .table-wrapper {
+        margin-top: 40px;
+    }
+
+    .fluid-row {
+        @media (max-width: 1539px) {
+            .input-wrapper {
+                width: 24%;
+            }
+        }
+    }
+}

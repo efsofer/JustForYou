@@ -1,0 +1,121 @@
+<div class='flex justify-between align-center'>
+    <h1 class='page-title'>פרטי אתר גיבוש</h1>
+</div>
+<!-- Coupon main card -->
+<app-card-item [type]='9' [data]='tbpkg'></app-card-item>
+
+<app-container>
+    <div class="custs-wrapper teambuild-approver">
+        <div class="tb-cust-wrapper">
+            <div class="tb-cust tb-cust-header">
+                <h4>שם מלא</h4>
+                <h4>יחידה</h4>
+                <h4 class="col-med">גיבוש נבחר</h4>
+                <h4>מספר משתתפים</h4>
+                <h4 class="col-lg">תאריך יציאה מועדף</h4>
+                <h4>טלפון</h4>
+                <h4 class="col-xlg">מייל</h4>
+                <h4 class="col-ordid">מספר הזמנה</h4>
+                <h4 class="col-stat">סטטוס</h4>
+                <h4 class="col-sm">אישור</h4>
+                <h4 class="col-sm">דחייה</h4>
+            </div>
+        </div>
+        <div class="tb-cust-wrapper" *ngFor="let cust of custsByTBPackageId?.returnobj[0].Custs" #wrapper>
+            <div class="tb-cust tb-cust-record">
+                <div>{{cust.Name}}</div>
+                <div>{{cust.Department}}</div>
+                <div class="col-med">
+                    <button *ngIf="cust.orderid" class="display-button-as-link"
+                        (click)="expand($event, cust.TZ)">{{getTBDisplayName(cust)}}</button>
+                    <span *ngIf="!cust.orderid">{{getTBDisplayName(cust)}}</span>
+                </div>
+                <div>{{cust.Participants || '-'}}</div>
+                <div class="col-lg">{{dateFilter(cust.PreferredDate) | date:'dd/MM/yyyy'}}</div>
+                <div>{{cust.Phone}}</div>
+                <div class="col-xlg">{{cust.Email}}</div>
+                <div class="col-ordid">{{cust.orderid || '-'}}</div>
+                <div class="col-stat">{{getStatus(cust.Status)}}</div>
+                <div class="col-sm"><button [disabled]="!canAct(cust)"
+                        (click)="actionCust = cust; displayApprove = true" class="btn-check"><i
+                            class="icon check ng-star-inserted"></i></button></div>
+                <div class="col-sm">
+                    <button *ngIf="canAct(cust)" (click)="actionCust = cust; displayDeny = true"><i class="icon remove ng-star-inserted"></i></button>
+                    <button *ngIf="!canAct(cust)" disabled><i
+                            class="icon remove-disabled ng-star-inserted"></i></button>
+                </div>
+            </div>
+            <div class="tb-order-details" *ngIf="wrapper.classList.contains('expanded')">
+                <div *ngIf="!wrapper.classList.contains('loading')" class="flex">
+                    <div class="col-3-5">
+                        <app-teambuild-details [data]="TBCustsDetails[cust.TZ]"></app-teambuild-details>
+                    </div>
+                    <div class="col-2-5">
+                        <h4>הערות להזמנה:</h4>
+                        <app-notes-chat [status]="cust.Status" [name]="cust.Name" [notes]="TBCustsDetails[cust.TZ].TBHistory[0].Order[0].Notes"></app-notes-chat>
+                    </div>
+                </div>
+                <div *ngIf="wrapper.classList.contains('loading')" class="loader">
+                    <div class="lds-ring">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p-dialog [style]="{width: '767px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false'
+        [(visible)]='displayApprove' header='אישור הזמנה' [styleClass]='""'>
+        <app-resending-dialog [message]='"האם ברצונך &lt;strong&gt;לאשר&lt;/strong&gt; את ההזמנה של " + actionCust.Name + "?"'>
+        </app-resending-dialog>
+        <div><p><label for="notesApprove">הוספת הערה:</label></p><textarea [(ngModel)]="notes" id="notesApprove"
+                [ngModelOptions]="{standalone: true}" rows="6" cols="30" pInputTextarea></textarea></div>
+        <p-footer>
+            <div *ngIf="!miniLoading">
+                <button class="btn secondary" (click)="displayApprove = false">ביטול</button>
+                <button class="btn primary" (click)="doApprove()">אישור</button>
+            </div>
+            <div *ngIf="miniLoading" class="loader">
+                <div class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </p-footer>
+    </p-dialog>
+    <p-dialog [style]="{width: '767px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false'
+        [(visible)]='displayDeny' header='דחיית הזמנה' [styleClass]='""'>
+        <app-resending-dialog [message]='"האם ברצונך &lt;strong&gt;לדחות&lt;/strong&gt; את ההזמנה של " + actionCust.Name + "?"'>
+        </app-resending-dialog>
+        <div><p><label for="notesDeny">הוספת הערה:</label></p><textarea [(ngModel)]="notes" id="notesDeny"
+                [ngModelOptions]="{standalone: true}" rows="6" cols="30" pInputTextarea></textarea></div>
+        <p-footer>
+            <div *ngIf="!miniLoading">
+                <button class="btn secondary" (click)="displayDeny = false">ביטול</button>
+                <button class="btn primary" (click)="doApprove()">אישור</button>
+            </div>
+            <div *ngIf="miniLoading" class="loader">
+                <div class="lds-ring">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </p-footer>
+    </p-dialog>
+    <p-dialog [style]="{width: '767px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false'
+        [(visible)]="displayComplete" [header]='"פעולה בוצעה"' [styleClass]='""'>
+        <app-resending-dialog [message]='"בוצע בהצלחה!"' [success]='true'></app-resending-dialog>
+        <p-footer>
+            <div class="">
+                <button class="btn primary" (click)="displayComplete=false">אישור</button>
+            </div>
+        </p-footer>
+    </p-dialog>
+</app-container>

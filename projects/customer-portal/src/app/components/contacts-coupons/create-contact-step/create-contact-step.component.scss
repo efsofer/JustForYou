@@ -1,0 +1,42 @@
+:host {
+    .page-title {
+        font-size: 25px;
+        line-height: 33px;
+        margin: 0;
+    }
+
+    .header-wrapper {
+        margin-bottom: 15px;
+    }
+    .actions-container {
+        .transparent {
+            background-color: transparent;
+            margin-left: 15px;
+        }
+    }
+
+    .inner-container {
+        background-color: #F2F5F8;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.29);
+        border-radius: 10px;
+        margin-bottom: 25px; 
+        padding: 22px 29px 0px;
+    }
+    .checkbox {
+        justify-content: center;
+        margin: 0;
+    }
+    ::ng-deep {
+        .ui-table .ui-table-tbody > tr > .td-icon {
+            padding-right: 15px !important;
+        }
+    }
+
+    .fluid-row {
+        @media (max-width: 1539px) {
+            .input-wrapper {
+                width: 24%;
+            }
+        }
+    }
+}

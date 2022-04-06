@@ -1,0 +1,29 @@
+<!-- <div class="overlay">
+    <div class="form-wrapper">
+        <form #vldForm="ngForm" (ngSubmit)="onVldSubmit()">
+            <label for="vld">אנא הזינו מספר תעודת זהות:</label><br>
+            <input type="text" class="form-control" id="vld" name="vld" required [(ngModel)]="vldValue" #name="ngModel">
+            <button type="submit" class="btn" [disabled]="!vldForm.form.valid">המשך<i class="fas fa-arrow-left"></i></button>
+        </form>
+        <span *ngIf="isError" class="error-desc">מצטערים, לא מצאנו אותך...</span>
+        <span *ngIf="expired" class="error-desc">באסה :(<br>לא ניתן לבחור עוד מתנות באתר זה.</span>
+    </div>
+</div> -->
+
+<div class="container">
+    <div *ngIf="!unsupportedBrowser" class="form-wrapper">
+        <h2 class="color-primary" style="text-align: center;">כניסה למערכת</h2>
+            <form #vldForm="ngForm" (ngSubmit)="onVldSubmit()">
+                <label for="vld">אנא הזינו {{vldLabel}}:</label><br>
+                <input type="text" class="form-control" id="vld" name="vld" required [(ngModel)]="vldValue"
+                    #name="ngModel">
+                <button type="submit" class="btn" [disabled]="!vldForm.form.valid">המשך<i
+                        class="fas fa-arrow-left"></i></button>
+            </form>
+            <span *ngIf="isError" class="error-desc">{{errorText}}</span>
+    </div>
+    <div *ngIf="unsupportedBrowser" class="form-wrapper">
+        <h3 style="font-family:Arial, Helvetica, sans-serif;">מצטערים, דפדפן זה אינו נתמך. אנא נסו שנית מדפדפן Microsoft
+            Edge או מכל דפדפן מודרני אחר לבחירתכם.</h3>
+    </div>
+</div>

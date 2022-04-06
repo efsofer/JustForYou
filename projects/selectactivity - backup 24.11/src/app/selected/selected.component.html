@@ -1,0 +1,169 @@
+<div class="container">
+    <h2 class="color-primary">הבחירה שלך:</h2>
+    <div class="choice-container">
+        <ng-template [ngIf]="choice.id" [ngIfElse]="customOrder">
+            <div class="choice-wrapper">
+                <div class="choice-img">
+                    <img src="https://www.justforu.co.il/pictures/{{choice.Image | encodeSpaces}}">
+                </div>
+                <div class="choice-desc">
+                    <h3>{{choice.name}}</h3>
+                    <div [innerHTML]="choice.Htmldescription"></div>
+                </div>
+            </div>
+            <div class="package-brief">
+                <div class="package-body">
+                    <div class="package-activities">
+                        <div class="activities-wrapper">
+                            <div *ngFor="let item of choice.TeamBuildItems; let i = index" class="gift-item"
+                                [class.active]="expandedItem == i"
+                                [style.background-image]="'url(' + (item.image1 | encodeSpaces) + ')'"
+                                (click)="expandedItem = i">
+                                <div *ngIf="item.Images && item.Images.length" class="supp-logo"><img
+                                        src="{{item.Images[0].image | encodeSpaces}}"></div>
+                                <div class="item-footer" [innerHTML]="(item.SpecialDescription && item.SpecialDescription != item.Name) ? item.SpecialDescription : 
+                                    item.Name.split('-')[0] + (item.LName ? ' ב' + item.LName : '')">
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngFor="let item of choice.TeamBuildItems; let i = index" class="activity-desc"
+                            [hidden]="expandedItem != i">
+                            <ng-template [ngIf]="!item.SpecialDescriptionLong" [ngIfElse]="overrideDesc">
+                                <h4>תיאור הפעילות:</h4>
+                                <div [innerHTML]="item.ItemSuppNotes"></div>
+                            </ng-template>
+                            <ng-template #overrideDesc>
+                                <div [innerHTML]="item.SpecialDescriptionLong | safeHtml"></div>
+                            </ng-template>
+                            <div class="supplier-contact">
+                                <h4>לתיאום ובירורים עם בית העסק:</h4>
+                                <p><i class="fas fa-phone"></i>{{item.SuppPhone}}<br>
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span *ngIf="item.CityInSite">{{item.AddressInSite}}, {{item.CityInSite}}</span>
+                                    <span *ngIf="!item.CityInSite">{{item.AddressInSite}}</span>
+                                </p>
+                            </div>
+                            <div *ngIf="item.SuppDescription && item.SuppDescription.trim().length" class="supplier-about">
+                                <h4>אודות בית העסק:</h4>
+                                <div [innerHTML]="item.SuppDescription"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template #customOrder>
+            <h3>נבנה עבורכם יום גיבוש מותאם אישית הכולל את הפעילויות הבאות:</h3>
+            <div class="package-brief">
+                <div class="package-body">
+                    <div class="package-activities">
+                        <div class="activities-wrapper">
+                            <div *ngFor="let item of choice.TeamBuildItems; let i = index" class="gift-item"
+                                [class.active]="expandedItem == i"
+                                [style.background-image]="'url(' + (item.image1 | encodeSpaces) + ')'"
+                                (click)="expandedItem = i">
+                                <div class="item-footer" [innerHTML]="item.Name">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        <h2 class="color-primary">בחירה מעולה! :)</h2>
+
+
+        <!-- TODO: Display voucher codes if possible, display message for extra pay / number of participants issues. -->
+        <!--Tal: Disply only if status is not 5, 6 or 7-->
+        <div *ngIf = "employee.Status !== 5 || employee.Status !== 6 || employee.Status !== 7"></div>
+        <ng-template [ngIf]="withApprover" [ngIfElse]="oldWay">
+            <div *ngIf="!updateForm" class="meta-headings">
+                <h4>כמות משתתפים: {{employee.Participants}}</h4>
+                <h4>תאריך מועדף ליציאה: {{employee.PreferredDate | date:'dd/MM/yyyy'}}</h4>
+                <button *ngIf="updateSuccess === 0" class="btn" (click)="updateForm = true">עדכון פרטים<i class="fas fa-arrow-left"></i></button>
+                <span *ngIf="updateSuccess === 1">בוצע בהצלחה!</span>
+            </div>
+            <div *ngIf="updateForm" class="update-form">
+                <form #partyForm="ngForm" (ngSubmit)="doUpdate()">
+                    <div><label>כמות משתתפים:</label>
+                        <input type="number" style="max-width: 7.5rem;" maxlength="4" class="form-control" id="party"
+                            name="party" required [(ngModel)]="newParticipants">
+                    </div>
+                    <div><label>תאריך מועדף ליציאה:</label>
+                        <input type="date" style="max-width: 170px;" class="form-control" id="dueDate" name="dueDate"
+                            [(ngModel)]="newDate">
+                    </div>
+                    <div><label style="vertical-align: top;">הערות:</label>
+                        <textarea rows="5" cols="30" class="form-control" [(ngModel)]="newNotes" name="notes"
+                            id="notes"></textarea>
+                    </div>
+                    <div *ngIf="!isLoading" class="d-flex jc-between form-buttons">
+                        <button class="btn btn-back" type="button" (click)="updateForm = false">בטל</button>
+                        <div style="position: relative;">
+                            <button class="btn" type="submit" [disabled]="!partyForm.form.valid">עדכן<i class="fas fa-arrow-left"></i></button>
+                            <span class="btn-caption err-desc" *ngIf="updateSuccess == 2">אירעה שגיאה, אנא פנו לתמיכה</span>
+                        </div>
+                    </div>
+                    <div *ngIf="isLoading" class="loader"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
+                </form>
+            </div>
+            <div class="meta-headings">
+                <h4 *ngIf="employee.Status == 2">הזמנתך הועברה לאישור {{approverTitle}} ונמצאת בסטטוס: <span
+                        class="status-pending">ממתין לאישור</span></h4>
+                <h4 *ngIf="employee.Status == 3">הזמנתך <u>לא אושרה</u> על ידי ה{{approverTitle}} ונמצאת בסטטוס: <span
+                        class="status-pending">נדחתה</span></h4>
+                <h4 *ngIf="employee.Status > 3">הזמנתך אושרה על ידי ה{{approverTitle}} ונמצאת בסטטוס:
+                    <span *ngIf="employee.Status == 4" class="status-approved">בטיפול דור חדש בשוברים</span>
+                    <span *ngIf="employee.Status == 5" class="status-approved">טיפול הסתיים</span>
+                </h4>
+                <h4>
+                    <span *ngIf="lastNote.approver">הערת תקציבאי: </span><span *ngIf="!lastNote.approver">הערות להזמנה:
+                    </span>
+                    {{lastNote.note}}
+                </h4>
+                <h4>תאריך עדכון אחרון: {{employee.LastUpdatedDate | date:'dd/MM/yyyy'}}</h4>
+            </div>
+            <button *ngIf="!showNotes" class="btn-as-link color-primary" (click)="showNotes = true">לצפייה בהתכתבות
+                המלאה <i class="fas fa-angle-down"></i></button>
+            <button *ngIf="showNotes" class="btn-as-link color-primary" (click)="showNotes = false">לצפייה בהתכתבות
+                המלאה <i class="fas fa-angle-up"></i></button>
+            <div *ngIf="showNotes" class="chat-wrapper">
+                <app-notes-chat [name]="approverTitle" [notes]="choice.Order[0].Notes"></app-notes-chat>
+            </div>
+        </ng-template>
+    </div>
+        <ng-template #oldWay>
+            <h4 *ngIf="choice.Notes">הערות להזמנה:<br>{{choice.Notes}}</h4>
+            <h4 *ngIf="!hasCodes">נציג דור חדש בשוברים ייצור עמך קשר במהלך יום העסקים הקרוב להשלמת ההזמנה, תיאום עם בתי
+                העסק
+                ומסירת קודי
+                השובר.<br>תיהנו!</h4>
+            <ng-template [ngIf]="hasCodes">
+                <h3>הקודים שלך:</h3>
+                <h4><span *ngFor="let orderline of choice.Lines">{{orderline.Name}}: {{orderline.Voucherid}}<br></span>
+                </h4>
+                <!-- <h4>שלחו לי את הקודים:</h4>
+            <div class="send-options color-primary">
+                <div class="send-option" [class.active]="sendPhone" (click)="sendPhone = !sendPhone"><i
+                        class="fa fa-mobile"></i><i class="fa fa-comment"></i><span>SMS</span></div>
+                <div class="send-option" [class.active]="sendMail" (click)="sendMail = !sendMail"><i
+                        class="fa fa-envelope"></i><span>מייל</span></div>
+                <div class="send-option"><i class="far fa-file-excel"></i><span>Excel</span></div>
+                <div class="send-option" (click)="print()"><i class="fa fa-print"></i><span>הדפסה</span></div>
+            </div>
+            <div class="sendform-wrapper">
+                <form *ngIf="sendPhone || sendMail" [formGroup]="sendForm" (ngSubmit)="onSendSubmit()">
+                    <div *ngIf="sendPhone"><input type="tel" id="phone" name="phone" formControlName="phone"
+                            class="form-control" placeholder="מס' טלפון"></div>
+                    <div *ngIf="sendMail"><input type="email" id="email" name="email" formControlName="email"
+                            class="form-control" placeholder="כתובת אימייל"></div>
+                    <button class="btn" type="submit" [disabled]="!sendForm.valid">שלח</button>
+                </form><span *ngIf="sent" class="color-primary">הקוד נשלח, עוד רגע המתנה אצלך!</span>
+            </div> -->
+            </ng-template>
+            <!-- <ng-template #noCode>
+                <h3>בחרתם באופציה בתוספת תשלום. נציג דור חדש בשוברים ייצור עמכם קשר ביום העסקים הקרוב.</h3>
+            </ng-template> -->
+        </ng-template>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+:host {
+    ::ng-deep {
+        .tabs-container {
+            .line-bar {
+                width: 90% !important;
+            }
+            .circle-nav .nav-item {
+                min-width: 70px !important;
+                max-width: 100px !important;
+            }
+        }
+    }
+}
+

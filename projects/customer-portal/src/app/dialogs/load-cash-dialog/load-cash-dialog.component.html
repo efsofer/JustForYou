@@ -1,0 +1,36 @@
+<form>
+    <p>לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק. לפרומי בלוף קי</p>
+    <div class="input-wrapper">
+        <label for="">סכום לטעינה</label>
+        <div class='flex align-center'>
+            <p-inputNumber [(ngModel)]="amount" [ngModelOptions]="{standalone: true}"></p-inputNumber><span style='margin-right: 5px'>₪</span>
+        </div>
+    </div>
+    <div class="input-wrapper">
+        <label for="">כרטיסי האשראי שלי</label>
+        <p-dropdown (onChange)='selectCard($event)' [options]="creditCards" [(ngModel)]="selectedCard" optionLabel="name" [ngModelOptions]="{standalone: true}" [appendTo]='"body"'> </p-dropdown>
+    </div>
+    <ng-container *ngIf='selectedOption === "1"'>
+        <div class="flex">
+            <div class="input-wrapper" style='margin-left: 15px'>
+                <label for="">מספר כרטיס אשראי</label>
+                <p-inputNumber [(ngModel)]="cardNumber" [ngModelOptions]="{standalone: true}" maxlength='12'></p-inputNumber>
+            </div>
+            <div class="input-wrapper">
+                <label for="">CVV</label>
+                <p-inputNumber [(ngModel)]="cvvNumber" [ngModelOptions]="{standalone: true}" [style]="{width: '123px'}"></p-inputNumber>
+            </div>
+        </div>
+        <div class="input-wrapper">
+            <label for="">תוקף</label>
+            <div class="expiration">
+                <input type="text" name="month" placeholder="MM" maxlength="2" size="2" />
+                <span>/</span>
+                <input type="text" name="year" placeholder="YY" maxlength="2" size="2" />
+            </div>
+        </div>
+        <div class="input-wrapper width-auto">
+            <p-checkbox [(ngModel)]="value" [binary]="true" label="שמור את פרטי כרטיס האשראי הזה" [ngModelOptions]="{standalone: true}"></p-checkbox> 
+        </div>
+    </ng-container>
+</form>

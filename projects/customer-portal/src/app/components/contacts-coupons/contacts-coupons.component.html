@@ -1,0 +1,161 @@
+<div class="header-wrapper flex justify-between align-center">
+    <h3><span>{{orderCusts?.returnobj[0].Custs.length}} </span>אנשי קשר</h3>
+    <div class="actions-container">
+        <button class="btn secondary"><i class="icon excel"></i>ייצוא לאקסל</button>
+        <button class="btn secondary" (click)='display=true'><i class="icon send"></i>שליחה חוזרת לנבחרים</button>
+        <!-- <button class="btn secondary" (click)='startSteps()'><i class="icon add-person"></i>הוספת איש קשר המשוייכים</button> -->
+    </div>
+</div>
+<div class="search-wrapper">
+    <app-container [paddingValues]='"22px 29px 0 29px"'>
+        <form class="search-container">
+            <div class="inputs-row flex justify-between fluid-row">
+                <div class="input-wrapper">
+                    <label for="name">שם</label>
+                    <input type="text" pInputText [(ngModel)]="name" [ngModelOptions]="{standalone: true}"/>
+                </div>
+                <div class="input-wrapper">
+                    <label for="phone">טלפון</label>
+                    <input class='ui-inputtext' type="tel" id="phone" name="phone" [(ngModel)]="phone" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="input-wrapper">
+                    <label for="email">מייל</label>
+                    <input class='ui-inputtext' type="email" id="email"  [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="input-wrapper">
+                    <label for="code">קוד שובר</label>
+                    <p-inputNumber [(ngModel)]="code" [ngModelOptions]="{standalone: true}"></p-inputNumber>
+                </div> 
+            </div>
+            <div class="inputs-row flex justify-between align-center">
+                <div class="flex">
+                    <div class="input-wrapper width-auto">
+                        <label for="expDateFrom">מתאריך תוקף</label>
+                        <p-calendar [(ngModel)]="expDateFrom" [ngModelOptions]="{standalone: true}" [showIcon]="true" placeholder="____/__/__" dateFormat="dd.mm.yy"></p-calendar>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="expDateTo">עד</label>
+                        <p-calendar [(ngModel)]="expDateTo" [ngModelOptions]="{standalone: true}" [showIcon]="true" placeholder="____/__/__" dateFormat="dd.mm.yy"></p-calendar>
+                    </div>
+                </div>
+                <button class="btn primary" (click)="search()">חיפוש</button>
+            </div>
+        </form>
+    </app-container>
+</div>
+<div class="table-wrapper">
+    <p-table [columns]="cols" [value]="orderCusts?.returnobj[0].Custs" [paginator]="true" [rows]="14" [rowsPerPageOptions]="[5,10,15,20,30]">
+        <ng-template pTemplate="header"  let-columns>
+            <tr>
+                <th style='width: 25px; padding: 0 0 10px 0 ;text-align: right;'>
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                  <th *ngFor="let col of columns" [pSortableColumn]="col.field" [class]='col.field'>
+                      {{col.header}}
+                      <p-sortIcon *ngIf='col.header.length' [field]="col.field"></p-sortIcon>
+                  </th>
+              </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData">
+              <td >
+                  <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+              </td>
+              <td>
+                  <button class="display-button-as-link">{{rowData.Name}}</button>
+            </td>
+              <td>{{rowData.type}}</td>
+              <td>{{rowData.department}}</td>
+              <td>{{rowData.role}}</td>
+              <td>{{rowData.sendDate | date: 'dd/MM/yyyy'}}</td>
+              <td>{{rowData.VoucherId}}</td>
+              <td>{{rowData.orderid}}</td>
+              <td>{{rowData.sendDate | date: 'dd/MM/yyyy'}}</td>
+              <td>
+                <!-- <button class="display-button-as-link" (click)='display=true'>
+                    <i class="icon send"></i>
+                    שליחה חוזרת
+                </button> -->
+            </td>
+          </tr>
+          </ng-template>
+    </p-table>  
+</div>
+<div *ngIf="isLoading" class="loader">
+    <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<!-- modals -->
+<!-- <p-dialog [style]="{width: '767px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]="display" header='שליחה חוזרת לנבחרים' [styleClass]='""'>
+    <app-resending-dialog [message]='"שוברים נשלחו בהצלחה"' [successIsDefultIcon]='true'></app-resending-dialog>
+    <p-footer>
+    <div class="">
+        <button class="btn secondary" (click)="display=false">ביטול</button>
+        <button class="btn primary">אישור</button>
+    </div>
+    </p-footer>
+</p-dialog> -->
+<p-dialog [style]="{width: '767px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false'
+    [(visible)]='display' header='שליחה חוזרת לנבחרים' [styleClass]='""'>
+    <app-resending-dialog [message]='"האם לשלוח את השובר ל-" + selectedCusts.length + " נבחרים?"'></app-resending-dialog>
+    <p-footer>
+        <div *ngIf="!miniLoading">
+            <button class="btn secondary" (click)="display=false">ביטול</button>
+            <button class="btn primary" (click)="Resend()">שלח שוב</button>
+        </div>
+        <div *ngIf="miniLoading" class="loader">
+            <div class="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [style]="{width: '767px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false'
+    [(visible)]='display3' header='הסרת איש קשר' [styleClass]='""'>
+    <app-resending-dialog [message]='"האם ברצונך להסיר את האיש קשר הזה?"'></app-resending-dialog>
+    <p-footer>
+        <div class="">
+            <button class="btn secondary" (click)="display3 = false">ביטול</button>
+            <button class="btn primary">אישור</button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [style]="{width: '767px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false'
+    [(visible)]="displayComplete" [header]='completeTitle' [styleClass]='""'>
+    <app-resending-dialog [message]='"בוצע בהצלחה!"' [success]='true'></app-resending-dialog>
+    <p-footer>
+        <div class="">
+            <button class="btn primary" (click)="displayComplete=false">אישור</button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [style]="{width: '769px'}" [appendTo]="'body'" [modal]="true" position='top' [draggable]='false' [(visible)]='display2' header='עדכון פרטי עובד/ת' [styleClass]='""'>
+    <app-new-contact-dialog [cust]='editedCust' #editCustDlg></app-new-contact-dialog>
+    <p-footer>
+    <div *ngIf="!miniLoading">
+        <button class="btn secondary" (click)="display2=false">ביטול</button>
+        <button class="btn primary" (click)="updateCust()">שמירה</button>
+        <button *ngIf="editedCust && getStatus(editedCust) != 'פעיל'" class="btn primary" (click)="updateCust(true)">שמירה ושליחה חוזרת</button>
+    </div>
+    <div *ngIf="miniLoading" class="loader">
+        <div class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    </p-footer>
+</p-dialog>
+
+
